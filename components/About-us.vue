@@ -1,9 +1,9 @@
 <template>
-  <div class="container"></div>
+  <section class="about-us"></section>
 </template>
 
 <script>
 export default {};
 </script>
 
-<style></style>
+<style scoped></style>
