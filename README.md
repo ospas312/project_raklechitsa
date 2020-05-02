@@ -1,6 +1,6 @@
 # raklechitsa
 
-> project gor raklechitsa
+> Yandex Praktikum pro bono project for raklechitsa
 
 ## Build Setup
 
