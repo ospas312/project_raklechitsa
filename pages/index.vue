@@ -6,7 +6,7 @@
     <Slogan />
     <Stories />
     <Instagram />
-    <Tell_story />
+    <TellStory />
     <Statistics />
     <About />
     <Footer />
@@ -20,7 +20,7 @@ import Slider from '@/components/Slider.vue';
 import Slogan from '@/components/Slogan.vue';
 import Stories from '@/components/Stories.vue';
 import Instagram from '@/components/Instagram.vue';
-import Tell_story from '@/components/Tell_story.vue';
+import TellStory from '@/components/TellStory.vue';
 import Statistics from '@/components/Statistics.vue';
 import About from '@/components/About.vue';
 import Footer from '@/components/Footer.vue';
@@ -32,7 +32,7 @@ export default {
     Slogan,
     Stories,
     Instagram,
-    Tell_story,
+    TellStory,
     Statistics,
     About,
     Footer,
