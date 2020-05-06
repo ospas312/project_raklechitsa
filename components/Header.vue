@@ -3,7 +3,13 @@
 </template>
 
 <script>
-export default {};
+import Menu from '@/components/ui/Menu.vue';
+
+export default {
+  components: {
+    Menu,
+  },
+};
 </script>
 
 <style scoped></style>
