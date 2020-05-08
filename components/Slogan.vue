@@ -1,0 +1,48 @@
+<template>
+  <section class="slogan">
+    <h2 class="slogan__phrase">
+      И&nbsp;В&nbsp;ОТЛИЧИЕ ОТ&nbsp;РАКА,
+      <span class="slogan__bold">#ЭТОНЕЛЕЧИТСЯ</span>
+    </h2>
+  </section>
+</template>
+
+<script>
+export default {};
+</script>
+
+<style scoped>
+.slogan {
+  max-width: 1440px;
+  min-width: 320px;
+  height: 84px;
+  box-sizing: border-box;
+  background-color: #613a93;
+  border: 1px solid #000000;
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+  font-weight: normal;
+}
+
+.slogan__phrase {
+  margin: 0;
+  color: white;
+  font-family: Inter, sans-serif;
+  font-size: 30px;
+  line-height: 46px;
+  font-weight: normal;
+}
+
+.slogan__bold {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+@media screen and (min-width: 320px) and (max-width: 1440px) {
+  .slogan__phrase {
+    font-size: calc(14px + (30 - 14) * ((100vw - 320px)) / (1440-320));
+  }
+}
+</style>
