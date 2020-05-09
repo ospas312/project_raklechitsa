@@ -1,9 +1,129 @@
 <template>
-  <div></div>
+  <section class="stories">
+    <h2 class="stories__title">Истории неизлечимых привычек</h2>
+    <div class="stories__container">
+      <story
+        v-for="story in stories.slice(0, 8)"
+        :key="story.id"
+        :storyImageSrc="story.storyImageSrcData"
+        :storyTitle="story.storyTitleData"
+        :storyQuote="story.storyQuoteData"
+      />
+    </div>
+    <nxt-button class="stories__button-more" :buttonText="buttonMore">
+    </nxt-button>
+  </section>
 </template>
 
 <script>
-export default {};
+import Story from '@/components/ui/Story.vue';
+import Button from '@/components/ui/Button.vue';
+export default {
+  components: {
+    story: Story,
+    'nxt-button': Button,
+  },
+  data() {
+    return {
+      buttonMore: 'Больше статей',
+      stories: [
+        {
+          id: '1',
+          storyImageSrcData: '/story__image_1.jpg',
+          storyImageAltData: 'Альт текст',
+          storyTitleData: 'Владимир Тен',
+          storyQuoteData:
+            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
+        },
+        {
+          id: '2',
+          storyImageSrcData: '/story__image_1.jpg',
+          storyImageAltData: 'Альт текст',
+          storyTitleData: 'Владимир Позднер',
+          storyQuoteData:
+            'Я боюсь акул — и, в отличии от рака, это не лечится.',
+        },
+        {
+          id: '3',
+          storyImageSrcData: '/story__image_1.jpg',
+          storyImageAltData: 'Альт текст',
+          storyTitleData: 'Александр Тарханов',
+          storyQuoteData:
+            'Я не могу победить свою пунктуальность в отличии от рака.',
+        },
+        {
+          id: '4',
+          storyImageSrcData: '/story__image_1.jpg',
+          storyImageAltData: 'Альт текст',
+          storyTitleData: 'Владимир Тен',
+          storyQuoteData:
+            'Я боюсь акул — и, в отличии от рака, это не лечится.',
+        },
+        {
+          id: '5',
+          storyImageSrcData: '/story__image_1.jpg',
+          storyImageAltData: 'Альт текст',
+          storyTitleData: 'Владимир Тен',
+          storyQuoteData:
+            'Я боюсь акул — и, в отличии от рака, это не лечится.',
+        },
+        {
+          id: '6',
+          storyImageSrcData: '/story__image_1.jpg',
+          storyImageAltData: 'Альт текст',
+          storyTitleData: 'Владимир Позднер',
+          storyQuoteData:
+            'Я боюсь акул — и, в отличии от рака, это не лечится.',
+        },
+        {
+          id: '7',
+          storyImageSrcData: '/story__image_1.jpg',
+          storyImageAltData: 'Альт текст',
+          storyTitleData: 'Александр Тарханов',
+          storyQuoteData:
+            'Я боюсь акул — и, в отличии от рака, это не лечится.',
+        },
+        {
+          id: '8',
+          storyImageSrcData: '/story__image_1.jpg',
+          storyImageAltData: 'Альт текст',
+          storyTitleData: 'Владимир Тен',
+          storyQuoteData:
+            'Я боюсь акул — и, в отличии от рака, это не лечится.',
+        },
+      ],
+    };
+  },
+};
 </script>
 
-<style scoped></style>
+<style scoped>
+.stories {
+  padding: 100px 60px 100px 60px;
+}
+.stories__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-gap: 40px;
+  row-gap: 70px;
+}
+.stories__title {
+  margin: 0 0 70px 0;
+  max-width: 413px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 32px;
+  color: #000000;
+}
+.stories__button-more {
+  width: 100%;
+  min-height: 82px;
+  margin: 70px auto 0px;
+  background-color: #fbfbfb;
+  border: 0;
+}
+.stories__button-more:hover {
+  cursor: pointer;
+}
+</style>

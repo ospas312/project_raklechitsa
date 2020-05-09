@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <Header />
     <Intro />
     <Slider />
     <Slogan />
@@ -40,4 +39,15 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  font-family: 'Inter', monospace;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+</style>
