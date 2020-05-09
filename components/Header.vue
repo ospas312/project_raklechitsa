@@ -44,7 +44,7 @@ export default {
   margin-left: 60px;
 }
 
-.header /deep/ .menu {
+.header__menu {
   margin-right: 60px;
 }
 </style>

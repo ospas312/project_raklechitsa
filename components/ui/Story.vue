@@ -20,6 +20,7 @@ export default {
 .story__image {
   width: 100%;
   height: auto;
+  object-fit: contain;
   margin-bottom: 20px;
 }
 

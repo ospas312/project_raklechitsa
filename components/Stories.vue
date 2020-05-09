@@ -10,8 +10,13 @@
         :storyQuote="story.storyQuoteData"
       />
     </div>
-    <nxt-button class="stories__button-more" :buttonText="buttonMore">
-    </nxt-button>
+    <nxt-button
+      @btnClick="$router.push('/stories')"
+      :buttonType="'button'"
+      :buttonClass="'stories__button-more'"
+      :buttonText="buttonMore"
+    />
+    <!-- <p @click="doSomething"><router-link to="/stories">Больше статей</router-link></p> -->
   </section>
 </template>
 
@@ -37,7 +42,7 @@ export default {
         },
         {
           id: '2',
-          storyImageSrcData: '/story__image_1.jpg',
+          storyImageSrcData: '/story__image_2.jpg',
           storyImageAltData: 'Альт текст',
           storyTitleData: 'Владимир Позднер',
           storyQuoteData:
@@ -45,7 +50,7 @@ export default {
         },
         {
           id: '3',
-          storyImageSrcData: '/story__image_1.jpg',
+          storyImageSrcData: '/story__image_3.jpg',
           storyImageAltData: 'Альт текст',
           storyTitleData: 'Александр Тарханов',
           storyQuoteData:
@@ -53,7 +58,7 @@ export default {
         },
         {
           id: '4',
-          storyImageSrcData: '/story__image_1.jpg',
+          storyImageSrcData: '/story__image_4.jpg',
           storyImageAltData: 'Альт текст',
           storyTitleData: 'Владимир Тен',
           storyQuoteData:
@@ -69,7 +74,7 @@ export default {
         },
         {
           id: '6',
-          storyImageSrcData: '/story__image_1.jpg',
+          storyImageSrcData: '/story__image_2.jpg',
           storyImageAltData: 'Альт текст',
           storyTitleData: 'Владимир Позднер',
           storyQuoteData:
@@ -77,7 +82,7 @@ export default {
         },
         {
           id: '7',
-          storyImageSrcData: '/story__image_1.jpg',
+          storyImageSrcData: '/story__image_3.jpg',
           storyImageAltData: 'Альт текст',
           storyTitleData: 'Александр Тарханов',
           storyQuoteData:
@@ -85,7 +90,71 @@ export default {
         },
         {
           id: '8',
+          storyImageSrcData: '/story__image_4.jpg',
+          storyImageAltData: 'Альт текст',
+          storyTitleData: 'Владимир Тен',
+          storyQuoteData:
+            'Я боюсь акул — и, в отличии от рака, это не лечится.',
+        },
+        {
+          id: '9',
           storyImageSrcData: '/story__image_1.jpg',
+          storyImageAltData: 'Альт текст',
+          storyTitleData: 'Владимир Тен',
+          storyQuoteData:
+            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
+        },
+        {
+          id: '10',
+          storyImageSrcData: '/story__image_2.jpg',
+          storyImageAltData: 'Альт текст',
+          storyTitleData: 'Владимир Позднер',
+          storyQuoteData:
+            'Я боюсь акул — и, в отличии от рака, это не лечится.',
+        },
+        {
+          id: '11',
+          storyImageSrcData: '/story__image_3.jpg',
+          storyImageAltData: 'Альт текст',
+          storyTitleData: 'Александр Тарханов',
+          storyQuoteData:
+            'Я не могу победить свою пунктуальность в отличии от рака.',
+        },
+        {
+          id: '12',
+          storyImageSrcData: '/story__image_4.jpg',
+          storyImageAltData: 'Альт текст',
+          storyTitleData: 'Владимир Тен',
+          storyQuoteData:
+            'Я боюсь акул — и, в отличии от рака, это не лечится.',
+        },
+        {
+          id: '13',
+          storyImageSrcData: '/story__image_1.jpg',
+          storyImageAltData: 'Альт текст',
+          storyTitleData: 'Владимир Тен',
+          storyQuoteData:
+            'Я боюсь акул — и, в отличии от рака, это не лечится.',
+        },
+        {
+          id: '14',
+          storyImageSrcData: '/story__image_2.jpg',
+          storyImageAltData: 'Альт текст',
+          storyTitleData: 'Владимир Позднер',
+          storyQuoteData:
+            'Я боюсь акул — и, в отличии от рака, это не лечится.',
+        },
+        {
+          id: '15',
+          storyImageSrcData: '/story__image_3.jpg',
+          storyImageAltData: 'Альт текст',
+          storyTitleData: 'Александр Тарханов',
+          storyQuoteData:
+            'Я боюсь акул — и, в отличии от рака, это не лечится.',
+        },
+        {
+          id: '16',
+          storyImageSrcData: '/story__image_4.jpg',
           storyImageAltData: 'Альт текст',
           storyTitleData: 'Владимир Тен',
           storyQuoteData:
@@ -106,6 +175,11 @@ export default {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   column-gap: 40px;
   row-gap: 70px;
+}
+@media screen and (max-width: 768px) {
+  .stories__container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 .stories__title {
   margin: 0 0 70px 0;
