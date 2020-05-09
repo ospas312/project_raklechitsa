@@ -20,6 +20,7 @@ export default {
 <style scoped>
 .header {
   max-width: 1440px;
+  min-width: 320px;
   min-height: 72px;
   margin: 0 auto;
   display: flex;
