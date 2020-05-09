@@ -1,5 +1,9 @@
 <template>
-  <div></div>
+  <div>
+    <button class="button__class">
+      <slot>Расказать историю</slot>
+    </button>
+  </div>
 </template>
 
 <script>
