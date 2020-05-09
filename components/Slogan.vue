@@ -8,7 +8,11 @@
 </template>
 
 <script>
-export default {};
+export default {
+  components: {
+    slogan: Slogan,
+  },
+};
 </script>
 
 <style scoped>
@@ -19,7 +23,7 @@ export default {};
   box-sizing: border-box;
   background-color: #613a93;
   border: 1px solid #000000;
-  margin: 0 auto;
+  margin: 0 4.16%;
   padding-top: 20px;
   padding-bottom: 20px;
   text-align: center;
