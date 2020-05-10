@@ -42,20 +42,17 @@ export default {
       mobileMenu: false,
     };
   },
-  //created: function () { this.mobileMenu=true; console.log(this.windowHeight);  /*console.log('Значение a: ' + this.a)*/ },
   mounted: function() {
     window.addEventListener('resize', () => {
       if (window.innerWidth <= 768) {
         this.mobileMenu = true;
-      }
-      if (window.innerWidth > 768) {
+      } else {
         this.mobileMenu = false;
       }
     });
     if (window.innerWidth <= 768) {
       this.mobileMenu = true;
-    }
-    if (window.innerWidth > 768) {
+    } else {
       this.mobileMenu = false;
     }
   },
