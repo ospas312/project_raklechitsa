@@ -44,12 +44,6 @@ export default {};
   column-gap: 10px;
 }
 .stories-nav__li {
-  width: 58px;
-  height: 58px;
-  background-color: #f4f4f4;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .stories-nav__button {
   width: 58px;
@@ -63,6 +57,7 @@ export default {};
   line-height: 22px;
   color: #000000;
   border: 0;
+  background-color: #f4f4f4;
 }
 .stories-nav__button:hover {
   cursor: pointer;
