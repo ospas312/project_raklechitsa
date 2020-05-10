@@ -17,7 +17,6 @@
       :buttonClass="'stories__button-more'"
       :buttonText="buttonMore"
     />
-    <!-- <p @click="doSomething"><router-link to="/stories">Больше статей</router-link></p> -->
   </section>
 </template>
 

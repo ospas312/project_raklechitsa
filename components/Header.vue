@@ -31,6 +31,12 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+  padding: 0 60px;
+}
+@media screen and (max-width: 1280px) {
+  .header {
+    padding: 0 50px;
+  }
 }
 
 .header__title {
@@ -42,10 +48,10 @@ export default {
   font-size: 16px;
   line-height: 20px;
   color: black;
-  margin-left: 60px;
+  /*margin-left:60px;calc(1440px /100 *4.16); */
 }
 
 .header__menu {
-  margin-right: 60px;
+  /*margin-right: 60px; */
 }
 </style>
