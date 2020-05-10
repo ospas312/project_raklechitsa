@@ -11,8 +11,12 @@
           <Menu />
         </div>
         <div class="footer__socials">
-          <p class="footer__social_info">Мы в Фейсбуке, Инстаграме и Youtube</p>
-          <a class="footer__social_share" href="">Поделитесь &#8599;</a>
+          <p class="footer__social_info">Мы в Инстаграме и Youtube</p>
+          <Button
+            class="buttonClass"
+            :buttonText="button"
+            @btnClick="$emit('btnClick')"
+          ></Button>
         </div>
       </div>
       <div class="footer__info">
@@ -24,7 +28,17 @@
 </template>
 
 <script>
-export default {};
+import Button from '@/components/ui/Button';
+export default {
+  components: {
+    Button,
+  },
+  data() {
+    return {
+      button: 'Поделитесь' + '\u2197',
+    };
+  },
+};
 </script>
 
 <style scoped>
@@ -33,9 +47,10 @@ export default {};
   background-color: #fbfbfb;
   margin: 0 auto;
   display: flex;
+  font-size: 18px;
 }
 .footer__container {
-  margin: 100px 60px;
+  margin: 60px;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -62,26 +77,29 @@ export default {};
   line-height: 36px;
 }
 .footer__socials {
-  width: 24%;
+  width: 23%;
 }
 .footer__social_info {
-  margin: 0 0 20px 0;
+  margin: 0 0 44px 0;
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
-  font-size: 18px;
   line-height: 24px;
 }
-.footer__social_share {
-  text-decoration: none;
+.buttonClass {
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
-  font-size: 18px;
   line-height: 24px;
   color: #121212;
+  border: none;
+  background-color: unset;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
 }
-.footer__social_share:hover {
+.buttonClass:hover {
   opacity: 0.8;
 }
 .footer__info_name {
@@ -89,7 +107,6 @@ export default {};
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
-  font-size: 18px;
   line-height: 18px;
   color: #898989;
 }
@@ -98,7 +115,6 @@ export default {};
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
-  font-size: 18px;
   line-height: 18px;
   color: #898989;
 }
@@ -111,16 +127,27 @@ export default {};
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
-  font-size: 18px;
   line-height: 24px;
   color: #000000;
 }
 @media screen and (max-width: 1440px) and (min-width: 1280px) {
   .footer {
     width: 1280px;
+    font-size: 16px;
   }
   .footer__container {
-    margin: 60px;
+    margin: 50px;
+  }
+  .footer_title {
+    width: 26%;
+    font-size: 28px;
+    line-height: 32px;
+  }
+  .footer__content {
+    margin-bottom: 104px;
+  }
+  .buttonClass {
+    font-size: 16px;
   }
 }
 </style>
