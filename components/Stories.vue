@@ -6,6 +6,7 @@
         v-for="story in stories.slice(0, 8)"
         :key="story.id"
         :storyImageSrc="story.storyImageSrcData"
+        :storyImageAlt="story.storyImageAltData"
         :storyTitle="story.storyTitleData"
         :storyQuote="story.storyQuoteData"
       />
