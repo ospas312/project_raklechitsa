@@ -1,8 +1,8 @@
 <template>
   <header class="header">
-    <h1 class="header__title">
+    <h2 class="header__title">
       Проект Благотворительного Фонда Константина Хабенского
-    </h1>
+    </h2>
     <header-menu class="header__menu"></header-menu>
   </header>
 </template>
