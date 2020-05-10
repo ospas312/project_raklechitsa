@@ -27,7 +27,7 @@
       <div class="tell-story__content_right">
         <p class="tell-story__info">{{ currentTab.text }}</p>
         <Button
-          class="buttonClass"
+          class="tell-story__button"
           :buttonText="button"
           @btnClick="$emit('btnClick')"
         ></Button>
@@ -67,7 +67,7 @@ export default {
 </script>
 
 <style scoped>
-.buttonClass {
+.tell-story__button {
   width: 280px;
   height: 52px;
   background-color: #613a93;
@@ -81,7 +81,7 @@ export default {
   border: none;
   cursor: pointer;
 }
-.buttonClass:hover {
+.tell-story__button:hover {
   opacity: 0.9;
 }
 .tell-story {
@@ -185,7 +185,7 @@ export default {
     font-size: 16px;
     line-height: 20px;
   }
-  .buttonClass {
+  .tell-story__button {
     width: 230px;
     height: 48px;
   }

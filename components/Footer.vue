@@ -13,7 +13,7 @@
         <div class="footer__socials">
           <p class="footer__social_info">Мы в Инстаграме и Youtube</p>
           <Button
-            class="buttonClass"
+            class="footer__button"
             :buttonText="button"
             @btnClick="$emit('btnClick')"
           ></Button>
@@ -86,7 +86,7 @@ export default {
   font-weight: normal;
   line-height: 24px;
 }
-.buttonClass {
+.footer__button {
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
@@ -99,7 +99,7 @@ export default {
   padding: 0;
   outline: none;
 }
-.buttonClass:hover {
+.footer__button:hover {
   opacity: 0.8;
 }
 .footer__info_name {
@@ -146,7 +146,7 @@ export default {
   .footer__content {
     margin-bottom: 104px;
   }
-  .buttonClass {
+  .footer__button {
     font-size: 16px;
   }
 }
