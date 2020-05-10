@@ -17,11 +17,9 @@
           <button class="slider__btn-forward"></button>
         </div>
       </div>
-      <div class="slider__video-column">
-        <div class="slider__video-overlay">
-          <iframe src="" frameborder="0" class="slider__video"></iframe>
-          <button class="slider__btn-play"></button>
-        </div>
+      <div class="slider__video-overlay">
+        <iframe src="" frameborder="0" class="slider__video"></iframe>
+        <button class="slider__btn-play"></button>
       </div>
     </div>
     <p class="slider__video-caption">
@@ -112,16 +110,11 @@ export default {};
   background-color: #fbfbfb;
   background-repeat: no-repeat;
 }
-.slider__video-column {
-  display: flex;
-  flex-direction: column;
-  width: 60%;
-  position: relative;
-  margin-right: 60px;
-}
 
 .slider__video-overlay {
-  padding-bottom: calc(150 * 100% / 289);
+  width: 60%;
+  margin-right: 60px;
+  padding-bottom: calc(150 * 60% / 289);
   position: relative;
   background-color: #fbfbfb;
   display: flex;
