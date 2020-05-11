@@ -15,4 +15,9 @@ html {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
 }
+
+body {
+  margin: 0;
+  padding: 0;
+}
 </style>
