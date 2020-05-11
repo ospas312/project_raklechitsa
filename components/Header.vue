@@ -48,7 +48,7 @@ export default {
   font-size: 16px;
   line-height: 20px;
   color: black;
-  /*margin-left:60px;calc(1440px /100 *4.16); */
+  /*margin-left:calc(1440px * 4.16vw); /*60px; */
 }
 
 .header__menu {

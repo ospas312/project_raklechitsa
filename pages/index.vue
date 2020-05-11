@@ -41,7 +41,7 @@ export default {
 
 <style>
 .container {
-  max-width: 1440px;
+  width: 100%;
   min-width: 320px;
   margin: 0 auto;
   font-family: 'Inter', monospace;

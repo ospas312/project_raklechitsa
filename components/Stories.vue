@@ -3,7 +3,7 @@
     <h2 class="stories__title">Истории неизлечимых привычек</h2>
     <div class="stories__container">
       <story
-        v-for="story in stories.slice(0, 8)"
+        v-for="story in stories.slice(0, storiesOnMainPage)"
         :key="story.id"
         :storyImageSrc="story.storyImageSrcData"
         :storyImageAlt="story.storyImageAltData"
@@ -15,7 +15,7 @@
       @btnClick="$router.push('/stories')"
       :buttonType="'button'"
       :buttonClass="'stories__button-more'"
-      :buttonText="buttonMore"
+      :buttonText="buttonMoreData"
     />
   </section>
 </template>
@@ -30,7 +30,8 @@ export default {
   },
   data() {
     return {
-      buttonMore: 'Больше статей',
+      buttonMoreData: 'Больше статей',
+      storiesOnMainPage: 8,
       stories: [
         {
           id: '1',
@@ -168,6 +169,7 @@ export default {
 
 <style scoped>
 .stories {
+  max-width: 1440px;
   padding: 100px 60px 100px 60px;
 }
 .stories__container {

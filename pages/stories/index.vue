@@ -3,7 +3,7 @@
     <h2 class="stories__title">Истории неизлечимых привычек</h2>
     <div class="stories__container">
       <story
-        v-for="story in stories"
+        v-for="story in stories.slice(0, limitPerPageData)"
         :key="story.id"
         :storyImageSrc="story.storyImageSrcData"
         :storyImageAlt="story.storyImageAltData"
@@ -11,7 +11,12 @@
         :storyQuote="story.storyQuoteData"
       />
     </div>
-    <stories-nav />
+    <stories-nav
+      @btnClick="clickOnPageButton"
+      :totalStories="totalStoriesCalc"
+      :limitPerPage="limitPerPageData"
+    >
+    </stories-nav>
   </div>
 </template>
 
@@ -27,7 +32,8 @@ export default {
   },
   data() {
     return {
-      buttonMore: 'Больше статей',
+      limitPerPageData: 8,
+      startIndex: 0,
       stories: [
         {
           id: '1',
@@ -157,8 +163,54 @@ export default {
           storyQuoteData:
             'Я боюсь акул — и, в отличии от рака, это не лечится.',
         },
+        {
+          id: '17',
+          storyImageSrcData: '/story__image_1.jpg',
+          storyImageAltData: 'Альт текст',
+          storyTitleData: 'Владимир Тен',
+          storyQuoteData:
+            'Я боюсь акул — и, в отличии от рака, это не лечится.',
+        },
+        {
+          id: '18',
+          storyImageSrcData: '/story__image_2.jpg',
+          storyImageAltData: 'Альт текст',
+          storyTitleData: 'Владимир Позднер',
+          storyQuoteData:
+            'Я боюсь акул — и, в отличии от рака, это не лечится.',
+        },
+        {
+          id: '19',
+          storyImageSrcData: '/story__image_3.jpg',
+          storyImageAltData: 'Альт текст',
+          storyTitleData: 'Александр Тарханов',
+          storyQuoteData:
+            'Я боюсь акул — и, в отличии от рака, это не лечится.',
+        },
+        {
+          id: '20',
+          storyImageSrcData: '/story__image_4.jpg',
+          storyImageAltData: 'Альт текст',
+          storyTitleData: 'Владимир Тен',
+          storyQuoteData:
+            'Я боюсь акул — и, в отличии от рака, это не лечится.',
+        },
       ],
     };
+  },
+  computed: {
+    totalStoriesCalc: function() {
+      return this.stories.length;
+    } /* Хаз, как присваивать расчетные значения без использования функций? */,
+    stopIndex: function() {
+      return this.limitPerPageData;
+    },
+  },
+  methods: {
+    clickOnPageButton() {
+      console.log('click');
+      console.log(n);
+    },
   },
 };
 </script>

@@ -2,33 +2,33 @@
   <!-- Временный код, ждем 4 вебинара с Палтухом -->
   <nav class="stories-nav">
     <ul class="stories-nav__ul">
-      <li class="stories-nav__li">
-        <button class="stories-nav__button">1</button>
-      </li>
-      <li class="stories-nav__li">
-        <button class="stories-nav__button">2</button>
-      </li>
-      <li class="stories-nav__li">
-        <button class="stories-nav__button">3</button>
-      </li>
-      <li class="stories-nav__li">
-        <button class="stories-nav__button">4</button>
-      </li>
-      <li class="stories-nav__li">
-        <button class="stories-nav__button">5</button>
-      </li>
-      <li class="stories-nav__li">
-        <button class="stories-nav__button">6</button>
-      </li>
-      <li class="stories-nav__li">
-        <button class="stories-nav__button">7</button>
+      <li v-for="n in pagesAmount" class="stories-nav__li">
+        <nxt-button
+          @btnClick="$emit('btnClick', n)"
+          :buttonClass="'stories-nav__button'"
+          >{{ n }}</nxt-button
+        >
       </li>
     </ul>
   </nav>
 </template>
 
 <script>
-export default {};
+import Button from '@/components/ui/Button.vue';
+export default {
+  components: {
+    'nxt-button': Button,
+  },
+  props: ['totalStories', 'limitPerPage'],
+  data() {
+    return {};
+  },
+  computed: {
+    pagesAmount: function() {
+      return Math.ceil(this.totalStories / this.limitPerPage);
+    },
+  },
+};
 </script>
 
 <style scoped>
