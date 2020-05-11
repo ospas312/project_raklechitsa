@@ -15,7 +15,7 @@
           <Button
             class="footer__button"
             :buttonText="button"
-            @btnClick="$emit('btnClick')"
+            @btnClick="footerpopUpTongle"
           ></Button>
         </div>
       </div>
@@ -24,36 +24,45 @@
         <p class="footer__info_create">Сделано студентами Яндекс Практикум</p>
       </div>
     </div>
+    <PopUp v-if="foterpopUp_show" @btnClick="footerpopUpTongle"
+      >Footer-PopUp</PopUp
+    >
   </div>
 </template>
 
 <script>
 import Button from '@/components/ui/Button';
+import PopUp from '@/components/ui/PopUp';
 export default {
   components: {
     Button,
+    PopUp,
   },
   data() {
     return {
       button: 'Поделитесь' + '\u2197',
+      foterpopUp_show: false,
     };
+  },
+  methods: {
+    footerpopUpTongle() {
+      this.foterpopUp_show = !this.foterpopUp_show;
+    },
   },
 };
 </script>
 
 <style scoped>
 .footer {
-  width: 1440px;
   background-color: #fbfbfb;
-  margin: 0 auto;
   display: flex;
   font-size: 18px;
 }
 .footer__container {
-  margin: 60px;
+  width: 1320px;
+  margin: 60px auto;
   display: flex;
   flex-direction: column;
-  width: 100%;
   color: #000000;
 }
 .footer__content {
@@ -132,11 +141,11 @@ export default {
 }
 @media screen and (max-width: 1440px) and (min-width: 1280px) {
   .footer {
-    width: 1280px;
     font-size: 16px;
   }
   .footer__container {
-    margin: 50px;
+    width: 1180px;
+    margin: 50px auto;
   }
   .footer_title {
     width: 26%;

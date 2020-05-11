@@ -1,8 +1,8 @@
 <template>
   <div class="popup">
     <div class="popup__content">
-      <p>Привет</p>
-      <Button @btnClick="$emit('btnClick')" :buttonText="close"></Button>
+      <slot><p>Привет это PopUp</p></slot>
+      <div class="close" @click="$emit('btnClick')"></div>
     </div>
   </div>
 </template>
@@ -35,12 +35,39 @@ export default {
   display: flex;
 }
 .popup__content {
-  width: 430px;
-  min-height: 330px;
+  width: 920px;
+  min-height: 600px;
   background-color: #fff;
-  border-radius: 10px;
+  border-radius: 0px;
   position: relative;
   box-sizing: border-box;
-  padding: 34px 36px;
+  padding: 40px;
+}
+.close {
+  position: absolute;
+  right: 42px;
+  top: 42px;
+  width: 20px;
+  height: 20px;
+  opacity: 1;
+  cursor: pointer;
+}
+.close:hover {
+  opacity: 0.5;
+}
+.close:before,
+.close:after {
+  position: absolute;
+  left: 9px;
+  content: ' ';
+  height: 20px;
+  width: 2px;
+  background-color: #333;
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
 }
 </style>

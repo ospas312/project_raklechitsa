@@ -85,15 +85,14 @@ export default {
   opacity: 0.9;
 }
 .tell-story {
-  margin: 0 auto;
-  width: 1440px;
   background-color: #f7f7f7;
   display: flex;
   color: #666666;
   font-size: 18px;
 }
 .tell-story__content {
-  margin: 100px 60px;
+  width: 1320px;
+  margin: 100px auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -171,11 +170,9 @@ export default {
   line-height: 22px;
 }
 @media screen and (max-width: 1440px) and (min-width: 1280px) {
-  .tell-story {
-    width: 1280px;
-  }
   .tell-story__content {
-    margin: 90px 50px;
+    width: 1180px;
+    margin: 90px auto;
   }
   .tell-story__title {
     font-size: 28px;

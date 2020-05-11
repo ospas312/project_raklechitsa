@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <Header />
     <Intro />
     <Slider />
     <Slogan />
@@ -14,7 +13,6 @@
 </template>
 
 <script>
-import Header from '@/components/Header.vue';
 import Intro from '@/components/Intro.vue';
 import Slider from '@/components/Slider.vue';
 import Slogan from '@/components/Slogan.vue';
@@ -26,7 +24,6 @@ import About from '@/components/About.vue';
 import PopUp from '@/components/ui/PopUp';
 export default {
   components: {
-    Header,
     Intro,
     Slider,
     Slogan,
@@ -50,4 +47,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.conteiner {
+  margin: 0 auto;
+  max-width: 1440px;
+}
+</style>
