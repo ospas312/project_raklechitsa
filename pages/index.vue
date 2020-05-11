@@ -47,9 +47,11 @@ export default {
 };
 </script>
 
-<style>
-.conteiner {
-  margin: 0 auto;
-  max-width: 1440px;
+<style scoped>
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
 }
 </style>
