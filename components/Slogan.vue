@@ -8,11 +8,7 @@
 </template>
 
 <script>
-export default {
-  components: {
-    slogan: Slogan,
-  },
-};
+export default {};
 </script>
 
 <style scoped>
@@ -33,7 +29,6 @@ export default {
 .slogan__phrase {
   margin: 0;
   color: white;
-  font-family: Inter, sans-serif;
   font-size: 30px;
   line-height: 46px;
   font-weight: normal;
@@ -43,9 +38,25 @@ export default {
   font-weight: bold;
   font-size: 1.2em;
 }
+ feature/insta
+
+@media screen and (min-width: 768px) and (max-width: 1440px) {
+=======
 @media screen and (min-width: 320px) and (max-width: 1440px) {
+ develop
   .slogan__phrase {
-    font-size: calc(14px + (30 - 14) * ((100vw - 320px)) / (1440-320));
+    font-size: calc(
+      22px + (30 - 22) * ((100vw - 768px)) / (1440 - 768)
+    ); /* formula is (minFontSize + (maxFontSize - minFontSize) * ((windowWidth - minWidth) / (maxWidth - minWidth). Provides smooth adaptive of font-size */
+    line-height: calc(36px + (46 - 36) * ((100vw - 768px)) / (1440 - 768));
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .slogan {
+    height: 100px;
+    padding-top: 12px;
+    padding-bottom: 12px;
   }
 }
 </style>
