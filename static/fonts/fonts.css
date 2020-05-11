@@ -4,6 +4,7 @@
   font-weight: normal;
 }
 
+
 @font-face {
   font-family: "Inter";
   src: url("./Inter-Medium.woff2") format("woff2"), url("./Inter-Medium.woff") format("woff");
@@ -20,4 +21,10 @@
   src: url("./Inter-Black.woff2") format("woff2"), url("./Inter-Black.woff") format("woff");
   font-weight: 900;
   font-style: normal;
+}
+/* нужно заменить в след коммитах */
+@font-face{
+  src: url(./Inter-SemiBold-slnt=0.ttf);
+  font-family: 'Inter';
+  font-weight: 600;
 }
