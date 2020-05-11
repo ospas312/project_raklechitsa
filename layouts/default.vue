@@ -5,6 +5,7 @@
     <Footer @btnClick="$emit('btnClick')"></Footer>
   </div>
 </template>
+
 <script>
 import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
@@ -15,7 +16,9 @@ export default {
   },
 };
 </script>
+
 <style>
+
 html {
   font-family: 'Inter', monospace;
   font-size: 16px;
