@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button @click="$emit('btnClick')"></button>
+    <p>ЗАГЛУШКА</p>
   </div>
 </template>
 
