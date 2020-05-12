@@ -75,7 +75,6 @@ export default {
 };
 </script>
 
-
 <style scoped>
 .instagram {
   max-width: 1440px;

@@ -85,17 +85,21 @@ export default {
   opacity: 0.9;
 }
 .tell-story {
-  background-color: #f7f7f7;
+  width: 100%;
   display: flex;
+  justify-content: center;
+  background-color: #f7f7f7;
   color: #666666;
   font-size: 18px;
 }
 .tell-story__content {
-  width: 1320px;
-  margin: 100px auto;
+  max-width: 1440px;
+  width: 100%;
+  padding: 100px 60px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  box-sizing: border-box;
 }
 .tell-story__title {
   width: 65%;
@@ -171,12 +175,15 @@ export default {
 }
 @media screen and (max-width: 1440px) and (min-width: 1280px) {
   .tell-story__content {
-    width: 1180px;
-    margin: 90px auto;
+    max-width: 1280px;
+    padding: 90px 50px;
   }
   .tell-story__title {
     font-size: 28px;
     line-height: 32px;
+  }
+  .tell-story__content_left-column {
+    margin: 30px 0 0 0;
   }
   .tell-story__subtitle {
     font-size: 16px;
@@ -185,6 +192,10 @@ export default {
   .tell-story__button {
     width: 230px;
     height: 48px;
+  }
+  .tell-story__info {
+    min-height: 88px;
+    margin: 94px 0 78px 0;
   }
 }
 </style>

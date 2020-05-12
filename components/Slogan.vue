@@ -46,6 +46,7 @@ export default {};
   font-size: 1.2em;
 }
 
+@media screen and (min-width: 320px) and (max-width: 1440px) {
   .slogan__phrase {
     font-size: calc(
       16px + (30 - 16) * ((100vw - 320px)) / (1440 - 320)

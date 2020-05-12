@@ -2,7 +2,7 @@
   <div>
     <Header />
     <nuxt />
-    <Footer @btnClick="$emit('btnClick')"></Footer>
+    <Footer></Footer>
   </div>
 </template>
 
@@ -18,7 +18,6 @@ export default {
 </script>
 
 <style>
-
 html {
   font-family: 'Inter', monospace;
   font-size: 16px;
