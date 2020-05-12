@@ -49,9 +49,9 @@ export default {};
 @media screen and (min-width: 320px) and (max-width: 1440px) {
   .slogan__phrase {
     font-size: calc(
-      22px + (30 - 22) * ((100vw - 768px)) / (1440 - 768)
+      16px + (30 - 16) * ((100vw - 320px)) / (1440 - 320)
     ); /* formula is (minFontSize + (maxFontSize - minFontSize) * ((windowWidth - minWidth) / (maxWidth - minWidth). Provides smooth adaptive of font-size */
-    line-height: calc(36px + (46 - 36) * ((100vw - 768px)) / (1440 - 768));
+    line-height: calc(18px + (46 - 18) * ((100vw - 320px)) / (1440 - 320));
   }
 }
 

@@ -91,12 +91,6 @@ export default {
   box-sizing: border-box;
 }
 
-.instagram__title {
-}
-
-.instagram__text {
-}
-
 .instagram__description {
   max-width: 340px;
   font-weight: normal;
@@ -121,10 +115,6 @@ export default {
     font-size: 16px;
     line-height: 20px;
   }
-
-  .instagram__stories {
-    grid-gap: 27px;
-  }
 }
 
 @media screen and (max-width: 1024px) {
@@ -138,10 +128,6 @@ export default {
 
   .instagram__text {
     margin-right: 60px;
-  }
-
-  .instagram__stories {
-    grid-gap: 20px;
   }
 }
 
@@ -158,11 +144,22 @@ export default {
   .instagram {
     padding: 60px 30px;
   }
+
+  .instagram__stories {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+  }
 }
 
 @media screen and (max-width: 320px) {
   .instagram {
     padding: 50px 15px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 1440px) {
+  .instagram__stories {
+    grid-gap: calc(10px + (30 - 10) * (100vw - 320px) / (1440 - 320));
   }
 }
 </style>

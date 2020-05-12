@@ -28,7 +28,7 @@ export default {
     Slider,
     Slogan,
     Stories,
-    //Instagram,
+    Instagram,
     TellStory,
     Statistics,
     About,
