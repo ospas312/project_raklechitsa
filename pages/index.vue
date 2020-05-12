@@ -51,7 +51,6 @@ export default {
 .container {
   width: 100%;
   min-width: 320px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;

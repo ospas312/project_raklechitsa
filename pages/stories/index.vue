@@ -218,6 +218,7 @@ export default {
 .stories-index-container {
   max-width: 1440px;
   min-width: 320px;
+  width: 100%;
   margin: 0 auto;
   font-family: 'Inter', monospace;
   -ms-text-size-adjust: 100%;
