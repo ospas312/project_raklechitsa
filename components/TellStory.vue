@@ -85,8 +85,8 @@ export default {
   opacity: 0.9;
 }
 .tell-story {
+  width: 100%;
   background-color: #f7f7f7;
-  display: flex;
   color: #666666;
   font-size: 18px;
 }
@@ -178,6 +178,9 @@ export default {
     font-size: 28px;
     line-height: 32px;
   }
+  .tell-story__content_left-column {
+    margin: 30px 0 0 0;
+  }
   .tell-story__subtitle {
     font-size: 16px;
     line-height: 20px;
@@ -185,6 +188,10 @@ export default {
   .tell-story__button {
     width: 230px;
     height: 48px;
+  }
+  .tell-story__info {
+    min-height: 88px;
+    margin: 94px 0 78px 0;
   }
 }
 </style>

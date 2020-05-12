@@ -75,7 +75,6 @@ export default {
 };
 </script>
 
-
 <style scoped>
 .instagram {
   padding-top: 90px;

@@ -8,7 +8,7 @@
     <TellStory @btnClick="popUpTongle"></TellStory>
     <Statistics />
     <About />
-    <PopUp v-if="popup_is_opened" @btnClick="popUpTongle"></PopUp>
+    <PopUp v-if="popUpOpened" @btnClick="popUpTongle"></PopUp>
   </div>
 </template>
 
@@ -36,12 +36,12 @@ export default {
   },
   data() {
     return {
-      popup_is_opened: false,
+      popUpOpened: false,
     };
   },
   methods: {
     popUpTongle() {
-      this.popup_is_opened = !this.popup_is_opened;
+      this.popUpOpened = !this.popUpOpened;
     },
   },
 };

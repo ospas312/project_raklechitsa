@@ -42,8 +42,7 @@ export default {};
 @media screen and (min-width: 768px) and (max-width: 1440px) {
 }
 @media screen and (min-width: 320px) and (max-width: 1440px) {
- develop
-  .slogan__phrase {
+  develop .slogan__phrase {
     font-size: calc(
       22px + (30 - 22) * ((100vw - 768px)) / (1440 - 768)
     ); /* formula is (minFontSize + (maxFontSize - minFontSize) * ((windowWidth - minWidth) / (maxWidth - minWidth). Provides smooth adaptive of font-size */

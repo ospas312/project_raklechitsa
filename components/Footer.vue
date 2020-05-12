@@ -24,7 +24,7 @@
         <p class="footer__info_create">Сделано студентами Яндекс Практикум</p>
       </div>
     </div>
-    <PopUp v-if="foterpopUp_show" @btnClick="footerpopUpTongle"
+    <PopUp v-if="footerPopUpShow" @btnClick="footerpopUpTongle"
       >Footer-PopUp</PopUp
     >
   </div>
@@ -41,12 +41,12 @@ export default {
   data() {
     return {
       button: 'Поделитесь' + '\u2197',
-      foterpopUp_show: false,
+      footerPopUpShow: false,
     };
   },
   methods: {
     footerpopUpTongle() {
-      this.foterpopUp_show = !this.foterpopUp_show;
+      this.footerPopUpShow = !this.footerPopUpShow;
     },
   },
 };
@@ -55,7 +55,6 @@ export default {
 <style scoped>
 .footer {
   background-color: #fbfbfb;
-  display: flex;
   font-size: 18px;
 }
 .footer__container {
@@ -157,6 +156,12 @@ export default {
   }
   .footer__button {
     font-size: 16px;
+  }
+  .footer__info_name {
+    line-height: 16px;
+  }
+  .footer__info_create {
+    line-height: 16px;
   }
 }
 </style>
