@@ -86,16 +86,20 @@ export default {
 }
 .tell-story {
   width: 100%;
+  display: flex;
+  justify-content: center;
   background-color: #f7f7f7;
   color: #666666;
   font-size: 18px;
 }
 .tell-story__content {
-  width: 1320px;
-  margin: 100px auto;
+  max-width: 1440px;
+  width: 100%;
+  padding: 100px 60px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  box-sizing: border-box;
 }
 .tell-story__title {
   width: 65%;
@@ -171,8 +175,8 @@ export default {
 }
 @media screen and (max-width: 1440px) and (min-width: 1280px) {
   .tell-story__content {
-    width: 1180px;
-    margin: 90px auto;
+    max-width: 1280px;
+    padding: 90px 50px;
   }
   .tell-story__title {
     font-size: 28px;

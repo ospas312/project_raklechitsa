@@ -1,5 +1,5 @@
 <template>
-  <div class="footer">
+  <section class="footer">
     <div class="footer__container">
       <div class="footer__content">
         <h5 class="footer_title">
@@ -27,7 +27,7 @@
     <PopUp v-if="footerPopUpShow" @btnClick="footerpopUpTongle"
       >Footer-PopUp</PopUp
     >
-  </div>
+  </section>
 </template>
 
 <script>
@@ -56,13 +56,17 @@ export default {
 .footer {
   background-color: #fbfbfb;
   font-size: 18px;
+  display: flex;
+  justify-content: center;
 }
 .footer__container {
-  width: 1320px;
-  margin: 60px auto;
+  max-width: 1440px;
+  width: 100%;
+  padding: 60px;
   display: flex;
   flex-direction: column;
   color: #000000;
+  box-sizing: border-box;
 }
 .footer__content {
   display: flex;
@@ -143,8 +147,8 @@ export default {
     font-size: 16px;
   }
   .footer__container {
-    width: 1180px;
-    margin: 50px auto;
+    max-width: 1280px;
+    padding: 50px;
   }
   .footer_title {
     width: 26%;
