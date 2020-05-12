@@ -148,7 +148,6 @@ export default {
   border: none;
   outline: none;
   cursor: pointer;
-  font-size: 18px;
 }
 .tell-story__variant:hover {
   font-family: Inter;
