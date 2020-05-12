@@ -1,6 +1,6 @@
 <template>
   <section class="about">
-    <div class="about-container">
+    <div class="about__container">
       <h2 class="about__title">
         #РАКЛЕЧИТСЯ
       </h2>
@@ -8,21 +8,19 @@
         О проекте
       </p>
       <div class="about__text-container">
-        <p class="about__description-text about__description-text_creators">
+        <p class="about__description-creators">
           Этот проект был создан благотворительным фондом Константина
           Хабенского.
         </p>
         <div class="about__description-container">
           <ul class="about__link-list">
             <li class="about__link-item">
-              <a class="about__link about__link_white" href="#">
+              <a class="about__link" href="#">
                 Рак Лечится
               </a>
             </li>
             <li class="about__link-item">
-              <a class="about__link about__link_grey" href="#">
-                Фонд Хабенского</a
-              >
+              <a class="about__link" href="#"> Фонд Хабенского</a>
             </li>
           </ul>
           <div class="about__description-column">
@@ -62,8 +60,8 @@ export default {};
   box-sizing: border-box;
 }
 
-.about-container {
-  max-width: 1440px;
+.about__container {
+  max-width: calc(1440px - 120px);
   width: 100%;
 }
 
@@ -122,22 +120,11 @@ export default {};
   margin-top: 0;
   text-decoration: none;
   cursor: pointer;
-}
-
-.about__link_grey {
   color: #c9c9c9;
 }
 
-.about__link_grey:hover {
+.about__link:hover {
   color: #ffffff;
-}
-
-.about__link_white {
-  color: #ffffff;
-}
-
-.about__link_white:hover {
-  color: #c9c9c9;
 }
 
 .about__description-item:last-of-type {
@@ -163,14 +150,21 @@ export default {};
   margin-bottom: 0;
 }
 
-.about__description-text_creators {
+.about__description-creators {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  color: #dedede;
+  margin-top: 0;
   max-width: 305px;
 }
 
 .about__description-column {
   display: flex;
   flex-direction: column;
-  max-width: 640px;
+  max-width: 570px;
 }
 
 .about__description-title-container {
@@ -195,9 +189,161 @@ export default {};
     line-height: 32px;
   }
 
-  .about__description-text_creators {
+  .about__description-creators {
     font-size: 16px;
     line-height: 20px;
+    max-width: 224px;
+  }
+}
+
+@media screen and (max-width: 1138px) {
+  .about__title {
+    font-size: 52px;
+    line-height: 63px;
+  }
+
+  .about__subtitle {
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  .about__description-text {
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  .about__link {
+    font-size: 15px;
+    line-height: 19px;
+  }
+
+  .about__description-text {
+    font-size: 15px;
+    line-height: 19px;
+    max-width: 447px;
+  }
+
+  .about__description-creators {
+    font-size: 13px;
+    line-height: 16px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .about {
+    padding: 0;
+  }
+
+  .about__container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 49.4%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 80px;
+    margin-bottom: 80px;
+  }
+
+  .about__text-container {
+    flex-direction: column;
+  }
+
+  .about__description-container {
+    flex-direction: column;
+  }
+
+  .about__link-list {
+    display: flex;
+  }
+
+  .about__title {
+    display: none;
+  }
+
+  .about__subtitle {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+    margin-bottom: 26px;
+  }
+
+  .about__link {
+    font-size: 15px;
+    line-height: 19px;
+  }
+
+  .about__description-text {
+    font-size: 15px;
+    line-height: 19px;
+  }
+
+  .about__description-creators {
+    margin-bottom: 80px;
+    font-size: 13px;
+    line-height: 16px;
+    width: 100%;
+  }
+
+  .about__link-item {
+    position: relative;
+    margin-right: 30px;
+    margin-bottom: 0;
+  }
+
+  .about__link-list {
+    margin-right: 0;
+    margin-bottom: 30px;
+  }
+
+  .about__link-item:last-of-type {
+    margin-right: 0;
+  }
+
+  .about__link:hover::after {
+    content: '';
+    border: 2px solid white;
+    margin-top: 5px;
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .about__container {
+    width: 90%;
+  }
+
+  .about__subtitle {
+    text-align: left;
+    margin-bottom: 16px;
+    font-size: 18px;
+    line-height: 21px;
+  }
+
+  .about__description-creators {
+    margin-bottom: 40px;
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  .about__link {
+    font-size: 13px;
+    line-height: 19px;
+  }
+
+  .about__text-container {
+    width: 100%;
+  }
+  .about__link-list {
+    margin-bottom: 20px;
+  }
+
+  .about__description-text {
+    font-size: 15px;
+    line-height: 19px;
   }
 }
 </style>

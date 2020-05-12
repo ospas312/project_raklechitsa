@@ -1,9 +1,11 @@
 <template>
   <section class="slogan">
-    <h2 class="slogan__phrase">
-      И&nbsp;В&nbsp;ОТЛИЧИЕ ОТ&nbsp;РАКА,
-      <span class="slogan__bold">#ЭТОНЕЛЕЧИТСЯ</span>
-    </h2>
+    <div class="slogan__container">
+      <h2 class="slogan__phrase">
+        И&nbsp;В&nbsp;ОТЛИЧИЕ ОТ&nbsp;РАКА,
+        <span class="slogan__bold">#ЭТОНЕЛЕЧИТСЯ</span>
+      </h2>
+    </div>
   </section>
 </template>
 
@@ -15,18 +17,23 @@ export default {};
 .slogan {
   max-width: 1440px;
   min-width: 320px;
-  height: 84px;
+  width: 100%;
   box-sizing: border-box;
-  background-color: #613a93;
-  border: 1px solid #000000;
-  margin: 0 4.16%;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 0 60px;
   text-align: center;
   font-weight: normal;
 }
 
+.slogan__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #613a93;
+  padding: 20px 0;
+}
+
 .slogan__phrase {
+  max-width: 750px;
   margin: 0;
   color: white;
   font-size: 30px;
@@ -39,22 +46,63 @@ export default {};
   font-size: 1.2em;
 }
 
-@media screen and (min-width: 768px) and (max-width: 1440px) {
-}
 @media screen and (min-width: 320px) and (max-width: 1440px) {
-  develop .slogan__phrase {
+  .slogan__phrase {
     font-size: calc(
-      22px + (30 - 22) * ((100vw - 768px)) / (1440 - 768)
+      16px + (30 - 16) * ((100vw - 320px)) / (1440 - 320)
     ); /* formula is (minFontSize + (maxFontSize - minFontSize) * ((windowWidth - minWidth) / (maxWidth - minWidth). Provides smooth adaptive of font-size */
-    line-height: calc(36px + (46 - 36) * ((100vw - 768px)) / (1440 - 768));
+    line-height: calc(18px + (46 - 18) * ((100vw - 320px)) / (1440 - 320));
   }
 }
 
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 1280px) {
   .slogan {
-    height: 100px;
-    padding-top: 12px;
-    padding-bottom: 12px;
+    padding: 0 50px;
+  }
+  .slogan__container {
+    padding: 20px 0;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .slogan {
+    padding: 0 50px;
+  }
+  .slogan__container {
+    padding: 20px 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .slogan {
+    padding: 0 40px;
+  }
+  .slogan__container {
+    padding: 12px 0;
+  }
+  .slogan__phrase {
+    max-width: 444px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .slogan {
+    padding: 0 30px;
+  }
+  .slogan__container {
+    padding: 12px 0;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .slogan {
+    padding: 0 15px;
+  }
+  .slogan__container {
+    padding: 15px 0;
+  }
+  .slogan__phrase {
+    max-width: 220px;
   }
 }
 </style>

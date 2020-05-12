@@ -77,24 +77,12 @@ export default {
 
 <style scoped>
 .instagram {
-  padding-top: 90px;
-  padding-bottom: 90px;
+  max-width: 1440px;
+  width: 100%;
+  padding: 100px 60px;
   display: flex;
-  margin-left: 4.16%;
-  margin-right: 4.16%;
-}
-
-.instagram__title {
-  max-width: 177px;
-  font-weight: 600;
-  font-size: 32px;
-  line-height: 36px;
-  color: #000;
-  border-bottom: 2px solid black;
-}
-
-.instagram__text {
-  margin-right: 110px;
+  justify-content: space-between;
+  box-sizing: border-box;
 }
 
 .instagram__description {
@@ -113,32 +101,20 @@ export default {
 }
 
 @media screen and (max-width: 1280px) {
-  .instagram__title {
-    font-size: 28px;
-    line-height: 32px;
+  .instagram {
+    padding: 80px 50px;
   }
 
   .instagram__description {
     font-size: 16px;
     line-height: 20px;
   }
-
-  .instagram__stories {
-    grid-gap: 27px;
-  }
 }
 
 @media screen and (max-width: 1024px) {
   .instagram {
-    padding-top: 80px;
-    padding-bottom: 80px;
+    padding: 80px 50px;
   }
-
-  .instagram__title {
-    font-size: 24px;
-    line-height: 28px;
-  }
-
   .instagram__description {
     font-size: 13px;
     line-height: 16px;
@@ -147,24 +123,37 @@ export default {
   .instagram__text {
     margin-right: 60px;
   }
-
-  .instagram__stories {
-    grid-gap: 20px;
-  }
 }
 
 @media screen and (max-width: 768px) {
   .instagram {
     flex-direction: column;
   }
-
   .instagram__text {
     margin: 0 auto 60px;
   }
+}
 
-  .instagram__title {
-    margin: 0 auto;
-    max-width: 130px;
+@media screen and (max-width: 480px) {
+  .instagram {
+    padding: 60px 30px;
+  }
+
+  .instagram__stories {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .instagram {
+    padding: 50px 15px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 1440px) {
+  .instagram__stories {
+    grid-gap: calc(10px + (30 - 10) * (100vw - 320px) / (1440 - 320));
   }
 }
 </style>
