@@ -1,7 +1,11 @@
 <template>
   <section class="instagram">
     <div class="instagram__text">
-      <h2 class="instagram__title">Инстаграм</h2>
+      <my-title
+        class="instagram__title"
+        :class="'section-title_place_instagram'"
+        >Инстаграм</my-title
+      >
       <p class="instagram__description">
         Два раза в неделю мы просматриваем все посты по хештегу #этонелечится.
         Все истории, где нет нецензурных выражений и запрещенного контента
@@ -22,8 +26,10 @@
 
 <script>
 import InstagramStory from '@/components/ui/InstagramStory.vue';
+import SectionTitle from '@/components/ui/SectionTitle.vue';
 export default {
   components: {
+    'my-title': SectionTitle,
     'instagram-story': InstagramStory,
   },
   data() {
@@ -75,27 +81,20 @@ export default {
 };
 </script>
 
-
 <style scoped>
 .instagram {
-  padding-top: 90px;
-  padding-bottom: 90px;
+  max-width: 1440px;
+  width: 100%;
+  padding: 100px 60px;
   display: flex;
-  margin-left: 4.16%;
-  margin-right: 4.16%;
+  justify-content: space-between;
+  box-sizing: border-box;
 }
 
 .instagram__title {
-  max-width: 177px;
-  font-weight: 600;
-  font-size: 32px;
-  line-height: 36px;
-  color: #000;
-  border-bottom: 2px solid black;
 }
 
 .instagram__text {
-  margin-right: 110px;
 }
 
 .instagram__description {
@@ -114,9 +113,8 @@ export default {
 }
 
 @media screen and (max-width: 1280px) {
-  .instagram__title {
-    font-size: 28px;
-    line-height: 32px;
+  .instagram {
+    padding: 80px 50px;
   }
 
   .instagram__description {
@@ -131,15 +129,8 @@ export default {
 
 @media screen and (max-width: 1024px) {
   .instagram {
-    padding-top: 80px;
-    padding-bottom: 80px;
+    padding: 80px 50px;
   }
-
-  .instagram__title {
-    font-size: 24px;
-    line-height: 28px;
-  }
-
   .instagram__description {
     font-size: 13px;
     line-height: 16px;
@@ -158,14 +149,20 @@ export default {
   .instagram {
     flex-direction: column;
   }
-
   .instagram__text {
     margin: 0 auto 60px;
   }
+}
 
-  .instagram__title {
-    margin: 0 auto;
-    max-width: 130px;
+@media screen and (max-width: 480px) {
+  .instagram {
+    padding: 60px 30px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .instagram {
+    padding: 50px 15px;
   }
 }
 </style>

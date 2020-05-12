@@ -3,9 +3,9 @@
     <div class="slider__container">
       <div class="slider__text-column">
         <div class="slider__text-container">
-          <h2 class="slider__title">
-            Истории людей, победивших рак, но не свои привычки
-          </h2>
+          <my-title class="slider__title"
+            >Истории людей, победивших рак, но не свои привычки</my-title
+          >
           <p class="slider__text">
             Есть вещи, которые не лечатся. Вещи ставшие частью нашего «я»,
             фобии, страхи. Но это точно не рак. Рак лечится. Лучшее
@@ -18,37 +18,44 @@
         </div>
       </div>
       <div class="slider__video-overlay">
-        <iframe src="" frameborder="0" class="slider__video"></iframe>
+        <iframe src frameborder="0" class="slider__video"></iframe>
         <button class="slider__btn-play"></button>
+        <p class="slider__video-caption">
+          Все видео вы можете найте на нашем
+          <a
+            class="slider__link"
+            href="https://www.youtube.com/channel/UCcxMSzN1R4JfW1vLu3swCaQ"
+            target="_blank"
+            >YouTube канале.</a
+          >
+        </p>
       </div>
     </div>
-    <p class="slider__video-caption">
-      Все видео вы можете найте на нашем
-      <a
-        class="slider__link"
-        href="https://www.youtube.com/channel/UCcxMSzN1R4JfW1vLu3swCaQ"
-        target="_blank"
-        >YouTube канале.</a
-      >
-    </p>
   </section>
 </template>
 
 <script>
-export default {};
+import SectionTitle from '@/components/ui/SectionTitle.vue';
+export default {
+  components: {
+    'my-title': SectionTitle,
+  },
+};
 </script>
 
 <style scoped>
 .slider {
+  max-width: 1440px;
   display: flex;
   flex-direction: column;
   width: 100%;
+  padding: 100px 60px;
+  box-sizing: border-box;
 }
 
 .slider__container {
   display: flex;
   justify-content: space-between;
-  margin-top: 100px;
 }
 
 .slider__text-column {
@@ -56,7 +63,6 @@ export default {};
   flex-direction: column;
   justify-content: space-between;
   width: 28.6%;
-  margin-left: 60px;
 }
 
 .slider__text-container {
@@ -65,12 +71,7 @@ export default {};
 }
 
 .slider__title {
-  font-style: normal;
-  font-weight: 600;
-  font-size: 32px;
-  line-height: 36px;
   margin-bottom: 32px;
-  margin-top: 0;
 }
 
 .slider__text {
@@ -113,7 +114,6 @@ export default {};
 
 .slider__video-overlay {
   width: 60%;
-  margin-right: 60px;
   padding-bottom: calc(150 * 60% / 289);
   position: relative;
   background-color: #fbfbfb;
@@ -147,15 +147,16 @@ export default {};
 }
 
 .slider__video-caption {
-  margin-top: 10px;
+  position: absolute;
+  left: 0;
+  bottom: -26px;
+  margin: 0;
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
   line-height: 16px;
   color: #666666;
-  width: calc(60% + 60px);
   align-self: flex-end;
-  margin-bottom: 74px;
 }
 
 .slider__link {
@@ -167,31 +168,39 @@ export default {};
 }
 
 @media screen and (max-width: 1280px) {
-  .slider__title {
-    font-size: 28px;
-    line-height: 32px;
+  .slider {
+    padding: 80px 50px;
   }
-
   .slider__text {
     font-size: 16px;
     line-height: 20px;
   }
-
-  .slider__container {
-    margin-top: 90px;
-  }
-
   .slider__video-caption {
-    margin-bottom: 64px;
     width: calc(60% + 50px);
   }
+}
 
-  .slider__text-column {
-    margin-left: 50px;
+@media screen and (max-width: 1024px) {
+  .slider {
+    padding: 80px 50px;
   }
+}
 
-  .slider__video-column {
-    margin-right: 50px;
+@media screen and (max-width: 768px) {
+  .slider {
+    padding: 80px 40px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .slider {
+    padding: 60px 30px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .slider {
+    padding: 50px 15px;
   }
 }
 </style>

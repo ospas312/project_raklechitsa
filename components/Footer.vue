@@ -2,9 +2,9 @@
   <div class="footer">
     <div class="footer__container">
       <div class="footer__content">
-        <h5 class="footer_title">
-          Спасибо всем, кто помог состояться этому проекту
-        </h5>
+        <my-title class="footer_title"
+          >Спасибо всем, кто помог состояться этому проекту</my-title
+        >
         <div class="footer__menu">
           <nuxt-link class="footer__menu_link" to="/">Главная</nuxt-link>
           <nuxt-link class="footer__menu_link" to="/stories">Истории</nuxt-link>
@@ -31,10 +31,12 @@
 </template>
 
 <script>
+import SectionTitle from '@/components/ui/SectionTitle.vue';
 import Button from '@/components/ui/Button';
 import PopUp from '@/components/ui/PopUp';
 export default {
   components: {
+    'my-title': SectionTitle,
     Button,
     PopUp,
   },
@@ -56,14 +58,17 @@ export default {
 .footer {
   background-color: #fbfbfb;
   display: flex;
+  justify-content: center;
   font-size: 18px;
 }
 .footer__container {
-  width: 1320px;
-  margin: 60px auto;
+  max-width: 1440px;
+  width: 100%;
+  padding: 60px;
   display: flex;
   flex-direction: column;
   color: #000000;
+  box-sizing: border-box;
 }
 .footer__content {
   display: flex;
@@ -78,12 +83,6 @@ export default {
 }
 .footer_title {
   width: 26%;
-  margin: 0;
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 32px;
-  line-height: 36px;
 }
 .footer__socials {
   width: 23%;
@@ -144,19 +143,40 @@ export default {
     font-size: 16px;
   }
   .footer__container {
-    width: 1180px;
-    margin: 50px auto;
+    padding: 50px;
   }
   .footer_title {
     width: 26%;
-    font-size: 28px;
-    line-height: 32px;
   }
   .footer__content {
     margin-bottom: 104px;
   }
   .footer__button {
     font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .footer__container {
+    padding: 50px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .footer__container {
+    padding: 50px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .footer__container {
+    padding: 50px 30px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .footer__container {
+    padding: 50px 15px;
   }
 }
 </style>

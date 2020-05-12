@@ -15,8 +15,7 @@
       @btnClick="clickOnPageButton"
       :totalStories="totalStoriesCalc"
       :limitPerPage="limitPerPageData"
-    >
-    </stories-nav>
+    ></stories-nav>
   </div>
 </template>
 
@@ -226,7 +225,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
-  padding: 100px 60px 100px 60px;
+  padding: 100px 60px;
 }
 .stories__container {
   display: grid;
@@ -247,5 +246,35 @@ export default {
   font-weight: 600;
   font-size: 32px;
   color: #000000;
+}
+
+@media screen and (max-width: 1280px) {
+  .stories-index-container {
+    padding: 80px 50px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .stories-index-container {
+    padding: 80px 50px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .stories-index-container {
+    padding: 80px 40px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .stories-index-container {
+    padding: 60px 30px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .stories-index-container {
+    padding: 50px 15px;
+  }
 }
 </style>

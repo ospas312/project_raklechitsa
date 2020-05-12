@@ -1,8 +1,8 @@
 <template>
   <section class="stories">
-    <h2 class="stories__title">Истории неизлечимых привычек</h2>
+    <my-title class="stories__title">Истории неизлечимых привычек</my-title>
     <div class="stories__container">
-      <story
+      <my-story
         v-for="story in stories.slice(0, storiesOnMainPage)"
         :key="story.id"
         :storyImageSrc="story.storyImageSrcData"
@@ -23,10 +23,12 @@
 <script>
 import Story from '@/components/ui/Story.vue';
 import Button from '@/components/ui/Button.vue';
+import SectionTitle from '@/components/ui/SectionTitle.vue';
 export default {
   components: {
-    story: Story,
+    'my-story': Story,
     'nxt-button': Button,
+    'my-title': SectionTitle,
   },
   data() {
     return {
@@ -170,27 +172,23 @@ export default {
 <style scoped>
 .stories {
   max-width: 1440px;
-  padding: 100px 60px 100px 60px;
+  width: 100%;
+  padding: 100px 60px;
+  box-sizing: border-box;
 }
 .stories__container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   column-gap: 40px;
   row-gap: 70px;
 }
 @media screen and (max-width: 768px) {
   .stories__container {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 .stories__title {
   margin: 0 0 70px 0;
-  max-width: 413px;
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 32px;
-  color: #000000;
 }
 .stories__button-more {
   width: 100%;

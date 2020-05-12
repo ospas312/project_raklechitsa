@@ -169,7 +169,7 @@ export default {
 }
 
 .statistics__title_place_item {
-  font-size: 2.64vw;
+  font-size: 38px;
   line-height: 40px;
   justify-self: flex-end;
 }

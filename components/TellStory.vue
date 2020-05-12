@@ -1,8 +1,8 @@
 <template>
-  <div class="tell-story">
+  <section class="tell-story">
     <div class="tell-story__content">
       <div class="tell-story__content_left">
-        <p class="tell-story__title">Расскажите свою историю</p>
+        <my-title class="tell-story__title">Расскажите свою историю</my-title>
         <div class="tell-story__content_left-column">
           <p class="tell-story__subtitle">
             Мы публикуем новые истории на сайте раз в неделю. Есть 2 варианта
@@ -33,7 +33,7 @@
         ></Button>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -52,8 +52,10 @@ let tabs = [
   },
 ];
 import Button from '@/components/ui/Button';
+import SectionTitle from '@/components/ui/SectionTitle.vue';
 export default {
   components: {
+    'my-title': SectionTitle,
     Button,
   },
   data() {
@@ -67,6 +69,21 @@ export default {
 </script>
 
 <style scoped>
+.tell-story {
+  max-width: 1440px;
+  width: 100%;
+  padding: 100px 60px;
+  background-color: #f7f7f7;
+  display: flex;
+  color: #666666;
+  font-size: 18px;
+  box-sizing: border-box;
+}
+.tell-story__content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 .tell-story__button {
   width: 280px;
   height: 52px;
@@ -84,28 +101,9 @@ export default {
 .tell-story__button:hover {
   opacity: 0.9;
 }
-.tell-story {
-  background-color: #f7f7f7;
-  display: flex;
-  color: #666666;
-  font-size: 18px;
-}
-.tell-story__content {
-  width: 1320px;
-  margin: 100px auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
+
 .tell-story__title {
-  width: 65%;
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 32px;
-  line-height: 36px;
-  color: #000;
-  margin: 0;
+  width: 65%; /* это неправильно */
 }
 .tell-story__subtitle {
   width: 54%;
@@ -171,8 +169,6 @@ export default {
 }
 @media screen and (max-width: 1440px) and (min-width: 1280px) {
   .tell-story__content {
-    width: 1180px;
-    margin: 90px auto;
   }
   .tell-story__title {
     font-size: 28px;
@@ -185,6 +181,36 @@ export default {
   .tell-story__button {
     width: 230px;
     height: 48px;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .tell-story {
+    padding: 80px 50px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .tell-story {
+    padding: 80px 50px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .tell-story {
+    padding: 80px 40px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .tell-story {
+    padding: 60px 30px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .tell-story {
+    padding: 50px 15px;
   }
 }
 </style>

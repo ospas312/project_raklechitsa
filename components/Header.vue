@@ -1,9 +1,11 @@
 <template>
   <header class="header">
-    <h2 class="header__title">
-      Проект Благотворительного Фонда Константина Хабенского
-    </h2>
-    <header-menu class="header__menu"></header-menu>
+    <div class="header__container">
+      <h2 class="header__title">
+        Проект Благотворительного Фонда Константина Хабенского
+      </h2>
+      <header-menu class="header__menu"></header-menu>
+    </div>
   </header>
 </template>
 
@@ -19,22 +21,30 @@ export default {
 
 <style scoped>
 .header {
-  max-width: 1440px;
-  min-width: 320px;
-  min-height: 72px;
-  margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  min-height: 72px;
   font-family: 'Inter', monospace;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
-  padding: 0 60px;
 }
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1440px;
+  min-width: 320px;
+  width: 100%;
+  padding: 0 60px;
+  box-sizing: border-box;
+}
+
 @media screen and (max-width: 1280px) {
-  .header {
+  .header__container {
     padding: 0 50px;
   }
 }

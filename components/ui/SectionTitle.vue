@@ -1,5 +1,5 @@
 <template>
-  <h2 class="section-title">
+  <h2 class="section-title" :class="placeTitle">
     <slot></slot>
   </h2>
 </template>
@@ -22,17 +22,32 @@ export default {
   transition: 0.3s;
 }
 
+.section-title_place_about {
+  color: #ffffff;
+}
+
+.section-title_place_instagram {
+  border-bottom: 2px solid black;
+  max-width: 177px;
+}
+
 @media screen and (max-width: 1280px) {
   .section-title {
     max-width: 367px;
     font-size: 28px;
     line-height: 32px;
   }
+  .section-title_place_instagram {
+    max-width: 155px;
+  }
 }
 
 @media screen and (max-width: 1024px) {
   .section-title {
-    max-width: 288px;
+    max-width: 350px;
+  }
+  .section-title_place_instagram {
+    max-width: 155px;
   }
 }
 
@@ -40,11 +55,17 @@ export default {
   .section-title {
     max-width: 380px;
   }
+  .section-title_place_instagram {
+    max-width: 155px;
+  }
 }
 @media screen and (max-width: 768px) and (max-width: 1280px) {
   .section-title {
     font-size: 24px;
     line-height: 28px;
+  }
+  .section-title_place_instagram {
+    max-width: 135px;
   }
 }
 

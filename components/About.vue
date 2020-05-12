@@ -1,12 +1,12 @@
 <template>
   <section class="about">
     <div class="about-container">
-      <h2 class="about__title">
-        #РАКЛЕЧИТСЯ
-      </h2>
-      <p class="about__subtitle">
-        О проекте
-      </p>
+      <h2 class="about__title">#РАКЛЕЧИТСЯ</h2>
+      <!--Очень спорный момент, прямо над этим title, находится тоже h2.
+      Но тот что выше, очень похож на тот, что в intro, который h1-->
+      <my-title class="about__subtitle" :class="'section-title_place_about'"
+        >О проекте</my-title
+      >
       <div class="about__text-container">
         <p class="about__description-text about__description-text_creators">
           Этот проект был создан благотворительным фондом Константина
@@ -15,13 +15,11 @@
         <div class="about__description-container">
           <ul class="about__link-list">
             <li class="about__link-item">
-              <a class="about__link about__link_white" href="#">
-                Рак Лечится
-              </a>
+              <a class="about__link about__link_white" href="#">Рак Лечится</a>
             </li>
             <li class="about__link-item">
-              <a class="about__link about__link_grey" href="#">
-                Фонд Хабенского</a
+              <a class="about__link about__link_grey" href="#"
+                >Фонд Хабенского</a
               >
             </li>
           </ul>
@@ -47,7 +45,12 @@
   </section>
 </template>
 <script>
-export default {};
+import SectionTitle from '@/components/ui/SectionTitle.vue';
+export default {
+  components: {
+    'my-title': SectionTitle,
+  },
+};
 </script>
 
 <style scoped>
@@ -58,13 +61,13 @@ export default {};
   align-items: center;
   flex-direction: column;
   width: 100%;
-  padding: 90px 60px 100px 60px;
-  box-sizing: border-box;
 }
 
 .about-container {
   max-width: 1440px;
   width: 100%;
+  padding: 90px 60px 100px 60px;
+  box-sizing: border-box;
 }
 
 .about__title {
@@ -74,21 +77,11 @@ export default {};
   line-height: 77px;
   text-align: center;
   color: #ffffff;
-  width: 50%;
-  margin-top: 0;
-  margin-bottom: 73px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 0 73px;
 }
 
 .about__subtitle {
   justify-self: start;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 32px;
-  line-height: 36px;
-  color: #ffffff;
-  margin-top: 0;
   margin-bottom: 32px;
 }
 
@@ -181,7 +174,7 @@ export default {};
 }
 
 @media screen and (max-width: 1280px) {
-  .about {
+  .about-container {
     padding: 80px 50px 90px 50px;
   }
 
@@ -198,6 +191,38 @@ export default {};
   .about__description-text_creators {
     font-size: 16px;
     line-height: 20px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .about-container {
+    padding: 80px 50px;
+  }
+  .about__description-text {
+    font-size: 15px;
+    line-height: 19px;
+  }
+  .about__link {
+    font-size: 15px;
+    line-height: 19px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .about-container {
+    padding: 80px 40px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .about-container {
+    padding: 60px 30px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .about-container {
+    padding: 50px 15px;
   }
 }
 </style>

@@ -28,7 +28,6 @@ export default {
   justify-content: center;
   width: 100%;
   background-color: rgba(97, 58, 147, 1);
-  z-index: -1;
 }
 
 .intro__wrapper {
