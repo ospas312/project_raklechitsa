@@ -1,6 +1,11 @@
 <template>
   <div class="story">
-    <img class="story__image" :src="storyImageSrc" :alt="storyImageAlt" />
+    <img
+      class="story__image"
+      :src="storyImageSrc"
+      :alt="storyImageAlt"
+      @click="$emit('storyClick')"
+    />
     <p class="story__title">{{ storyTitle }}</p>
     <p class="story__quote">{{ storyQuote }}</p>
   </div>

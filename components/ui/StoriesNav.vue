@@ -1,10 +1,9 @@
 <template>
-  <!-- Временный код, ждем 4 вебинара с Палтухом -->
   <nav class="stories-nav">
     <ul class="stories-nav__ul">
       <li v-for="n in pagesAmount" class="stories-nav__li">
         <nxt-button
-          @btnClick="$emit('btnClick', n)"
+          @btnClick="$emit('btnClick')"
           :buttonClass="'stories-nav__button'"
           >{{ n }}</nxt-button
         >

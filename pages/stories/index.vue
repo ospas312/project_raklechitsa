@@ -209,7 +209,6 @@ export default {
   methods: {
     clickOnPageButton() {
       console.log('click');
-      console.log(n);
     },
   },
 };

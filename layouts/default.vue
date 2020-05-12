@@ -18,7 +18,6 @@ export default {
 </script>
 
 <style>
-
 html {
   font-family: 'Inter', monospace;
   font-size: 16px;

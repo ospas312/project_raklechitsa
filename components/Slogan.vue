@@ -46,12 +46,11 @@ export default {};
   font-size: 1.2em;
 }
 
-  .slogan__phrase {
-    font-size: calc(
-      16px + (30 - 16) * ((100vw - 320px)) / (1440 - 320)
-    ); /* formula is (minFontSize + (maxFontSize - minFontSize) * ((windowWidth - minWidth) / (maxWidth - minWidth). Provides smooth adaptive of font-size */
-    line-height: calc(18px + (46 - 18) * ((100vw - 320px)) / (1440 - 320));
-  }
+.slogan__phrase {
+  font-size: calc(
+    16px + (30 - 16) * ((100vw - 320px)) / (1440 - 320)
+  ); /* formula is (minFontSize + (maxFontSize - minFontSize) * ((windowWidth - minWidth) / (maxWidth - minWidth). Provides smooth adaptive of font-size */
+  line-height: calc(18px + (46 - 18) * ((100vw - 320px)) / (1440 - 320));
 }
 
 @media screen and (max-width: 1280px) {

@@ -9,6 +9,7 @@
         :storyImageAlt="story.storyImageAltData"
         :storyTitle="story.storyTitleData"
         :storyQuote="story.storyQuoteData"
+        @storyClick="storyClickHandler(story.id)"
       />
     </div>
     <nxt-button
@@ -27,6 +28,12 @@ export default {
   components: {
     story: Story,
     'nxt-button': Button,
+  },
+  methods: {
+    storyClickHandler(id) {
+      this.$router.push(`/stories/${id}`);
+      console.log('story clicked');
+    },
   },
   data() {
     return {
