@@ -1,25 +1,30 @@
-@font-face{
-  src: url(./Inter-Black-slnt=0.ttf);
-  font-family: 'Inter';
-  font-weight: 900;
-}
-@font-face{
-  src: url(./Inter-Bold-slnt=0.ttf);
-  font-family: 'Inter';
-  font-weight: bold;
-}
-@font-face{
-  src: url(./Inter-Regular-slnt=0.ttf);
-  font-family: 'Inter';
+@font-face {
+  font-family: "Inter";
+  src: url("./Inter-Regular.woff2") format("woff2"), url("./Inter-Regular.woff") format("woff");
   font-weight: normal;
 }
-@font-face{
-  src: url(./Inter-Medium-slnt=0.ttf);
-  font-family: 'Inter';
-  font-weight: medium;
+
+
+@font-face {
+  font-family: "Inter";
+  src: url("./Inter-Medium.woff2") format("woff2"), url("./Inter-Medium.woff") format("woff");
+  font-weight: 500;
 }
+@font-face {
+  font-family: "Inter";
+  src: url("./Inter-SemiBold.woff2") format("woff2"), url("./Inter-SemiBold.woff") format("woff");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("./Inter-Black.woff2") format("woff2"), url("./Inter-Black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+}
+/* нужно заменить в след коммитах */
 @font-face{
-  src: url(./Inter-Light-slnt=0.ttf);
+  src: url(./Inter-SemiBold-slnt=0.ttf);
   font-family: 'Inter';
-  font-weight: lighter;
+  font-weight: 600;
 }
