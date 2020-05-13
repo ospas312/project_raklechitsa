@@ -4,6 +4,7 @@
     <Slider />
     <Slogan />
     <Stories />
+    <AnotherSlogan />
     <Instagram />
     <TellStory @btnClick="popUpTongle"></TellStory>
     <Statistics />
@@ -17,6 +18,7 @@ import Intro from '@/components/Intro.vue';
 import Slider from '@/components/Slider.vue';
 import Slogan from '@/components/Slogan.vue';
 import Stories from '@/components/Stories.vue';
+import AnotherSlogan from '@/components/AnotherSlogan.vue';
 import Instagram from '@/components/Instagram.vue';
 import TellStory from '@/components/TellStory.vue';
 import Statistics from '@/components/Statistics.vue';
@@ -28,6 +30,7 @@ export default {
     Slider,
     Slogan,
     Stories,
+    AnotherSlogan,
     Instagram,
     TellStory,
     Statistics,

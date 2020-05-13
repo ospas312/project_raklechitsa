@@ -45,9 +45,9 @@ export default {
           id: '2',
           storyImageSrcData: '/story__image_2.jpg',
           storyImageAltData: 'Альт текст',
-          storyTitleData: 'Владимир Позднер',
+          storyTitleData: 'Владимир Познер',
           storyQuoteData:
-            'Я боюсь акул — и, в отличии от рака, это не лечится.',
+            'Я боюсь акул — и, в отличие от рака, это не лечится.',
         },
         {
           id: '3',
@@ -55,7 +55,7 @@ export default {
           storyImageAltData: 'Альт текст',
           storyTitleData: 'Александр Тарханов',
           storyQuoteData:
-            'Я не могу победить свою пунктуальность в отличии от рака.',
+            'Я не могу победить свою пунктуальность в отличие от рака.',
         },
         {
           id: '4',
@@ -63,7 +63,7 @@ export default {
           storyImageAltData: 'Альт текст',
           storyTitleData: 'Владимир Тен',
           storyQuoteData:
-            'Я боюсь акул — и, в отличии от рака, это не лечится.',
+            'Я боюсь акул — и, в отличие от рака, это не лечится.',
         },
         {
           id: '5',
@@ -71,15 +71,15 @@ export default {
           storyImageAltData: 'Альт текст',
           storyTitleData: 'Владимир Тен',
           storyQuoteData:
-            'Я боюсь акул — и, в отличии от рака, это не лечится.',
+            'Я боюсь акул — и, в отличие от рака, это не лечится.',
         },
         {
           id: '6',
           storyImageSrcData: '/story__image_2.jpg',
           storyImageAltData: 'Альт текст',
-          storyTitleData: 'Владимир Позднер',
+          storyTitleData: 'Владимир Познер',
           storyQuoteData:
-            'Я боюсь акул — и, в отличии от рака, это не лечится.',
+            'Я боюсь акул — и, в отличие от рака, это не лечится.',
         },
         {
           id: '7',
@@ -87,7 +87,7 @@ export default {
           storyImageAltData: 'Альт текст',
           storyTitleData: 'Александр Тарханов',
           storyQuoteData:
-            'Я боюсь акул — и, в отличии от рака, это не лечится.',
+            'Я боюсь акул — и, в отличие от рака, это не лечится.',
         },
         {
           id: '8',
@@ -95,7 +95,7 @@ export default {
           storyImageAltData: 'Альт текст',
           storyTitleData: 'Владимир Тен',
           storyQuoteData:
-            'Я боюсь акул — и, в отличии от рака, это не лечится.',
+            'Я боюсь акул — и, в отличие от рака, это не лечится.',
         },
         {
           id: '9',
@@ -109,9 +109,9 @@ export default {
           id: '10',
           storyImageSrcData: '/story__image_2.jpg',
           storyImageAltData: 'Альт текст',
-          storyTitleData: 'Владимир Позднер',
+          storyTitleData: 'Владимир Познер',
           storyQuoteData:
-            'Я боюсь акул — и, в отличии от рака, это не лечится.',
+            'Я боюсь акул — и, в отличие от рака, это не лечится.',
         },
         {
           id: '11',
@@ -119,7 +119,7 @@ export default {
           storyImageAltData: 'Альт текст',
           storyTitleData: 'Александр Тарханов',
           storyQuoteData:
-            'Я не могу победить свою пунктуальность в отличии от рака.',
+            'Я не могу победить свою пунктуальность в отличие от рака.',
         },
         {
           id: '12',
@@ -127,7 +127,7 @@ export default {
           storyImageAltData: 'Альт текст',
           storyTitleData: 'Владимир Тен',
           storyQuoteData:
-            'Я боюсь акул — и, в отличии от рака, это не лечится.',
+            'Я боюсь акул — и, в отличие от рака, это не лечится.',
         },
         {
           id: '13',
@@ -135,15 +135,15 @@ export default {
           storyImageAltData: 'Альт текст',
           storyTitleData: 'Владимир Тен',
           storyQuoteData:
-            'Я боюсь акул — и, в отличии от рака, это не лечится.',
+            'Я боюсь акул — и, в отличие от рака, это не лечится.',
         },
         {
           id: '14',
           storyImageSrcData: '/story__image_2.jpg',
           storyImageAltData: 'Альт текст',
-          storyTitleData: 'Владимир Позднер',
+          storyTitleData: 'Владимир Познер',
           storyQuoteData:
-            'Я боюсь акул — и, в отличии от рака, это не лечится.',
+            'Я боюсь акул — и, в отличие от рака, это не лечится.',
         },
         {
           id: '15',
@@ -151,7 +151,7 @@ export default {
           storyImageAltData: 'Альт текст',
           storyTitleData: 'Александр Тарханов',
           storyQuoteData:
-            'Я боюсь акул — и, в отличии от рака, это не лечится.',
+            'Я боюсь акул — и, в отличие от рака, это не лечится.',
         },
         {
           id: '16',
@@ -159,7 +159,7 @@ export default {
           storyImageAltData: 'Альт текст',
           storyTitleData: 'Владимир Тен',
           storyQuoteData:
-            'Я боюсь акул — и, в отличии от рака, это не лечится.',
+            'Я боюсь акул — и, в отличие от рака, это не лечится.',
         },
       ],
     };

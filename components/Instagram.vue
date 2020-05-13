@@ -85,6 +85,12 @@ export default {
   box-sizing: border-box;
 }
 
+.instagram__title {
+  font-weight: 600;
+  border-bottom: 2px solid black;
+  max-width: 130px;
+}
+
 .instagram__description {
   max-width: 340px;
   font-weight: normal;
