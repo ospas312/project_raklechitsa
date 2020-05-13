@@ -61,8 +61,8 @@ export default {
 
 @media screen and (max-width: 1439px) {
   .intro__title {
-    font-size: calc(6.389vw - 4px);
-    line-height: 7.75vw;
+    font-size: calc(78px + 14 * ((100vw - 1280px) / (1440 - 1280)));
+    line-height: calc(94px + 17 * ((100vw - 1280px) / (1440 - 1280)));
   }
 }
 
@@ -76,28 +76,29 @@ export default {
 
 @media screen and (max-width: 1024px) {
   .intro__title {
-    font-size: calc(7vw + 5px);
-    line-height: 7.4vw;
+    font-size: calc(64px + 13 * ((100vw - 768px) / (1024 - 768)));
+    line-height: calc(77px + 17 * ((100vw - 768px) / (1024 - 768)));
     margin: 223px 0;
   }
 }
 
 @media screen and (max-width: 768px) {
   .intro__title {
-    font-size: 8.334vw;
-    line-height: 77px;
+    font-size: calc(36px + 28 * ((100vw - 320px) / (768 - 320)));
+    line-height: calc(44px + 33 * ((100vw - 320px) / (768 - 320)));
     margin: 351px 0;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .intro__title {
-    font-size: 36px;
-    line-height: 44px;
-    margin: 218px 0;
-  }
   .intro__jump {
     margin-bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .intro__title {
+    margin: 218px 0;
   }
 }
 </style>
