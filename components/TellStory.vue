@@ -148,6 +148,7 @@ export default {
   border: none;
   outline: none;
   cursor: pointer;
+  font-size: 18px;
 }
 .tell-story__variant:hover {
   font-family: Inter;
@@ -173,9 +174,8 @@ export default {
   font-weight: normal;
   line-height: 22px;
 }
-@media screen and (max-width: 1440px) and (min-width: 1280px) {
+@media screen and (max-width: 1280px) {
   .tell-story__content {
-    max-width: 1280px;
     padding: 90px 50px;
   }
   .tell-story__title {
