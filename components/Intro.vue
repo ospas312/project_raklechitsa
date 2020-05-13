@@ -2,7 +2,11 @@
   <section class="intro">
     <div class="intro__wrapper">
       <h1 class="intro__title">&#35;РАКЛЕЧИТСЯ</h1>
-      <my-button class="intro__jump" :class="'button_type_jump'"></my-button>
+      <my-button
+        class="intro__jump"
+        :type="'button'"
+        :class="'button_type_jump'"
+      ></my-button>
     </div>
   </section>
 </template>
@@ -13,12 +17,6 @@ export default {
   components: {
     'my-button': Button,
   },
-  data() {
-    return {
-      //iframeUrl:
-      //'https://www.youtube.com/embed/Ynh9rkHhxyQ?controls=0&showinfo=0&rel=0&autoplay=1&mute=1&loop=1&playlist=Ynh9rkHhxyQ',
-    };
-  },
 };
 </script>
 
@@ -28,7 +26,6 @@ export default {
   justify-content: center;
   width: 100%;
   background-color: rgba(97, 58, 147, 1);
-  z-index: -1;
 }
 
 .intro__wrapper {
@@ -59,6 +56,7 @@ export default {
   grid-column: 1 / -1;
   align-self: flex-end;
   margin-bottom: 40px;
+  z-index: 1;
 }
 
 @media screen and (max-width: 1439px) {
