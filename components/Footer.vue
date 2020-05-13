@@ -142,12 +142,11 @@ export default {
   line-height: 24px;
   color: #000000;
 }
-@media screen and (max-width: 1440px) and (min-width: 1280px) {
+@media screen and (max-width: 1280px) {
   .footer {
     font-size: 16px;
   }
   .footer__container {
-    max-width: 1280px;
     padding: 50px;
   }
   .footer_title {
