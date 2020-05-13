@@ -1,5 +1,5 @@
 <template>
-  <button @click="$emit('btnClick')" :type="buttonType" :class="buttonClass">
+  <button class="button" :type="buttonType" :class="buttonClass">
     {{ buttonText }} <slot></slot>
   </button>
 </template>
@@ -13,6 +13,15 @@ export default {
 <style scoped>
 .button {
   display: block;
+  outline: none;
+  cursor: pointer;
+}
+
+.button:active {
+  outline: none;
+}
+
+.button:focus {
   outline: none;
 }
 
