@@ -18,7 +18,7 @@
     </div>
     <nxt-button
       @btnClick="$router.push('/stories')"
-      :buttonType="'button'"
+      :buttonType="button"
       :buttonClass="'stories__button-more'"
       :buttonText="buttonMoreData"
     />
@@ -36,7 +36,6 @@ export default {
   methods: {
     storyClickHandler(id) {
       this.$router.push(`/stories/${id}`);
-      console.log('story clicked'); /*debug */
     },
   },
   computed: {

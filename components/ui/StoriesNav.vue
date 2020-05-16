@@ -3,7 +3,7 @@
     <ul class="stories-nav__ul">
       <li v-for="n in pagesAmount" class="stories-nav__li">
         <nxt-button
-          @btnClick="$emit('btnClick')"
+          @btnClick="$emit('btnClick', n)"
           :buttonClass="'stories-nav__button'"
           >{{ n }}</nxt-button
         >
@@ -56,6 +56,7 @@ export default {
   line-height: 22px;
   color: #000000;
   border: 0;
+  outline: none;
   background-color: #f4f4f4;
 }
 .stories-nav__button:hover {

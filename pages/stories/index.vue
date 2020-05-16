@@ -9,11 +9,17 @@
         :storyImageAlt="story.storyImageAltData"
         :storyTitle="story.storyTitleData"
         :storyQuote="story.storyQuoteData"
+        :storyClass="'story'"
+        :storyImageClass="'story__image'"
+        :storyTitleClass="'story__title'"
+        :storyQuoteClass="'story__quote'"
+        @storyClick="storyClickHandler(story.id)"
       />
     </div>
     <stories-nav
-      @btnClick="clickOnPageButton"
-      :totalStories="totalStoriesCalc"
+      v-if="pageID == 1"
+      @btnClick="pageSelectorClickHandler"
+      :totalStories="stories.length"
       :limitPerPage="limitPerPageData"
     >
     </stories-nav>
@@ -33,7 +39,8 @@ export default {
   data() {
     return {
       limitPerPageData: 8,
-      startIndex: 0,
+      pageID: 1,
+      /* переписать пагинацию путем генерации одной ссылки меню в блоке сторис нав */
       stories: [
         {
           id: '1',
@@ -201,13 +208,17 @@ export default {
   computed: {
     totalStoriesCalc: function() {
       return this.stories.length;
-    } /* Хаз, как присваивать расчетные значения без использования функций? */,
+    },
+    pagesAmount: function() {
+      return Math.ceil(this.totalStories / this.limitPerPage);
+    },
     stopIndex: function() {
       return this.limitPerPageData;
     },
   },
   methods: {
-    clickOnPageButton() {
+    pageSelectorClickHandler(pageNum) {
+      console.log(pageNum);
       console.log('click');
     },
   },
