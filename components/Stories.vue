@@ -9,11 +9,16 @@
         :storyImageAlt="story.storyImageAltData"
         :storyTitle="story.storyTitleData"
         :storyQuote="story.storyQuoteData"
+        :storyClass="'story'"
+        :storyImageClass="'story__image'"
+        :storyTitleClass="'story__title'"
+        :storyQuoteClass="'story__quote'"
+        @storyClick="storyClickHandler(story.id)"
       />
     </div>
     <nxt-button
       @btnClick="$router.push('/stories')"
-      :buttonType="'button'"
+      :buttonType="button"
       :buttonClass="'stories__button-more'"
       :buttonText="buttonMoreData"
     />
@@ -27,6 +32,16 @@ export default {
   components: {
     story: Story,
     'nxt-button': Button,
+  },
+  methods: {
+    storyClickHandler(id) {
+      this.$router.push(`/stories/${id}`);
+    },
+  },
+  computed: {
+    stories() {
+      return this.$store.getters['stories/getStories'];
+    },
   },
   data() {
     return {
@@ -198,6 +213,7 @@ export default {
   margin: 70px auto 0px;
   background-color: #fbfbfb;
   border: 0;
+  outline: none;
 }
 .stories__button-more:hover {
   cursor: pointer;
