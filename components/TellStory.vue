@@ -1,9 +1,9 @@
 <template>
   <div class="tell-story">
-    <div class="tell-story__content">
-      <div class="tell-story__content_left">
+    <Container class="tell-story__container">
+      <div class="tell-story__content-left">
         <p class="tell-story__title">Расскажите свою историю</p>
-        <div class="tell-story__content_left-column">
+        <div class="tell-story__content-left tell-story__content-left_row">
           <p class="tell-story__subtitle">
             Мы публикуем новые истории на сайте раз в неделю. Есть 2 варианта
             поделиться своей историей неизлечимых привычек, навязчивых идей и
@@ -15,7 +15,7 @@
               v-bind:key="tab.id"
               v-bind:class="[
                 'tell-story__variant',
-                { 'tell-story__variant_active': currentTab.id === tab.id },
+                { 'tell-story__variant-active': currentTab.id === tab.id },
               ]"
               v-on:click="currentTab = tab"
             >
@@ -24,15 +24,16 @@
           </div>
         </div>
       </div>
-      <div class="tell-story__content_right">
+      <div class="tell-story__content-right">
         <p class="tell-story__info">{{ currentTab.text }}</p>
         <Button
-          class="tell-story__button"
+          :buttonType="buttonType"
+          :buttonClass="buttonClass"
           :buttonText="button"
           @btnClick="$emit('btnClick')"
         ></Button>
       </div>
-    </div>
+    </Container>
   </div>
 </template>
 
@@ -52,15 +53,19 @@ let tabs = [
   },
 ];
 import Button from '@/components/ui/Button';
+import Container from '@/components/ui/Container';
 export default {
   components: {
     Button,
+    Container,
   },
   data() {
     return {
       tabs: tabs,
       currentTab: tabs[0],
       button: 'Заполнить форму',
+      buttonClass: 'tell-story__button',
+      buttonType: 'button',
     };
   },
 };
@@ -86,23 +91,18 @@ export default {
 }
 .tell-story {
   width: 100%;
-  display: flex;
-  justify-content: center;
   background-color: #f7f7f7;
   color: #666666;
   font-size: 18px;
 }
-.tell-story__content {
-  max-width: 1440px;
-  width: 100%;
+.tell-story__container {
   padding: 100px 60px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  box-sizing: border-box;
 }
 .tell-story__title {
-  width: 65%;
+  width: 413px;
   font-family: Inter;
   font-style: normal;
   font-weight: 600;
@@ -112,23 +112,23 @@ export default {
   margin: 0;
 }
 .tell-story__subtitle {
-  width: 54%;
+  width: 340px;
   margin: 0;
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
   line-height: 22px;
 }
-.tell-story__content_left {
-  width: calc((100% - 40px) / 2);
+.tell-story__content-left {
+  width: 640px;
 }
-.tell-story__content_left-column {
+.tell-story__content-left_row {
   display: flex;
   margin: 32px 0 0 0;
   justify-content: space-between;
 }
-.tell-story__content_right {
-  width: calc((100% - 40px) / 2);
+.tell-story__content-right {
+  width: 640px;
   display: flex;
   flex-direction: column;
 }
@@ -158,7 +158,7 @@ export default {
   text-align: right;
   color: #000000;
 }
-.tell-story__variant_active {
+.tell-story__variant-active {
   font-family: Inter;
   font-style: normal;
   font-weight: 500;
@@ -182,7 +182,7 @@ export default {
     font-size: 28px;
     line-height: 32px;
   }
-  .tell-story__content_left-column {
+  .tell-story__content-left_row {
     margin: 30px 0 0 0;
   }
   .tell-story__subtitle {
