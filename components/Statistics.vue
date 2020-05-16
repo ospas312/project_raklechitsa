@@ -152,9 +152,6 @@ export default {
   right: 0;
 }
 
-.statistics__bar {
-}
-
 .statistics__text {
   font-weight: normal;
   font-size: 12px;
@@ -162,14 +159,8 @@ export default {
   margin: 0;
 }
 
-.statistics__title {
-}
-
-.statistics__title_place_section {
-}
-
 .statistics__title_place_item {
-  font-size: 2.64vw;
+  font-size: 38px;
   line-height: 40px;
   justify-self: flex-end;
 }

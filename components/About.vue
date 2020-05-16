@@ -61,7 +61,7 @@ export default {};
 }
 
 .about__container {
-  max-width: calc(1440px - 120px);
+  max-width: 1320px;
   width: 100%;
 }
 

@@ -108,6 +108,7 @@ export default {};
   background-position: center;
   background-color: #fbfbfb;
   background-repeat: no-repeat;
+  cursor: pointer;
 }
 
 .slider__btn-back {
@@ -120,6 +121,7 @@ export default {};
   background-position: center;
   background-color: #fbfbfb;
   background-repeat: no-repeat;
+  cursor: pointer;
 }
 
 .slider__video-overlay {
@@ -145,6 +147,7 @@ export default {};
   top: calc(50% - 45px);
   left: calc(50% - 45px);
   padding: 0;
+  cursor: pointer;
 }
 .slider__video-column {
   width: 60%;

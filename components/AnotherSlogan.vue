@@ -2,7 +2,7 @@
   <section class="slogan">
     <div class="slogan__container">
       <h2 class="slogan__phrase">
-        И&nbsp;В&nbsp;ОТЛИЧИЕ ОТ&nbsp;РАКА,
+        РАССКАЗЫВАЙТЕ ВАШИ ИСТОРИИ В&nbsp;ИНСТАГРАМ
         <span class="slogan__bold">#ЭТОНЕЛЕЧИТСЯ</span>
       </h2>
     </div>
@@ -46,13 +46,6 @@ export default {};
   font-size: 1.2em;
 }
 
-
-.slogan__phrase {
-  font-size: calc(
-    16px + (30 - 16) * ((100vw - 320px)) / (1440 - 320)
-  ); /* formula is (minFontSize + (maxFontSize - minFontSize) * ((windowWidth - minWidth) / (maxWidth - minWidth). Provides smooth adaptive of font-size */
-  line-height: calc(18px + (46 - 18) * ((100vw - 320px)) / (1440 - 320));
-}
 @media screen and (min-width: 320px) and (max-width: 1440px) {
   .slogan__phrase {
     font-size: calc(
@@ -60,7 +53,6 @@ export default {};
     ); /* formula is (minFontSize + (maxFontSize - minFontSize) * ((windowWidth - minWidth) / (maxWidth - minWidth). Provides smooth adaptive of font-size */
     line-height: calc(18px + (46 - 18) * ((100vw - 320px)) / (1440 - 320));
   }
-
 }
 
 @media screen and (max-width: 1280px) {

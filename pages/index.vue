@@ -4,11 +4,12 @@
     <Slider />
     <Slogan />
     <Stories />
+    <AnotherSlogan />
     <Instagram />
     <TellStory @btnClick="popUpTongle"></TellStory>
     <Statistics />
     <About />
-    <PopUp v-if="popup_is_opened" @btnClick="popUpTongle"></PopUp>
+    <PopUp v-if="popUpOpened" @btnClick="popUpTongle"></PopUp>
   </div>
 </template>
 
@@ -17,6 +18,7 @@ import Intro from '@/components/Intro.vue';
 import Slider from '@/components/Slider.vue';
 import Slogan from '@/components/Slogan.vue';
 import Stories from '@/components/Stories.vue';
+import AnotherSlogan from '@/components/AnotherSlogan.vue';
 import Instagram from '@/components/Instagram.vue';
 import TellStory from '@/components/TellStory.vue';
 import Statistics from '@/components/Statistics.vue';
@@ -28,6 +30,7 @@ export default {
     Slider,
     Slogan,
     Stories,
+    AnotherSlogan,
     Instagram,
     TellStory,
     Statistics,
@@ -36,12 +39,12 @@ export default {
   },
   data() {
     return {
-      popup_is_opened: false,
+      popUpOpened: false,
     };
   },
   methods: {
     popUpTongle() {
-      this.popup_is_opened = !this.popup_is_opened;
+      this.popUpOpened = !this.popUpOpened;
     },
   },
 };

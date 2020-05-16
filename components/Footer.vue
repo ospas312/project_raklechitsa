@@ -1,5 +1,5 @@
 <template>
-  <div class="footer">
+  <section class="footer">
     <div class="footer__container">
       <div class="footer__content">
         <h5 class="footer_title">
@@ -24,10 +24,10 @@
         <p class="footer__info_create">Сделано студентами Яндекс Практикум</p>
       </div>
     </div>
-    <PopUp v-if="foterpopUp_show" @btnClick="footerpopUpTongle"
+    <PopUp v-if="footerPopUpShow" @btnClick="footerpopUpTongle"
       >Footer-PopUp</PopUp
     >
-  </div>
+  </section>
 </template>
 
 <script>
@@ -41,12 +41,12 @@ export default {
   data() {
     return {
       button: 'Поделитесь' + '\u2197',
-      foterpopUp_show: false,
+      footerPopUpShow: false,
     };
   },
   methods: {
     footerpopUpTongle() {
-      this.foterpopUp_show = !this.foterpopUp_show;
+      this.footerPopUpShow = !this.footerPopUpShow;
     },
   },
 };
@@ -55,15 +55,18 @@ export default {
 <style scoped>
 .footer {
   background-color: #fbfbfb;
-  display: flex;
   font-size: 18px;
+  display: flex;
+  justify-content: center;
 }
 .footer__container {
-  width: 1320px;
-  margin: 60px auto;
+  max-width: 1440px;
+  width: 100%;
+  padding: 60px;
   display: flex;
   flex-direction: column;
   color: #000000;
+  box-sizing: border-box;
 }
 .footer__content {
   display: flex;
@@ -139,13 +142,12 @@ export default {
   line-height: 24px;
   color: #000000;
 }
-@media screen and (max-width: 1440px) and (min-width: 1280px) {
+@media screen and (max-width: 1280px) {
   .footer {
     font-size: 16px;
   }
   .footer__container {
-    width: 1180px;
-    margin: 50px auto;
+    padding: 50px;
   }
   .footer_title {
     width: 26%;
@@ -157,6 +159,12 @@ export default {
   }
   .footer__button {
     font-size: 16px;
+  }
+  .footer__info_name {
+    line-height: 16px;
+  }
+  .footer__info_create {
+    line-height: 16px;
   }
 }
 </style>

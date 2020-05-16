@@ -1,5 +1,10 @@
 <template>
-  <button @click="$emit('btnClick')" :type="buttonType" :class="buttonClass">
+  <button
+    class="button"
+    :type="buttonType"
+    :class="buttonClass"
+    @click="$emit('btnClick')"
+  >
     {{ buttonText }} <slot></slot>
   </button>
 </template>
@@ -14,4 +19,6 @@ export default {
 };
 </script>
 
+
 <style scoped></style>
+

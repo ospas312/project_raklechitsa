@@ -2,7 +2,7 @@
   <div>
     <Header />
     <nuxt />
-    <Footer @btnClick="$emit('btnClick')"></Footer>
+    <Footer></Footer>
   </div>
 </template>
 
