@@ -1,6 +1,6 @@
 <template>
   <section class="footer">
-    <Container class="footer__container">
+    <Container :containerClass="containerClass">
       <div class="footer__content">
         <h5 class="footer__title">
           Спасибо всем, кто помог состояться этому проекту
@@ -47,6 +47,7 @@ export default {
       buttonClass: 'footer__button',
       buttonType: 'button',
       button: 'Поделитесь' + '\u2197',
+      containerClass: 'footer__container',
       footerPopUpShow: false,
       timestamp: new Date().getFullYear(),
     };
@@ -67,12 +68,11 @@ export default {
   justify-content: center;
 }
 .footer__container {
-  width: 100%;
-  padding: 60px;
+  padding-top: 60px;
+  padding-bottom: 60px;
   display: flex;
   flex-direction: column;
   color: #000;
-  box-sizing: content-box;
 }
 .footer__content {
   display: flex;
@@ -182,6 +182,133 @@ export default {
   .footer__social {
     width: 265px;
     line-height: 21px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .footer {
+    font-size: 16px;
+  }
+  .footer__container {
+    padding: 50px;
+  }
+  .footer__title {
+    width: 288px;
+    font-size: 24px;
+    line-height: 28px;
+  }
+  .footer__content {
+    margin-bottom: 90px;
+  }
+  .footer__button {
+    font-size: 16px;
+  }
+  .footer__info-name {
+    line-height: 18px;
+  }
+  .footer__menu {
+    margin-right: 114px;
+  }
+  .footer__info-create {
+    line-height: 18px;
+  }
+  .footer__social {
+    width: 265px;
+    line-height: 21px;
+  }
+  .footer__social-info {
+    margin-bottom: 30px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .footer {
+    font-size: 16px;
+  }
+  .footer__container {
+    padding: 50px;
+  }
+  .footer__title {
+    width: 268px;
+    font-size: 24px;
+    line-height: 28px;
+  }
+  .footer__content {
+    margin-bottom: 90px;
+  }
+  .footer__button {
+    font-size: 16px;
+  }
+  .footer__info-name {
+    line-height: 18px;
+  }
+  .footer__menu {
+    margin-right: 0px;
+    display: block;
+    width: 70px;
+  }
+  .footer__info-create {
+    line-height: 16px;
+  }
+  .footer__social {
+    width: 225px;
+    line-height: 21px;
+  }
+  .footer__social-info {
+    margin-bottom: 14px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .footer {
+    font-size: 13px;
+    line-height: 15px;
+  }
+  .footer__container {
+    padding: 50px 15px;
+  }
+  .footer__title {
+    width: 290px;
+    font-size: 18px;
+    line-height: 21px;
+    margin-bottom: 50px;
+  }
+  .footer__content {
+    margin-bottom: 50px;
+    flex-direction: column;
+  }
+  .footer__button {
+    font-size: 13px;
+    line-height: 15px;
+  }
+  .footer__info {
+    flex-direction: column;
+  }
+  .footer__info-name {
+    line-height: 18px;
+    margin-bottom: 10px;
+  }
+  .footer__menu {
+    margin-right: 0px;
+    display: block;
+    width: 70px;
+  }
+  .footer__menu-link {
+    margin-bottom: 18px;
+    display: flex;
+    width: 100%;
+    line-height: 15px;
+  }
+  .footer__info-create {
+    line-height: 18px;
+  }
+  .footer__social {
+    width: 185px;
+    line-height: 15px;
+  }
+  .footer__social-info {
+    margin-bottom: 18px;
+    line-height: 15px;
+  }
+  .footer__info-name {
+    margin-bottom: 10px;
   }
 }
 </style>
