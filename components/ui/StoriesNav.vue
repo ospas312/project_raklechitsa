@@ -1,5 +1,4 @@
 <template>
-  <!-- Временный код, ждем 4 вебинара с Палтухом -->
   <nav class="stories-nav">
     <ul class="stories-nav__ul">
       <li v-for="n in pagesAmount" class="stories-nav__li">
@@ -57,6 +56,7 @@ export default {
   line-height: 22px;
   color: #000000;
   border: 0;
+  outline: none;
   background-color: #f4f4f4;
 }
 .stories-nav__button:hover {

@@ -71,7 +71,7 @@ export default {};
   font-size: 64px;
   line-height: 77px;
   text-align: center;
-  color: #ffffff;
+  color: #fff;
   width: 50%;
   margin-top: 0;
   margin-bottom: 73px;
@@ -85,7 +85,7 @@ export default {};
   font-weight: 600;
   font-size: 32px;
   line-height: 36px;
-  color: #ffffff;
+  color: #fff;
   margin-top: 0;
   margin-bottom: 32px;
 }
@@ -124,15 +124,11 @@ export default {};
 }
 
 .about__link:hover {
-  color: #ffffff;
+  color: #fff;
 }
 
 .about__description-item:last-of-type {
   margin-bottom: 0;
-}
-
-.about__text-description-container {
-  max-width: 44%;
 }
 
 .about__description-text {
@@ -144,6 +140,10 @@ export default {};
   color: #dedede;
   margin-top: 0;
   margin-bottom: 22px;
+}
+
+.about__description-text_disabled {
+  display: none;
 }
 
 .about__description-text:last-of-type {
@@ -237,7 +237,7 @@ export default {};
   .about__container {
     margin-left: auto;
     margin-right: auto;
-    width: 49.4%;
+    max-width: 380px;
     display: flex;
     flex-direction: column;
     margin-top: 80px;
