@@ -37,11 +37,20 @@
         >YouTube канале.</a
       >
     </p>
+    <slogan class="slider__slogan">
+      <template #slogan-text>И В ОТЛИЧИЕ ОТ РАКА,&nbsp;</template>
+      <template #slogan-hashtag>#ЭТОНЕЛЕЧИТСЯ</template>
+    </slogan>
   </section>
 </template>
 
 <script>
-export default {};
+import Slogan from '@/components/ui/Slogan.vue';
+export default {
+  components: {
+    slogan: Slogan,
+  },
+};
 </script>
 
 <style scoped>

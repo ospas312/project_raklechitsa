@@ -11,7 +11,6 @@ export default {
   },
 };
 </script>
-
 <style scoped>
 .block-container {
   max-width: 1440px;
@@ -21,11 +20,6 @@ export default {
   box-sizing: border-box;
 }
 @media screen and (max-width: 1280px) {
-  .block-container {
-    padding: 0px 50px;
-  }
-}
-@media screen and (max-width: 1024px) {
   .block-container {
     padding: 0px 50px;
   }

@@ -2,9 +2,7 @@
   <div class="container">
     <Intro />
     <Slider />
-    <Slogan />
     <Stories />
-    <AnotherSlogan />
     <Instagram />
     <TellStory @btnClick="popUpTongle"></TellStory>
     <Statistics />
@@ -16,9 +14,7 @@
 <script>
 import Intro from '@/components/Intro.vue';
 import Slider from '@/components/Slider.vue';
-import Slogan from '@/components/Slogan.vue';
 import Stories from '@/components/Stories.vue';
-import AnotherSlogan from '@/components/AnotherSlogan.vue';
 import Instagram from '@/components/Instagram.vue';
 import TellStory from '@/components/TellStory.vue';
 import Statistics from '@/components/Statistics.vue';
@@ -28,9 +24,7 @@ export default {
   components: {
     Intro,
     Slider,
-    Slogan,
     Stories,
-    AnotherSlogan,
     Instagram,
     TellStory,
     Statistics,
@@ -55,9 +49,6 @@ export default {
   width: 100%;
   min-width: 320px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   font-family: 'Inter', monospace;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
