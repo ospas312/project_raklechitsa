@@ -7,9 +7,11 @@
       <li
         v-for="policyItem in policy"
         :key="policyItem.id"
-        class="policy__paragraph-title"
+        class="policy__paragraph-item"
       >
-        {{ policyItem.id + '. ' + policyItem.title }}
+        <p class="policy__paragraph-title">
+          {{ policyItem.id + '. ' + policyItem.title }}
+        </p>
         <p v-if="policyItem.subtitle !== ''" class="policy__paragraph-subtitle">
           {{ policyItem.subtitle }}
         </p>
@@ -43,7 +45,9 @@ export default {
   flex-direction: column;
   align-items: center;
   max-width: 780px;
-  margin: 130px auto 230px auto;
+  margin-bottom: 230px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .policy__list {
   font-weight: 600;
@@ -51,6 +55,7 @@ export default {
   line-height: 30px;
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .policy__title {
@@ -60,9 +65,10 @@ export default {
   line-height: 48px;
   text-align: center;
   margin-bottom: 130px;
+  margin-top: 130px;
 }
 
-.policy__paragraph-title {
+.policy__paragraph-item {
   padding: 0;
   margin-bottom: 90px;
 }
@@ -75,7 +81,7 @@ export default {
   margin-top: 0;
   margin-bottom: 40px;
 }
-.policy__paragraph-title-text {
+.policy__paragraph-item-text {
   margin-bottom: 30px;
 }
 .policy__paragraph-subtitle {
@@ -83,15 +89,14 @@ export default {
   font-weight: normal;
   font-size: 22px;
   line-height: 30px;
-  margin-top: 30px;
   margin-bottom: 30px;
+  margin-top: 0;
 }
 .policy__paragraph-text-list {
   font-style: normal;
   font-weight: normal;
   font-size: 22px;
   line-height: 30px;
-  margin-bottom: 30px;
   margin-top: 30px;
   list-style-position: inside;
   padding: 0;
@@ -115,13 +120,31 @@ export default {
     max-width: 700px;
   }
 
-  .policy__list {
-    padding: 0;
-  }
-
   .policy__title {
     font-size: 34px;
     line-height: 44px;
+    margin-bottom: 120px;
+    margin-top: 120px;
+    position: relative;
+  }
+  .policy__title::before {
+    content: '';
+    background-color: #efefef;
+    min-height: 1px;
+    position: absolute;
+    top: -30px;
+    left: 0;
+    width: 100%;
+  }
+
+  .policy__title::after {
+    content: '';
+    background-color: #efefef;
+    min-height: 1px;
+    position: absolute;
+    left: 0;
+    top: calc(100% + 30px);
+    width: 100%;
   }
 
   .policy__subtitle {
@@ -129,7 +152,7 @@ export default {
     line-height: 28px;
   }
 
-  .policy__paragraph-title {
+  .policy__paragraph-item {
     font-size: 20px;
     line-height: 28px;
   }
@@ -146,8 +169,10 @@ export default {
       font-weight: 500;
       font-size: 30px;
       line-height: 38px;
+      margin-top: 120px;
+      margin-bottom: 120px;
     }
-    .policy__paragraph-title {
+    .policy__paragraph-item {
       font-weight: 600;
       font-size: 18px;
       line-height: 27px;
@@ -174,16 +199,30 @@ export default {
     .policy__title {
       font-size: 18px;
       line-height: 21px;
+      margin-top: 70px;
+      margin-bottom: 60px;
     }
 
-    .policy__title__paragraph-title {
+    .policy__title::before {
+      top: -20px;
+    }
+
+    .policy__title::after {
+      top: calc(100% + 20px);
+    }
+
+    .policy__paragraph-title {
       font-weight: 600;
       font-size: 13px;
       line-height: 16px;
+      margin-bottom: 20px;
     }
     .policy__paragraph-text-list {
       font-size: 13px;
       line-height: 16px;
+    }
+    .policy__paragraph-item {
+      margin-bottom: 40px;
     }
   }
 }
