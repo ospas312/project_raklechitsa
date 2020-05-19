@@ -1,8 +1,8 @@
 <template>
   <div class="popup">
     <div class="popup__content">
-      <slot><p>Привет это PopUp</p></slot>
-      <div class="close" @click="$emit('btnClick')"></div>
+      <slot></slot>
+      <div class="close" @click="close"></div>
     </div>
   </div>
 </template>
@@ -10,13 +10,11 @@
 <script>
 import Button from '@/components/ui/Button';
 export default {
-  components: {
-    Button,
-  },
-  data() {
-    return {
-      close: 'Close',
-    };
+  components: {},
+  methods: {
+    close(e) {
+      this.$store.commit('popup/close');
+    },
   },
 };
 </script>
@@ -32,7 +30,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  display: flex;
 }
 .popup__content {
   width: 920px;

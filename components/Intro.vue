@@ -2,7 +2,7 @@
   <section class="intro">
     <div class="intro__wrapper">
       <h1 class="intro__title">&#35;РАКЛЕЧИТСЯ</h1>
-      <my-button class="intro__jump" :class="'button_type_jump'"></my-button>
+      <!--<my-button class="intro__jump" :class="'button_type_jump'"></my-button>-->
     </div>
   </section>
 </template>

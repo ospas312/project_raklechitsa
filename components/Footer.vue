@@ -15,7 +15,7 @@
             :buttonType="buttonType"
             :buttonClass="buttonClass"
             :buttonText="button"
-            @btnClick="footerPopUpToggle"
+            @btnClick="open"
           ></Button>
         </div>
       </div>
@@ -26,20 +26,15 @@
         >
       </div>
     </Container>
-    <PopUp v-if="footerPopUpShow" @btnClick="footerPopUpToggle"
-      >Footer-PopUp</PopUp
-    >
   </section>
 </template>
 
 <script>
 import Button from '@/components/ui/Button';
-import PopUp from '@/components/ui/PopUp';
 import Container from '@/components/ui/Container';
 export default {
   components: {
     Button,
-    PopUp,
     Container,
   },
   data() {
@@ -48,13 +43,12 @@ export default {
       buttonType: 'button',
       button: 'Поделитесь' + '\u2197',
       containerClass: 'footer__container',
-      footerPopUpShow: false,
       timestamp: new Date().getFullYear(),
     };
   },
   methods: {
-    footerPopUpToggle() {
-      this.footerPopUpShow = !this.footerPopUpShow;
+    open() {
+      return this.$store.commit('popup/open');
     },
   },
 };

@@ -1,6 +1,12 @@
 <template>
-  <button @click="$emit('btnClick')" :type="buttonType" :class="buttonClass">
-    {{ buttonText }} <slot></slot>
+  <button
+    @click="$emit('btnClick')"
+    :type="buttonType"
+    :class="['button', buttonClass, { button_disabled: disabled }]"
+    :disabled="disabled"
+  >
+    {{ buttonText }}
+    <slot></slot>
   </button>
 </template>
 
@@ -10,6 +16,7 @@ export default {
     buttonType: { type: String, required: true },
     buttonClass: { type: String, required: true },
     buttonText: { type: String, required: false },
+    disabled: { type: Boolean },
   },
 };
 </script>
@@ -19,7 +26,9 @@ export default {
   display: block;
   outline: none;
 }
-
+.button:disabled {
+  opacity: 0.5;
+}
 .button_type_jump {
   width: 36px;
   height: 12px;

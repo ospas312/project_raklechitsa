@@ -5,10 +5,9 @@
     <Slogan />
     <Stories />
     <Instagram />
-    <TellStory @btnClick="popUpTongle"></TellStory>
+    <TellStory />
     <Statistics />
     <About />
-    <PopUp v-if="popUpOpened" @btnClick="popUpTongle"></PopUp>
   </div>
 </template>
 
@@ -21,7 +20,6 @@ import Instagram from '@/components/Instagram.vue';
 import TellStory from '@/components/TellStory.vue';
 import Statistics from '@/components/Statistics.vue';
 import About from '@/components/About.vue';
-import PopUp from '@/components/ui/PopUp';
 export default {
   components: {
     Intro,
@@ -32,18 +30,16 @@ export default {
     TellStory,
     Statistics,
     About,
-    PopUp,
   },
   data() {
-    return {
-      popUpOpened: false,
-    };
+    return {};
   },
-  methods: {
-    popUpTongle() {
-      this.popUpOpened = !this.popUpOpened;
-    },
-  },
+  methods: {},
+  /*computed:{
+    popUpOpened() {
+      return this.$store.getters['popup/getPopUpOpened'];
+    }
+  }*/
 };
 </script>
 
