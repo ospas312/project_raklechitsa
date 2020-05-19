@@ -2,7 +2,7 @@
   <div>
     <Header />
     <nuxt />
-    <Footer></Footer>
+    <Footer />
   </div>
 </template>
 
