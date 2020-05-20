@@ -2,6 +2,7 @@
   <container>
     <div class="stories-index-container">
       <h2 class="stories__title">Истории неизлечимых привычек</h2>
+      <search />
       <div class="stories__container">
         <story
           v-for="story in storiesToRender"
@@ -32,12 +33,14 @@ import Story from '@/components/ui/Story.vue';
 import Button from '@/components/ui/Button.vue';
 import StoriesNav from '@/components/ui/StoriesNav.vue';
 import Container from '@/components/ui/Container';
+import SearchInput from '@/components/ui/SearchInput.vue';
 export default {
   components: {
     story: Story,
     'nxt-button': Button,
     'stories-nav': StoriesNav,
     container: Container,
+    search: SearchInput,
   },
   data() {
     return {
@@ -81,22 +84,19 @@ export default {
 
 <style scoped>
 .stories-index-container {
-  /*max-width: 1440px;
-  min-width: 320px;
-  margin: 0 auto;*/
   font-family: 'Inter', monospace;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
-  padding: 100px 60px 100px 60px;
 }
 .stories__container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   column-gap: 40px;
   row-gap: 70px;
+  margin-top: 60px;
 }
 @media screen and (max-width: 768px) {
   .stories__container {

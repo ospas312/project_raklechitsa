@@ -14,7 +14,7 @@ export default {
   props: {
     buttonType: { type: String, required: true },
     buttonClass: { type: String, required: true },
-    buttonText: { type: [String, Array], required: false },
+    buttonText: { type: String, required: false },
   },
 };
 </script>
