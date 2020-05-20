@@ -1,19 +1,18 @@
 <template>
-  <div>
-    <input
-      :class="[
-        '',
-        inputClass,
-        {
-          'input_bottom-bordered': bottomBordered,
-        },
-      ]"
-      :type="inputType"
-      :placeholder="inputPlaceholder"
-      @input="handleInput"
-      v-model="content"
-    />
-  </div>
+  <input
+    :class="[
+      '',
+      inputClass,
+      {
+        'input_bottom-bordered': bottomBordered,
+        input_disabled: disabled,
+      },
+    ]"
+    :type="inputType"
+    :placeholder="inputPlaceholder"
+    @input="handleInput"
+    v-model="content"
+  />
 </template>
 
 <script>
@@ -24,11 +23,19 @@ export default {
     inputType: String,
     inputPlaceholder: String,
     value: String,
+    disabled: Boolean,
   },
   data() {
     return {
       content: this.value,
     };
+  },
+  watch: {
+    value(newVal) {
+      if (newVal !== this.content) {
+        this.content = newVal;
+      }
+    },
   },
   methods: {
     handleInput() {
