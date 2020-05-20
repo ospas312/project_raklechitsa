@@ -198,6 +198,10 @@ export default {
     text-align: center;
   }
 
+  .instagram__text {
+    min-width: 0;
+  }
+
   .instagram__description {
     margin: 26px auto 0;
     max-width: 380px;

@@ -1,9 +1,7 @@
 <template>
   <p class="slogan">
     <slot name="slogan-text"></slot
-    ><span
-      class="slogan__hashtag"
-      :class="{ slogan__hashtag_block: block === '' }"
+    ><span class="slogan__hashtag" :class="{ slogan__hashtag_block: block }"
       ><slot name="slogan-hashtag"></slot
     ></span>
   </p>
@@ -11,7 +9,9 @@
 
 <script>
 export default {
-  props: ['block'],
+  props: {
+    block: Boolean,
+  },
 };
 </script>
 <style scoped>
