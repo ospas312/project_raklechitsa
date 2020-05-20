@@ -1,11 +1,16 @@
 <template>
   <div>
-    <p>ЗАГЛУШКА</p>
+    <Policy />
   </div>
 </template>
 
 <script>
-export default {};
+import Policy from '@/components/Policy.vue';
+export default {
+  components: {
+    Policy,
+  },
+};
 </script>
 
 <style scoped></style>
