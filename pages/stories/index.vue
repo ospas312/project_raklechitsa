@@ -41,14 +41,12 @@ import Story from '@/components/ui/Story.vue';
 import Button from '@/components/ui/Button.vue';
 import StoriesNav from '@/components/ui/StoriesNav.vue';
 import Container from '@/components/ui/Container';
-import SearchInput from '@/components/ui/SearchInput.vue';
 export default {
   components: {
     story: Story,
     'nxt-button': Button,
     'stories-nav': StoriesNav,
     container: Container,
-    search: SearchInput,
   },
   data() {
     return {
