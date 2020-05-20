@@ -1,26 +1,27 @@
 <template>
   <header class="header">
-    <h2 class="header__title">
-      Проект Благотворительного Фонда Константина Хабенского
-    </h2>
-    <header-menu class="header__menu"></header-menu>
+    <container>
+      <h2 class="header__title">
+        Проект Благотворительного Фонда Константина Хабенского
+      </h2>
+      <header-menu class="header__menu"></header-menu>
+    </container>
   </header>
 </template>
 
 <script>
 import Menu from '@/components/ui/Menu.vue';
-
+import Container from '@/components/ui/Container.vue';
 export default {
   components: {
     'header-menu': Menu,
+    container: Container,
   },
 };
 </script>
 
 <style scoped>
 .header {
-  max-width: 1440px;
-  min-width: 320px;
   min-height: 72px;
   margin: 0 auto;
   display: flex;
@@ -31,7 +32,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
-  padding: 0 60px;
 }
 @media screen and (max-width: 1280px) {
   .header {
@@ -48,10 +48,8 @@ export default {
   font-size: 16px;
   line-height: 20px;
   color: black;
-  /*margin-left:calc(1440px * 4.16vw); /*60px; */
 }
 
 .header__menu {
-  /*margin-right: 60px; */
 }
 </style>

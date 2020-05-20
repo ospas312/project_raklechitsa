@@ -4,9 +4,11 @@
       <li v-for="index in pagesAmount" :key="index" class="stories-nav__li">
         <nxt-button
           @btnClick="setActive(index)"
-          :buttonClass="['stories-nav__button', 'stories-nav__button_active']"
+          :buttonClass="[
+            'stories-nav__button',
+            { 'stories-nav__button_active': index === active },
+          ]"
           buttonType="'button'"
-          :index="active"
           >{{ index }}</nxt-button
         >
       </li>
