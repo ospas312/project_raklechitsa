@@ -1,23 +1,30 @@
 <template>
   <container>
-    <div class="stories-index-container">
-      <h2 class="stories__title">Истории неизлечимых привычек</h2>
-      <search />
-      <div class="stories__container">
-        <story
-          v-for="story in storiesToRender"
-          :key="story.id"
-          :storyImageSrc="story.storyImageSrcData"
-          :storyImageAlt="story.storyImageAltData"
-          :storyTitle="story.storyTitleData"
-          :storyQuote="story.storyQuoteData"
-          :storyClass="'story'"
-          :storyImageClass="'story__image'"
-          :storyTitleClass="'story__title'"
-          :storyQuoteClass="'story__quote'"
-          @storyClick="storyClickHandler(story.id)"
-        />
-      </div>
+      <div class="stories-index-container">
+    <h2 class="stories__title">Истории неизлечимых привычек</h2>
+    <div class="stories__search-container">
+      <input class="stories__search-input" type="text" v-model="search" />
+      <nxt-button
+        class="stories__search-button"
+        type="button"
+        @click="filteredList"
+        >Поиск</nxt-button
+      >
+    </div>
+    <div class="stories__container">
+      <story
+        v-for="story in filteredList.slice(0, limitPerPageData)"
+        :key="story.id"
+        :storyImageSrc="story.storyImageSrcData"
+        :storyImageAlt="story.storyImageAltData"
+        :storyTitle="story.storyTitleData"
+        :storyQuote="story.storyQuoteData"
+        :storyClass="'story'"
+        :storyImageClass="'story__image'"
+        :storyTitleClass="'story__title'"
+        :storyQuoteClass="'story__quote'"
+        @storyClick="storyClickHandler(story.id)"
+      />
       <stories-nav
         :totalStories="stories.length"
         :limitPerPage="limitPerPageData"
@@ -44,6 +51,7 @@ export default {
   },
   data() {
     return {
+      search: '',
       limitPerPageData: 8,
       startIndex: 0,
     };
@@ -68,6 +76,13 @@ export default {
           index >= this.startIndex &&
           index <= this.startIndex + this.limitPerPageData - 1
       );
+    },
+    filteredList: function() {
+      return this.stories.filter(story => {
+        return story.storyTitleData
+          .toLowerCase()
+          .includes(this.search.toLowerCase());
+      });
     },
   },
   methods: {
@@ -98,11 +113,58 @@ export default {
   row-gap: 70px;
   margin-top: 60px;
 }
+
+.stories__search-container {
+  margin: 60px 0 70px;
+  display: flex;
+}
+
+.stories__search-input {
+  width: 1074px;
+  box-sizing: border-box;
+  border: 1px solid #e8e8e8;
+  min-height: 52px;
+  padding: 0 15px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 20px;
+}
+
+.stories__search-button {
+  width: 226px;
+  min-height: 52px;
+  background-color: #613a93;
+  color: white;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  margin-left: 20px;
+}
+
+.stories__search-button:hover {
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
 @media screen and (max-width: 768px) {
   .stories__container {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .stories__search-button {
+    width: 48px;
+    color: transparent;
+    background-image: url('/search.svg');
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-position: center;
+  }
+}
+
 .stories__title {
   margin: 0 0 70px 0;
   max-width: 413px;
