@@ -1,12 +1,13 @@
 <template>
-  <!-- Временный код, ждем 4 вебинара с Палтухом -->
   <nav class="stories-nav">
     <ul class="stories-nav__ul">
-      <li v-for="n in pagesAmount" class="stories-nav__li">
+      <li v-for="index in pagesAmount" :key="index" class="stories-nav__li">
         <nxt-button
-          @btnClick="$emit('btnClick', n)"
-          :buttonClass="'stories-nav__button'"
-          >{{ n }}</nxt-button
+          @btnClick="setActive(index)"
+          :buttonClass="['stories-nav__button', 'stories-nav__button_active']"
+          buttonType="'button'"
+          :index="active"
+          >{{ index }}</nxt-button
         >
       </li>
     </ul>
@@ -19,13 +20,24 @@ export default {
   components: {
     'nxt-button': Button,
   },
-  props: ['totalStories', 'limitPerPage'],
+  props: {
+    totalStories: { type: Number, default: 0 },
+    limitPerPage: { type: Number, default: 0 },
+  },
   data() {
-    return {};
+    return {
+      active: 1,
+    };
   },
   computed: {
-    pagesAmount: function() {
+    pagesAmount() {
       return Math.ceil(this.totalStories / this.limitPerPage);
+    },
+  },
+  methods: {
+    setActive(index) {
+      this.active = index;
+      this.$emit('onPageChange', index);
     },
   },
 };
@@ -57,6 +69,10 @@ export default {
   line-height: 22px;
   color: #000000;
   border: 0;
+  outline: none;
+  background-color: #fbfbfb;
+}
+.stories-nav__button_active {
   background-color: #f4f4f4;
 }
 .stories-nav__button:hover {
