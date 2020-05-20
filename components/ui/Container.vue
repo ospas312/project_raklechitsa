@@ -7,7 +7,7 @@
 <script>
 export default {
   props: {
-    containerClass: { type: String, required: true },
+    containerClass: { type: String, required: false },
   },
 };
 </script>

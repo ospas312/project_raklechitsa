@@ -1,225 +1,82 @@
 <template>
-  <div class="stories-index-container">
-    <h2 class="stories__title">Истории неизлечимых привычек</h2>
-    <div class="stories__container">
-      <story
-        v-for="story in stories.slice(0, limitPerPageData)"
-        :key="story.id"
-        :storyImageSrc="story.storyImageSrcData"
-        :storyImageAlt="story.storyImageAltData"
-        :storyTitle="story.storyTitleData"
-        :storyQuote="story.storyQuoteData"
-        :storyClass="'story'"
-        :storyImageClass="'story__image'"
-        :storyTitleClass="'story__title'"
-        :storyQuoteClass="'story__quote'"
-        @storyClick="storyClickHandler(story.id)"
-      />
+  <container>
+    <div class="stories-index-container">
+      <h2 class="stories__title">Истории неизлечимых привычек</h2>
+      <search />
+      <div class="stories__container">
+        <story
+          v-for="story in storiesToRender"
+          :key="story.id"
+          :storyImageSrc="story.storyImageSrcData"
+          :storyImageAlt="story.storyImageAltData"
+          :storyTitle="story.storyTitleData"
+          :storyQuote="story.storyQuoteData"
+          :storyClass="'story'"
+          :storyImageClass="'story__image'"
+          :storyTitleClass="'story__title'"
+          :storyQuoteClass="'story__quote'"
+          @storyClick="storyClickHandler(story.id)"
+        />
+      </div>
+      <stories-nav
+        :totalStories="stories.length"
+        :limitPerPage="limitPerPageData"
+        @onPageChange="changeStartIndex"
+      >
+      </stories-nav>
     </div>
-    <stories-nav
-      v-if="pageID == 1"
-      @btnClick="pageSelectorClickHandler"
-      :totalStories="stories.length"
-      :limitPerPage="limitPerPageData"
-    >
-    </stories-nav>
-  </div>
+  </container>
 </template>
 
 <script>
 import Story from '@/components/ui/Story.vue';
 import Button from '@/components/ui/Button.vue';
 import StoriesNav from '@/components/ui/StoriesNav.vue';
+import Container from '@/components/ui/Container';
+import SearchInput from '@/components/ui/SearchInput.vue';
 export default {
   components: {
     story: Story,
     'nxt-button': Button,
     'stories-nav': StoriesNav,
+    container: Container,
+    search: SearchInput,
   },
   data() {
     return {
       limitPerPageData: 8,
-      pageID: 1,
-      /* переписать пагинацию путем генерации одной ссылки меню в блоке сторис нав */
-      stories: [
-        {
-          id: '1',
-          storyImageSrcData: '/story__image_1.jpg',
-          storyImageAltData: 'Альт текст',
-          storyTitleData: 'Владимир Тен',
-          storyQuoteData:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '2',
-          storyImageSrcData: '/story__image_2.jpg',
-          storyImageAltData: 'Альт текст',
-          storyTitleData: 'Владимир Позднер',
-          storyQuoteData:
-            'Я боюсь акул — и, в отличии от рака, это не лечится.',
-        },
-        {
-          id: '3',
-          storyImageSrcData: '/story__image_3.jpg',
-          storyImageAltData: 'Альт текст',
-          storyTitleData: 'Александр Тарханов',
-          storyQuoteData:
-            'Я не могу победить свою пунктуальность в отличии от рака.',
-        },
-        {
-          id: '4',
-          storyImageSrcData: '/story__image_4.jpg',
-          storyImageAltData: 'Альт текст',
-          storyTitleData: 'Владимир Тен',
-          storyQuoteData:
-            'Я боюсь акул — и, в отличии от рака, это не лечится.',
-        },
-        {
-          id: '5',
-          storyImageSrcData: '/story__image_1.jpg',
-          storyImageAltData: 'Альт текст',
-          storyTitleData: 'Владимир Тен',
-          storyQuoteData:
-            'Я боюсь акул — и, в отличии от рака, это не лечится.',
-        },
-        {
-          id: '6',
-          storyImageSrcData: '/story__image_2.jpg',
-          storyImageAltData: 'Альт текст',
-          storyTitleData: 'Владимир Позднер',
-          storyQuoteData:
-            'Я боюсь акул — и, в отличии от рака, это не лечится.',
-        },
-        {
-          id: '7',
-          storyImageSrcData: '/story__image_3.jpg',
-          storyImageAltData: 'Альт текст',
-          storyTitleData: 'Александр Тарханов',
-          storyQuoteData:
-            'Я боюсь акул — и, в отличии от рака, это не лечится.',
-        },
-        {
-          id: '8',
-          storyImageSrcData: '/story__image_4.jpg',
-          storyImageAltData: 'Альт текст',
-          storyTitleData: 'Владимир Тен',
-          storyQuoteData:
-            'Я боюсь акул — и, в отличии от рака, это не лечится.',
-        },
-        {
-          id: '9',
-          storyImageSrcData: '/story__image_1.jpg',
-          storyImageAltData: 'Альт текст',
-          storyTitleData: 'Владимир Тен',
-          storyQuoteData:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '10',
-          storyImageSrcData: '/story__image_2.jpg',
-          storyImageAltData: 'Альт текст',
-          storyTitleData: 'Владимир Позднер',
-          storyQuoteData:
-            'Я боюсь акул — и, в отличии от рака, это не лечится.',
-        },
-        {
-          id: '11',
-          storyImageSrcData: '/story__image_3.jpg',
-          storyImageAltData: 'Альт текст',
-          storyTitleData: 'Александр Тарханов',
-          storyQuoteData:
-            'Я не могу победить свою пунктуальность в отличии от рака.',
-        },
-        {
-          id: '12',
-          storyImageSrcData: '/story__image_4.jpg',
-          storyImageAltData: 'Альт текст',
-          storyTitleData: 'Владимир Тен',
-          storyQuoteData:
-            'Я боюсь акул — и, в отличии от рака, это не лечится.',
-        },
-        {
-          id: '13',
-          storyImageSrcData: '/story__image_1.jpg',
-          storyImageAltData: 'Альт текст',
-          storyTitleData: 'Владимир Тен',
-          storyQuoteData:
-            'Я боюсь акул — и, в отличии от рака, это не лечится.',
-        },
-        {
-          id: '14',
-          storyImageSrcData: '/story__image_2.jpg',
-          storyImageAltData: 'Альт текст',
-          storyTitleData: 'Владимир Позднер',
-          storyQuoteData:
-            'Я боюсь акул — и, в отличии от рака, это не лечится.',
-        },
-        {
-          id: '15',
-          storyImageSrcData: '/story__image_3.jpg',
-          storyImageAltData: 'Альт текст',
-          storyTitleData: 'Александр Тарханов',
-          storyQuoteData:
-            'Я боюсь акул — и, в отличии от рака, это не лечится.',
-        },
-        {
-          id: '16',
-          storyImageSrcData: '/story__image_4.jpg',
-          storyImageAltData: 'Альт текст',
-          storyTitleData: 'Владимир Тен',
-          storyQuoteData:
-            'Я боюсь акул — и, в отличии от рака, это не лечится.',
-        },
-        {
-          id: '17',
-          storyImageSrcData: '/story__image_1.jpg',
-          storyImageAltData: 'Альт текст',
-          storyTitleData: 'Владимир Тен',
-          storyQuoteData:
-            'Я боюсь акул — и, в отличии от рака, это не лечится.',
-        },
-        {
-          id: '18',
-          storyImageSrcData: '/story__image_2.jpg',
-          storyImageAltData: 'Альт текст',
-          storyTitleData: 'Владимир Позднер',
-          storyQuoteData:
-            'Я боюсь акул — и, в отличии от рака, это не лечится.',
-        },
-        {
-          id: '19',
-          storyImageSrcData: '/story__image_3.jpg',
-          storyImageAltData: 'Альт текст',
-          storyTitleData: 'Александр Тарханов',
-          storyQuoteData:
-            'Я боюсь акул — и, в отличии от рака, это не лечится.',
-        },
-        {
-          id: '20',
-          storyImageSrcData: '/story__image_4.jpg',
-          storyImageAltData: 'Альт текст',
-          storyTitleData: 'Владимир Тен',
-          storyQuoteData:
-            'Я боюсь акул — и, в отличии от рака, это не лечится.',
-        },
-      ],
+      startIndex: 0,
     };
   },
   computed: {
-    totalStoriesCalc: function() {
+    stories: function() {
+      return this.$store.getters['stories/getStories'];
+    },
+    /* Потом сделаем как у Палтуха когда  json будут развернуты на сервере */
+    currentStory() {
+      return this.stories.filter(item => item['id'] === this.$route.params.id);
+    },
+    totalStories() {
       return this.stories.length;
     },
-    pagesAmount: function() {
+    pagesAmount() {
       return Math.ceil(this.totalStories / this.limitPerPage);
     },
-    stopIndex: function() {
-      return this.limitPerPageData;
+    storiesToRender() {
+      return this.stories.filter(
+        (item, index) =>
+          index >= this.startIndex &&
+          index <= this.startIndex + this.limitPerPageData - 1
+      );
     },
   },
   methods: {
-    pageSelectorClickHandler(pageNum) {
-      console.log(pageNum);
-      console.log('click');
+    changeStartIndex(index) {
+      console.log('on page:', index);
+      this.startIndex = (index - 1) * this.limitPerPageData;
+    },
+    storyClickHandler(id) {
+      this.$router.push(`/stories/${id}`);
     },
   },
 };
@@ -227,22 +84,19 @@ export default {
 
 <style scoped>
 .stories-index-container {
-  max-width: 1440px;
-  min-width: 320px;
-  margin: 0 auto;
   font-family: 'Inter', monospace;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
-  padding: 100px 60px 100px 60px;
 }
 .stories__container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   column-gap: 40px;
   row-gap: 70px;
+  margin-top: 60px;
 }
 @media screen and (max-width: 768px) {
   .stories__container {
