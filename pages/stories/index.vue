@@ -1,30 +1,31 @@
 <template>
   <container>
-      <div class="stories-index-container">
-    <h2 class="stories__title">Истории неизлечимых привычек</h2>
-    <div class="stories__search-container">
-      <input class="stories__search-input" type="text" v-model="search" />
-      <nxt-button
-        class="stories__search-button"
-        type="button"
-        @click="filteredList"
-        >Поиск</nxt-button
-      >
-    </div>
-    <div class="stories__container">
-      <story
-        v-for="story in filteredList.slice(0, limitPerPageData)"
-        :key="story.id"
-        :storyImageSrc="story.storyImageSrcData"
-        :storyImageAlt="story.storyImageAltData"
-        :storyTitle="story.storyTitleData"
-        :storyQuote="story.storyQuoteData"
-        :storyClass="'story'"
-        :storyImageClass="'story__image'"
-        :storyTitleClass="'story__title'"
-        :storyQuoteClass="'story__quote'"
-        @storyClick="storyClickHandler(story.id)"
-      />
+    <div class="stories-index-container">
+      <h2 class="stories__title">Истории неизлечимых привычек</h2>
+      <div class="stories__search-container">
+        <input class="stories__search-input" type="text" v-model="search" />
+        <nxt-button
+          class="stories__search-button"
+          type="button"
+          @click="filteredList"
+          >Поиск</nxt-button
+        >
+      </div>
+      <div class="stories__container">
+        <story
+          v-for="story in storiesToRender"
+          :key="story.id"
+          :storyImageSrc="story.storyImageSrcData"
+          :storyImageAlt="story.storyImageAltData"
+          :storyTitle="story.storyTitleData"
+          :storyQuote="story.storyQuoteData"
+          :storyClass="'story'"
+          :storyImageClass="'story__image'"
+          :storyTitleClass="'story__title'"
+          :storyQuoteClass="'story__quote'"
+          @storyClick="storyClickHandler(story.id)"
+        />
+      </div>
       <stories-nav
         :totalStories="stories.length"
         :limitPerPage="limitPerPageData"
@@ -40,14 +41,12 @@ import Story from '@/components/ui/Story.vue';
 import Button from '@/components/ui/Button.vue';
 import StoriesNav from '@/components/ui/StoriesNav.vue';
 import Container from '@/components/ui/Container';
-import SearchInput from '@/components/ui/SearchInput.vue';
 export default {
   components: {
     story: Story,
     'nxt-button': Button,
     'stories-nav': StoriesNav,
     container: Container,
-    search: SearchInput,
   },
   data() {
     return {
