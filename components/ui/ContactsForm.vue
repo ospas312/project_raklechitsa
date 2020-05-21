@@ -60,6 +60,7 @@
 import Button from '@/components/ui/Button';
 import InputTest from '@/components/ui/InputTest';
 import PolicyLink from '@/components/ui/PolicyLink';
+
 export default {
   components: {
     button: Button,
@@ -88,16 +89,19 @@ export default {
   margin-bottom: 50px;
   margin-top: 0;
 }
+
 .contacts__field {
   border: none;
   padding: 0;
   margin-bottom: 50px;
 }
+
 .contacts__container {
   display: flex;
   margin-bottom: 40px;
   margin-top: 40px;
 }
+
 .contacts__label {
   display: flex;
   flex-direction: column;
@@ -106,6 +110,7 @@ export default {
   line-height: 24px;
   width: 100%;
 }
+
 .contacts__label_email {
   margin-right: 40px;
 }
@@ -120,6 +125,7 @@ export default {
   padding-bottom: 10px;
   box-sizing: border-box;
 }
+
 .contacts__submit-container {
   display: flex;
   align-items: center;
@@ -142,11 +148,13 @@ export default {
   color: #fff;
   margin-right: 30px;
 }
+
 @media screen and (max-width: 1280px) {
   .contacts__title {
     font-size: 28px;
     line-height: 32px;
   }
+
   .contacts__subtitle {
     font-size: 16px;
     line-height: 22px;
@@ -162,23 +170,27 @@ export default {
     line-height: 22px;
   }
 }
+
 @media screen and (max-width: 768px) {
   .contacts__title {
     font-size: 26px;
     line-height: 30px;
     margin-bottom: 50px;
   }
+
   .contacts__subtitle {
     margin-bottom: 40px;
     font-weight: 500;
     font-size: 15px;
     line-height: 19px;
   }
+
   .contacts__label {
     font-weight: 500;
     font-size: 15px;
     line-height: 19px;
   }
+
   .contacts__submit-button {
     width: 200px;
     height: 46px;
@@ -197,6 +209,7 @@ export default {
     .contacts__field {
       margin-bottom: 5px;
     }
+
     .contacts__subtitle {
       font-size: 13px;
       line-height: 16px;
@@ -211,6 +224,7 @@ export default {
     .contacts__container {
       flex-direction: column;
     }
+
     .contacts__submit-container {
       flex-direction: column;
     }

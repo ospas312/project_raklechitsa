@@ -37,7 +37,7 @@ export default {
 }
 .popup__content {
   width: 920px;
-  height: 600px;
+  min-height: 520px;
   background-color: #fff;
   border-radius: 0px;
   position: relative;

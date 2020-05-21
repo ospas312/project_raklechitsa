@@ -40,11 +40,11 @@
           </div>
         </div>
       </div>
+      <slogan class="slider__slogan">
+        <template #slogan-text>И В ОТЛИЧИЕ ОТ РАКА,&nbsp;</template>
+        <template #slogan-hashtag>#ЭТОНЕЛЕЧИТСЯ</template>
+      </slogan>
     </container>
-    <slogan class="slider__slogan">
-      <template #slogan-text>И В ОТЛИЧИЕ ОТ РАКА,&nbsp;</template>
-      <template #slogan-hashtag>#ЭТОНЕЛЕЧИТСЯ</template>
-    </slogan>
   </section>
 </template>
 

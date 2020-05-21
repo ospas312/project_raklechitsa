@@ -36,6 +36,7 @@ export default {
       const { popup } = this.$store.state;
       return popup.opened;
     },
+
     openFormQuestion() {
       const { popup } = this.$store.state;
       return popup.openFormQuestion;

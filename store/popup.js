@@ -7,6 +7,7 @@ export const state = () => ({
 
 export const mutations = {
   open(state) {
+    console.log('1');
     state.opened = true;
     state.openFormSocial = false;
     state.openFormQuestion = true;
@@ -35,3 +36,4 @@ export const mutations = {
     return state.contactsOpened;
   },
 };*/
+
