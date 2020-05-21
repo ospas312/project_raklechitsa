@@ -1,60 +1,76 @@
 <template>
   <section class="about">
-    <div class="about__container">
-      <h2 class="about__title">
-        #РАКЛЕЧИТСЯ
-      </h2>
-      <p class="about__subtitle">
-        О проекте
-      </p>
-      <div class="about__text-container">
-        <p class="about__description-creators">
-          Этот проект был создан благотворительным фондом Константина
-          Хабенского.
+    <container>
+      <div class="about__container">
+        <h2 class="about__title">
+          {{ getTitle }}
+        </h2>
+        <p class="about__subtitle">
+          О проекте
         </p>
-        <div class="about__description-container">
-          <ul class="about__creators-list">
-            <li class="about__list-item" @click="toggleTextState()">
-              Рак Лечится
-            </li>
-            <li class="about__list-item" @click="toggleTextState()">
-              Фонд Хабенского
-            </li>
-          </ul>
-          <div class="about__description-column">
-            <p class="about__description">
-              {{ getTextValue }}
-            </p>
-            <p v-if="getTextState" class="about__description">
-              Рак лечится — проект Благотворительного Фонда Константина
-              Хабенского и Leo Burnett Moscow. С его помощью мы надеемся
-              изменить отношение людей к раку и заставить каждого поверить:
-              онкологическое заболевание — это не приговор.
-            </p>
+        <div class="about__text-container">
+          <p class="about__description-creators">
+            {{ getSubtitle }}
+          </p>
+          <div class="about__description-container">
+            <ul class="about__creators-list">
+              <li
+                v-for="aboutCreators in getText"
+                :id="aboutCreators.id"
+                :key="aboutCreators.id"
+                class="about__list-item"
+                @click="toggleTextState($event)"
+              >
+                {{ aboutCreators.title }}
+              </li>
+            </ul>
+            <div class="about__description-column">
+              <p class="about__description" v-html="defaultText" />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </container>
   </section>
 </template>
 <script>
+import Container from '@/components/ui/Container';
+
 export default {
+  components: {
+    container: Container,
+  },
+
+  data() {
+    return {
+      defaultText: this.$store.state.about.extraTexts[0].text,
+    };
+  },
   computed: {
-    getTextState() {
-      return this.$store.getters['about/getTextState'];
+    getText() {
+      return this.$store.getters['about/getAboutExtraTexts'];
     },
-    getTextValue() {
-      return this.$store.getters['about/getText'];
+    getTitle() {
+      return this.$store.getters['about/getTextTitle'];
+    },
+    getSubtitle() {
+      return this.$store.getters['about/getTextSubtitle'];
     },
   },
   methods: {
-    toggleTextState() {
-      return this.$store.commit('about/toggleTextState');
+    toggleTextState(event) {
+      this.defaultText = this.$store.state.about.extraTexts[
+        event.target.id - 1
+      ].text;
     },
   },
 };
 </script>
 <style scoped>
+::v-deep br {
+  margin-bottom: 20px;
+}
+
 .about {
   background: #613a93;
   display: flex;
@@ -62,12 +78,13 @@ export default {
   align-items: center;
   flex-direction: column;
   width: 100%;
-  padding: 90px 60px 100px 60px;
   box-sizing: border-box;
+  padding-top: 90px;
+  padding-bottom: 90px;
 }
 
 .about__container {
-  max-width: 1320px;
+  max-width: 1440px;
   width: 100%;
 }
 
@@ -142,11 +159,6 @@ export default {
   line-height: 22px;
   color: #dedede;
   margin-top: 0;
-  margin-bottom: 22px;
-}
-
-.about__description:last-of-type {
-  margin-bottom: 0;
 }
 
 .about__description-creators {
@@ -175,7 +187,7 @@ export default {
 
 @media screen and (max-width: 1280px) {
   .about {
-    padding: 80px 50px 90px 50px;
+    padding: 80px 0 90px 0;
   }
 
   .about__title {
@@ -316,7 +328,7 @@ export default {
 
 @media screen and (max-width: 600px) {
   .about__container {
-    width: 90%;
+    width: 100%;
   }
 
   .about__subtitle {
