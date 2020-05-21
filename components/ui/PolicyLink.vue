@@ -2,7 +2,7 @@
   <p class="policy-link">
     Нажимая на кнопку «отправить», вы даете согласие на&nbsp;<nuxt-link
       to="/policy"
-      class="policy-link"
+      class="police-link"
     >
       <span class="policy-link" @click="close"
         >обработку персональных данных</span
@@ -33,8 +33,7 @@ export default {
   margin: 0;
   width: 50%;
 }
-
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 320px) {
   .policy-link {
     width: 100%;
     font-size: 11px;
