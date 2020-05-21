@@ -60,15 +60,61 @@ export default {
 .stories {
   padding: 100px 0;
 }
+@media screen and (max-width: 1280px) {
+  .stories {
+    padding: 90px 0;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .stories {
+    padding: 80px 0;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .stories {
+    padding: 50px 0;
+  }
+}
+
 .stories__container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   column-gap: 40px;
   row-gap: 70px;
 }
+
+@media screen and (max-width: 1280px) {
+  .stories__container {
+    column-gap: 40px;
+    row-gap: 60px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .stories__container {
+    column-gap: 30px;
+    row-gap: 46px;
+  }
+}
 @media screen and (max-width: 768px) {
   .stories__container {
     grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 20px;
+    row-gap: 40px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .stories__container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (max-width: 320px) {
+  .stories__container {
+    grid-template-columns: 1fr;
+    column-gap: 20px;
+    row-gap: 30px;
   }
 }
 .stories__title {
@@ -78,7 +124,37 @@ export default {
   font-style: normal;
   font-weight: 600;
   font-size: 32px;
+  line-height: 36px;
   color: #000000;
+}
+@media screen and (max-width: 1280px) {
+  .stories__title {
+    margin: 0 0 60px 0;
+    font-size: 28px;
+    line-height: 32px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .stories__title {
+    margin: 0 0 46px 0;
+    font-size: 24px;
+    line-height: 28px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .stories__title {
+    margin: 0 auto 60px;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .stories__title {
+    margin: 0 auto 40px;
+    font-size: 18px;
+    line-height: 21px;
+  }
 }
 .stories__button-more {
   width: 100%;
@@ -88,6 +164,22 @@ export default {
   border: 0;
   outline: none;
 }
+@media screen and (max-width: 1280px) {
+  .stories__button-more {
+    margin: 60px auto 0px;
+    min-height: 78px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .stories__button-more {
+    margin: 46px auto 0px;
+    min-height: 50px;
+    font-size: 13px;
+    line-height: 20px;
+  }
+}
+
 .stories__button-more:hover {
   cursor: pointer;
 }
