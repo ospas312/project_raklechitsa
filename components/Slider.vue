@@ -161,6 +161,7 @@ export default {
   background-image: url('../assets/images/play.svg');
   background-position: center;
   background-repeat: no-repeat;
+  background-color: transparent;
   width: 90px;
   height: 90px;
   border: none;
