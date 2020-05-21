@@ -13,7 +13,7 @@
       </div>
       <div class="stories__container">
         <story
-          v-for="story in filteredList.slice(0, limitPerPageData)"
+          v-for="story in storiesToRender"
           :key="story.id"
           :storyImageSrc="story.storyImageSrcData"
           :storyImageAlt="story.storyImageAltData"
@@ -25,13 +25,13 @@
           :storyQuoteClass="'story__quote'"
           @storyClick="storyClickHandler(story.id)"
         />
-        <stories-nav
-          :totalStories="stories.length"
-          :limitPerPage="limitPerPageData"
-          @onPageChange="changeStartIndex"
-        >
-        </stories-nav>
       </div>
+      <stories-nav
+        :totalStories="stories.length"
+        :limitPerPage="limitPerPageData"
+        @onPageChange="changeStartIndex"
+      >
+      </stories-nav>
     </div>
   </container>
 </template>

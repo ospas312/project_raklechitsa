@@ -30,7 +30,7 @@
           :buttonType="buttonType"
           :buttonClass="buttonClass"
           :buttonText="button"
-          @btnClick="$emit('btnClick')"
+          @btnClick="open"
         ></Button>
       </div>
     </Container>
@@ -68,6 +68,11 @@ export default {
       buttonType: 'button',
       containerClass: 'tell-story__container',
     };
+  },
+  methods: {
+    open() {
+      return this.$store.commit('popup/open');
+    },
   },
 };
 </script>
