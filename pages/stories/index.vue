@@ -115,14 +115,22 @@ export default {
 }
 @media screen and (max-width: 1280px) {
   .stories__search-container {
+    margin: 50px 0 60px;
     grid-template-rows: 48px;
   }
 }
 
 @media screen and (max-width: 1024px) {
   .stories__search-container {
+    margin: 40px 0 46px;
     grid-template-columns: 1fr 208px;
     grid-template-rows: 46px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .stories__search-container {
+    margin: 50px 0 60px;
   }
 }
 
