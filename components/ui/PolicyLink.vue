@@ -1,10 +1,10 @@
 <template>
-  <p class="police-link">
+  <p class="policy-link">
     Нажимая на кнопку «отправить», вы даете согласие на&nbsp;<nuxt-link
-      to="/police"
+      to="/policy"
       class="police-link"
     >
-      <span class="police-link" @click="close"
+      <span class="policy-link" @click="close"
         >обработку персональных данных</span
       ></nuxt-link
     >
@@ -22,7 +22,7 @@ export default {
 </script>
 
 <style scoped>
-.police-link {
+.policy-link {
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
@@ -34,7 +34,7 @@ export default {
   width: 50%;
 }
 @media screen and (max-width: 320px) {
-  .police-link {
+  .policy-link {
     width: 100%;
     font-size: 11px;
     line-height: 13px;

@@ -1,54 +1,76 @@
 <template>
   <section class="about">
-    <div class="about__container">
-      <h2 class="about__title">
-        #РАКЛЕЧИТСЯ
-      </h2>
-      <p class="about__subtitle">
-        О проекте
-      </p>
-      <div class="about__text-container">
-        <p class="about__description-creators">
-          Этот проект был создан благотворительным фондом Константина
-          Хабенского.
+    <container>
+      <div class="about__container">
+        <h2 class="about__title">
+          {{ getTitle }}
+        </h2>
+        <p class="about__subtitle">
+          О проекте
         </p>
-        <div class="about__description-container">
-          <ul class="about__link-list">
-            <li class="about__link-item">
-              <a class="about__link" href="#">
-                Рак Лечится
-              </a>
-            </li>
-            <li class="about__link-item">
-              <a class="about__link" href="#"> Фонд Хабенского</a>
-            </li>
-          </ul>
-          <div class="about__description-column">
-            <p class="about__description-text">
-              Есть вещи, которые не лечатся. Особенности характера, страстные
-              увлечения, привычки, ставшие частью нашего «я», фобии, которые мы
-              приобрели в детстве. Список можно продолжать до бесконечности, но
-              одна болезнь в него точно не войдет. Эта болезнь — рак. Рак
-              лечится, и лучшее доказательство — люди с их неизлечимыми
-              особенностями, которые сумели победить рак.
-            </p>
-            <p class="about__description-text">
-              Рак лечится — проект Благотворительного Фонда Константина
-              Хабенского и Leo Burnett Moscow. С его помощью мы надеемся
-              изменить отношение людей к раку и заставить каждого поверить:
-              онкологическое заболевание — это не приговор.
-            </p>
+        <div class="about__text-container">
+          <p class="about__description-creators">
+            {{ getSubtitle }}
+          </p>
+          <div class="about__description-container">
+            <ul class="about__creators-list">
+              <li
+                v-for="aboutCreators in getText"
+                :id="aboutCreators.id"
+                :key="aboutCreators.id"
+                class="about__list-item"
+                @click="toggleTextState($event)"
+              >
+                {{ aboutCreators.title }}
+              </li>
+            </ul>
+            <div class="about__description-column">
+              <p class="about__description" v-html="defaultText" />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </container>
   </section>
 </template>
 <script>
-export default {};
-</script>
+import Container from '@/components/ui/Container';
 
+export default {
+  components: {
+    container: Container,
+  },
+
+  data() {
+    return {
+      defaultText: this.$store.state.about.extraTexts[0].text,
+    };
+  },
+  computed: {
+    getText() {
+      return this.$store.getters['about/getAboutExtraTexts'];
+    },
+    getTitle() {
+      return this.$store.getters['about/getTextTitle'];
+    },
+    getSubtitle() {
+      return this.$store.getters['about/getTextSubtitle'];
+    },
+  },
+  methods: {
+    toggleTextState(event) {
+      this.defaultText = this.$store.state.about.extraTexts[
+        event.target.id - 1
+      ].text;
+    },
+  },
+};
+</script>
 <style scoped>
+::v-deep br {
+  margin-bottom: 20px;
+}
+
 .about {
   background: #613a93;
   display: flex;
@@ -56,12 +78,13 @@ export default {};
   align-items: center;
   flex-direction: column;
   width: 100%;
-  padding: 90px 60px 100px 60px;
   box-sizing: border-box;
+  padding-top: 90px;
+  padding-bottom: 90px;
 }
 
 .about__container {
-  max-width: calc(1440px - 120px);
+  max-width: 1440px;
   width: 100%;
 }
 
@@ -71,7 +94,7 @@ export default {};
   font-size: 64px;
   line-height: 77px;
   text-align: center;
-  color: #ffffff;
+  color: #fff;
   width: 50%;
   margin-top: 0;
   margin-bottom: 73px;
@@ -85,7 +108,7 @@ export default {};
   font-weight: 600;
   font-size: 32px;
   line-height: 36px;
-  color: #ffffff;
+  color: #fff;
   margin-top: 0;
   margin-bottom: 32px;
 }
@@ -99,18 +122,13 @@ export default {};
   display: flex;
 }
 
-.about__link-list {
+.about__creators-list {
   margin: 0 40px 0 0;
   list-style: none;
   padding: 0;
 }
 
-.about__link-item {
-  margin-bottom: 10px;
-  text-align: right;
-}
-
-.about__link {
+.about__list-item {
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -121,21 +139,19 @@ export default {};
   text-decoration: none;
   cursor: pointer;
   color: #c9c9c9;
+  margin-bottom: 10px;
+  text-align: right;
 }
 
-.about__link:hover {
-  color: #ffffff;
+.about__list-item:hover {
+  color: #fff;
 }
 
 .about__description-item:last-of-type {
   margin-bottom: 0;
 }
 
-.about__text-description-container {
-  max-width: 44%;
-}
-
-.about__description-text {
+.about__description {
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
@@ -143,11 +159,6 @@ export default {};
   line-height: 22px;
   color: #dedede;
   margin-top: 0;
-  margin-bottom: 22px;
-}
-
-.about__description-text:last-of-type {
-  margin-bottom: 0;
 }
 
 .about__description-creators {
@@ -176,7 +187,7 @@ export default {};
 
 @media screen and (max-width: 1280px) {
   .about {
-    padding: 80px 50px 90px 50px;
+    padding: 80px 0 90px 0;
   }
 
   .about__title {
@@ -212,7 +223,7 @@ export default {};
     line-height: 16px;
   }
 
-  .about__link {
+  .about__list-item {
     font-size: 15px;
     line-height: 19px;
   }
@@ -227,6 +238,10 @@ export default {};
     font-size: 13px;
     line-height: 16px;
   }
+
+  .about__description-column {
+    max-width: 470px;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -237,7 +252,7 @@ export default {};
   .about__container {
     margin-left: auto;
     margin-right: auto;
-    width: 49.4%;
+    max-width: 380px;
     display: flex;
     flex-direction: column;
     margin-top: 80px;
@@ -252,7 +267,7 @@ export default {};
     flex-direction: column;
   }
 
-  .about__link-list {
+  .about__creators-list {
     display: flex;
   }
 
@@ -268,7 +283,7 @@ export default {};
     margin-bottom: 26px;
   }
 
-  .about__link {
+  .about__list-item {
     font-size: 15px;
     line-height: 19px;
   }
@@ -285,22 +300,22 @@ export default {};
     width: 100%;
   }
 
-  .about__link-item {
+  .about__list-item {
     position: relative;
     margin-right: 30px;
     margin-bottom: 0;
   }
 
-  .about__link-list {
+  .about__creators-list {
     margin-right: 0;
     margin-bottom: 30px;
   }
 
-  .about__link-item:last-of-type {
+  .about__list-item:last-of-type {
     margin-right: 0;
   }
 
-  .about__link:hover::after {
+  .about__list-item:hover::after {
     content: '';
     border: 2px solid white;
     margin-top: 5px;
@@ -313,7 +328,7 @@ export default {};
 
 @media screen and (max-width: 600px) {
   .about__container {
-    width: 90%;
+    width: 100%;
   }
 
   .about__subtitle {
@@ -337,7 +352,7 @@ export default {};
   .about__text-container {
     width: 100%;
   }
-  .about__link-list {
+  .about__creators-list {
     margin-bottom: 20px;
   }
 

@@ -2,7 +2,6 @@
   <div class="container">
     <Intro />
     <Slider />
-    <Slogan />
     <Stories />
     <Instagram />
     <TellStory />
@@ -14,7 +13,6 @@
 <script>
 import Intro from '@/components/Intro.vue';
 import Slider from '@/components/Slider.vue';
-import Slogan from '@/components/Slogan.vue';
 import Stories from '@/components/Stories.vue';
 import Instagram from '@/components/Instagram.vue';
 import TellStory from '@/components/TellStory.vue';
@@ -24,7 +22,6 @@ export default {
   components: {
     Intro,
     Slider,
-    Slogan,
     Stories,
     Instagram,
     TellStory,
@@ -48,9 +45,6 @@ export default {
   width: 100%;
   min-width: 320px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   font-family: 'Inter', monospace;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
