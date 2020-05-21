@@ -82,5 +82,4 @@ export default {
   color: #666666;
   margin: 0;
 }
-
 </style>

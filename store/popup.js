@@ -36,4 +36,3 @@ export const mutations = {
     return state.contactsOpened;
   },
 };*/
-
