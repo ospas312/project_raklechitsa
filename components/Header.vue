@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <container>
+    <container class="header__container">
       <h2 class="header__title">
         Проект Благотворительного Фонда Константина Хабенского
       </h2>
@@ -37,6 +37,11 @@ export default {
   .header {
     padding: 0 50px;
   }
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
 }
 
 .header__title {
