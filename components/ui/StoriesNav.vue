@@ -74,6 +74,20 @@ export default {
   outline: none;
   background-color: #fbfbfb;
 }
+@media screen and (max-width: 1280px) {
+  .stories-nav__button {
+    width: 56px;
+    height: 56px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .stories-nav__button {
+    width: 50px;
+    height: 50px;
+    font-size: 15px;
+    line-height: 18px;
+  }
+}
 .stories-nav__button_active {
   background-color: #f4f4f4;
 }
