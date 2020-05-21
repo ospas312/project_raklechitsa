@@ -1,7 +1,7 @@
 <template>
   <p class="police-link">
     Нажимая на кнопку «отправить», вы даете согласие на&nbsp;<nuxt-link
-      to="/police"
+      to="/policy"
       class="police-link"
     >
       <span class="police-link" @click="close"
@@ -33,7 +33,8 @@ export default {
   margin: 0;
   width: 50%;
 }
-@media screen and (max-width: 320px) {
+
+@media screen and (max-width: 768px) {
   .police-link {
     width: 100%;
     font-size: 11px;

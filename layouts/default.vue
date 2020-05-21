@@ -2,6 +2,8 @@
   <div>
     <Header />
     <PopUp v-if="popUpOpened"><QuestionForm /></PopUp>
+    <PopUp v-if="contactsOpened"><ContactsForm /></PopUp>
+
     <nuxt />
     <Footer />
   </div>
@@ -12,18 +14,23 @@ import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
 import PopUp from '@/components/ui/PopUp';
 import QuestionForm from '@/components/ui/QuestionForm';
+import ContactsForm from '@/components/ui/ContactsForm';
 export default {
   components: {
     Header,
     Footer,
     PopUp,
     QuestionForm,
+    ContactsForm,
   },
   created() {},
   computed: {
     popUpOpened() {
       const { popup } = this.$store.state;
       return popup.opened;
+    },
+    contactsOpened() {
+      return this.$store.getters['popup/getPopUpOpened'];
     },
   },
 };
