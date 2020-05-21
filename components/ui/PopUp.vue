@@ -2,15 +2,18 @@
   <div class="popup">
     <div class="popup__content">
       <slot></slot>
+      <Overlay />
       <div class="close" @click="close"></div>
     </div>
   </div>
 </template>
 
 <script>
-import Button from '@/components/ui/Button';
+import Overlay from '@/components/ui/Overlay';
 export default {
-  components: {},
+  components: {
+    Overlay,
+  },
   methods: {
     close(e) {
       this.$store.commit('popup/close');
@@ -30,7 +33,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 10;
+  z-index: 100;
 }
 .popup__content {
   width: 920px;

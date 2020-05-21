@@ -50,6 +50,7 @@ export default {
     margin-bottom: 14px;
   }
 }
+
 .story__image:hover {
   cursor: pointer;
 }
@@ -81,10 +82,22 @@ export default {
   color: #666666;
   margin: 0;
 }
+
+/*
+/* попробуем закрыть вопрос модификаторами к кажому элементу для страницы с детальной информацией истории */
+
+.story__image-detail {
+  width: 580px;
+  height: auto;
+  object-fit: contain;
+}
+.story__title-detail {
+*/
 @media screen and (max-width: 1024px) {
   .story__quote {
     font-size: 13px;
     line-height: 16px;
   }
+
 }
 </style>

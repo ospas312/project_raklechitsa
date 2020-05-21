@@ -181,8 +181,45 @@ export default {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   column-gap: 40px;
   row-gap: 70px;
+  margin-top: 60px;
 }
 
+/*<<<<<<< section_tellstory
+.stories__search-container {
+  margin: 60px 0 70px;
+  display: flex;
+}
+
+.stories__search-input {
+  width: 1074px;
+  box-sizing: border-box;
+  border: 1px solid #e8e8e8;
+  min-height: 52px;
+  padding: 0 15px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 20px;
+}
+
+.stories__search-button {
+  width: 226px;
+  min-height: 52px;
+  background-color: #613a93;
+  color: white;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  margin-left: 20px;
+}
+
+.stories__search-button:hover {
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+*/
 @media screen and (max-width: 1280px) {
   .stories__container {
     column-gap: 40px;
@@ -219,6 +256,18 @@ export default {
     row-gap: 30px;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .stories__search-button {
+    width: 48px;
+    color: transparent;
+    background-image: url('/search.svg');
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-position: center;
+  }
+}
+
 .stories__title {
   margin: 0 0 70px 0;
   max-width: 413px;

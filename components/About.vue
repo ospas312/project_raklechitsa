@@ -71,6 +71,7 @@ export default {
   margin-bottom: 20px;
   content: '';
   display: block;
+
 }
 
 .about {
