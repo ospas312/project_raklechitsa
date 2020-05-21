@@ -1,7 +1,11 @@
 <template>
   <div>
     <Header />
-    <PopUp v-if="popUpOpened"><QuestionForm /></PopUp>
+    <PopUp v-if="popUpOpened">
+      <QuestionForm v-if="openFormQuestion" />
+      <ShareLink v-if="openFormSocial" />
+      <ContactsForm v-if="contactsOpened" />
+    </PopUp>
     <nuxt />
     <Footer />
   </div>
@@ -12,18 +16,38 @@ import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
 import PopUp from '@/components/ui/PopUp';
 import QuestionForm from '@/components/ui/QuestionForm';
+import ShareLink from '@/components/ui/ShareLink';
+import ContactsForm from '@/components/ui/ContactsForm';
 export default {
   components: {
     Header,
     Footer,
     PopUp,
     QuestionForm,
+    ShareLink,
+    ContactsForm,
+  },
+  data() {
+    return {};
   },
   created() {},
   computed: {
     popUpOpened() {
       const { popup } = this.$store.state;
       return popup.opened;
+    },
+
+    openFormQuestion() {
+      const { popup } = this.$store.state;
+      return popup.openFormQuestion;
+    },
+    openFormSocial() {
+      const { popup } = this.$store.state;
+      return popup.openFormSocial;
+    },
+    contactsOpened() {
+      const { popup } = this.$store.state;
+      return popup.contactsOpened;
     },
   },
 };
