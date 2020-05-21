@@ -69,6 +69,8 @@ export default {
 <style scoped>
 ::v-deep br {
   margin-bottom: 20px;
+  content: '';
+  display: block;
 }
 
 .about {

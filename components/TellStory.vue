@@ -73,6 +73,9 @@ export default {
     open() {
       return this.$store.commit('popup/open');
     },
+    openContacts() {
+      return this.$store.commit('popup/openContacts');
+    },
   },
 };
 </script>
