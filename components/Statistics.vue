@@ -1,95 +1,101 @@
 <template>
   <section class="statistics">
-    <my-title class="statistics__title statistics__title_place_section"
-      >Статистика по онкозаболеваниям</my-title
-    >
-    <div class="statistics__container">
-      <div class="statistics__items">
-        <div class="statistics__item">
-          <div class="statistics__box">
-            <p class="statistics__text">
-              Каждый 3-й в стране уверен, что рак неизлечим. А это примерно 48
-              918 000 человек.
-            </p>
-            <progress-bar
-              :progress="progress"
-              class="statistics__bar"
-              :value="1"
-              :maxValue="3"
-            />
-            <my-title class="statistics__title statistics__title_place_item"
-              >1 из 3</my-title
-            >
-            <p class="statistics__author">Левада-Центр 2018</p>
+    <container class="stat__container">
+      <my-title class="statistics__title statistics__title_place_section"
+        >Статистика по онкозаболеваниям</my-title
+      >
+      <div class="statistics__container">
+        <div class="statistics__items">
+          <div class="statistics__item">
+            <div class="statistics__box">
+              <p class="statistics__text">
+                Каждый 3-й в стране уверен, что рак неизлечим. А это примерно 48
+                918 000 человек.
+              </p>
+              <progress-bar
+                :progress="progress"
+                class="statistics__bar"
+                :value="1"
+                :maxValue="3"
+              />
+              <my-title class="statistics__title statistics__title_place_item"
+                >1 из 3</my-title
+              >
+              <p class="statistics__author">Левада-Центр 2018</p>
+            </div>
           </div>
-        </div>
-        <div class="statistics__item">
-          <div class="statistics__box">
-            <p class="statistics__text">2,6% Россиян имеют онкозаболевания.</p>
-            <progress-bar
-              :progress="progress"
-              class="statistics__bar"
-              :value="2.6"
-              :maxValue="100"
-            />
-            <my-title class="statistics__title statistics__title_place_item"
-              >3 700 000</my-title
-            >
-            <p class="statistics__author">Росстат 2018</p>
+          <div class="statistics__item">
+            <div class="statistics__box">
+              <p class="statistics__text">
+                2,6% Россиян имеют онкозаболевания.
+              </p>
+              <progress-bar
+                :progress="progress"
+                class="statistics__bar"
+                :value="2.6"
+                :maxValue="100"
+              />
+              <my-title class="statistics__title statistics__title_place_item"
+                >3 700 000</my-title
+              >
+              <p class="statistics__author">Росстат 2018</p>
+            </div>
           </div>
-        </div>
-        <div class="statistics__item">
-          <div class="statistics__box">
-            <p class="statistics__text">
-              На 28% выросла доля выявления заболеваний на ранней стадии за 10
-              лет.
-            </p>
-            <double-progress-bar
-              class="statistics__bar"
-              :doubleProgress="doubleProgress"
-              :oldValue="55"
-              :maxValue="100"
-              :newValue="70"
-            />
-            <my-title class="statistics__title statistics__title_place_item"
-              >&#8593;28%</my-title
-            >
-            <p class="statistics__author">МНИОИ Герцена 2018</p>
+          <div class="statistics__item">
+            <div class="statistics__box">
+              <p class="statistics__text">
+                На 28% выросла доля выявления заболеваний на ранней стадии за 10
+                лет.
+              </p>
+              <double-progress-bar
+                class="statistics__bar"
+                :doubleProgress="doubleProgress"
+                :oldValue="55"
+                :maxValue="100"
+                :newValue="70"
+              />
+              <my-title class="statistics__title statistics__title_place_item"
+                >&#8593;28%</my-title
+              >
+              <p class="statistics__author">МНИОИ Герцена 2018</p>
+            </div>
           </div>
-        </div>
-        <div class="statistics__item">
-          <div class="statistics__box">
-            <p class="statistics__text">
-              На 25% снизилась смертность в течение первого года после
-              постановки диагноза.
-            </p>
-            <double-progress-bar
-              class="statistics__bar"
-              :doubleProgress="doubleProgress"
-              :oldValue="70"
-              :maxValue="100"
-              :newValue="55"
-            />
-            <my-title class="statistics__title statistics__title_place_item"
-              >&#8595;25%</my-title
-            >
-            <p class="statistics__author">МНИОИ Герцена 2018</p>
+          <div class="statistics__item">
+            <div class="statistics__box">
+              <p class="statistics__text">
+                На 25% снизилась смертность в течение первого года после
+                постановки диагноза.
+              </p>
+              <double-progress-bar
+                class="statistics__bar"
+                :doubleProgress="doubleProgress"
+                :oldValue="70"
+                :maxValue="100"
+                :newValue="55"
+              />
+              <my-title class="statistics__title statistics__title_place_item"
+                >&#8595;25%</my-title
+              >
+              <p class="statistics__author">МНИОИ Герцена 2018</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </container>
   </section>
 </template>
 
 <script>
-import Progress from '@/components/ui/ProgressBar';
-import doubleProgress from '@/components/ui/ProgressBarD';
+import Container from '@/components/ui/Container.vue';
+import Progress from '@/components/ui/ProgressBar.vue';
+import doubleProgress from '@/components/ui/ProgressBarD.vue';
 import SectionTitle from '@/components/ui/SectionTitle.vue';
 export default {
   components: {
     'my-title': SectionTitle,
     'progress-bar': Progress,
     'double-progress-bar': doubleProgress,
+    container: Container,
   },
   data() {
     return {
@@ -102,8 +108,6 @@ export default {
 
 <style scoped>
 .statistics {
-  max-width: 1440px;
-  width: 100%;
   background-color: white;
   color: black;
   box-sizing: border-box;
@@ -152,9 +156,6 @@ export default {
   right: 0;
 }
 
-.statistics__bar {
-}
-
 .statistics__text {
   font-weight: normal;
   font-size: 12px;
@@ -162,14 +163,8 @@ export default {
   margin: 0;
 }
 
-.statistics__title {
-}
-
-.statistics__title_place_section {
-}
-
 .statistics__title_place_item {
-  font-size: 2.64vw;
+  font-size: 38px;
   line-height: 40px;
   justify-self: flex-end;
 }

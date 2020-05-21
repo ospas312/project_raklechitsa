@@ -1,47 +1,62 @@
 <template>
   <section class="slider">
-    <div class="slider__container">
-      <div class="slider__text-column">
-        <div class="slider__text-container">
-          <h2 class="slider__title">
-            Истории людей, победивших рак, но не свои привычки
-          </h2>
-          <p class="slider__text">
-            Есть вещи, которые не лечатся. Вещи ставшие частью нашего «я»,
-            фобии, страхи. Но это точно не рак. Рак лечится. Лучшее
-            доказательство — люди с их историями.
-          </p>
-        </div>
-        <div class="slider__btn-container">
-          <button class="slider__btn-back" />
-          <button class="slider__btn-forward" />
+    <container>
+      <div class="slider__wrap">
+        <div class="slider__container">
+          <div class="slider__text-column">
+            <div class="slider__text-container">
+              <h2 class="slider__title">
+                Истории людей, победивших рак, но не свои привычки
+              </h2>
+              <p class="slider__text">
+                Есть вещи, которые не лечатся. Вещи ставшие частью нашего «я»,
+                фобии, страхи. Но это точно не рак. Рак лечится. Лучшее
+                доказательство — люди с их историями.
+              </p>
+            </div>
+            <div class="slider__btn-container">
+              <button class="slider__btn-back" />
+              <button class="slider__btn-forward" />
+            </div>
+          </div>
+          <div class="slider__video-column">
+            <div class="slider__video-overlay">
+              <iframe src="" class="slider__video" />
+              <button class="slider__btn-play" />
+            </div>
+            <div class="slider__btn-video-container">
+              <button class="slider__btn-back" />
+              <button class="slider__btn-forward" />
+            </div>
+            <p class="slider__video-caption">
+              Все видео вы можете найте на нашем
+              <a
+                class="slider__link"
+                href="https://www.youtube.com/channel/UCcxMSzN1R4JfW1vLu3swCaQ"
+                target="_blank"
+                >YouTube канале.</a
+              >
+            </p>
+          </div>
         </div>
       </div>
-      <div class="slider__video-column">
-        <div class="slider__video-overlay">
-          <iframe src="" class="slider__video" />
-          <button class="slider__btn-play" />
-        </div>
-        <div class="slider__btn-video-container">
-          <button class="slider__btn-back" />
-          <button class="slider__btn-forward" />
-        </div>
-      </div>
-    </div>
-    <p class="slider__video-caption">
-      Все видео вы можете найте на нашем
-      <a
-        class="slider__link"
-        href="https://www.youtube.com/channel/UCcxMSzN1R4JfW1vLu3swCaQ"
-        target="_blank"
-        >YouTube канале.</a
-      >
-    </p>
+    </container>
+    <slogan class="slider__slogan">
+      <template #slogan-text>И В ОТЛИЧИЕ ОТ РАКА,&nbsp;</template>
+      <template #slogan-hashtag>#ЭТОНЕЛЕЧИТСЯ</template>
+    </slogan>
   </section>
 </template>
 
 <script>
-export default {};
+import Slogan from '@/components/ui/Slogan.vue';
+import Container from '@/components/ui/Container';
+export default {
+  components: {
+    slogan: Slogan,
+    container: Container,
+  },
+};
 </script>
 
 <style scoped>
@@ -49,21 +64,26 @@ export default {};
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 1440px;
+  box-sizing: border-box;
 }
-
+.slider__wrap {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 74px;
+}
 .slider__container {
   display: flex;
   justify-content: space-between;
   margin-top: 100px;
+  box-sizing: border-box;
 }
 
 .slider__text-column {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 28.6%;
-  margin-left: 60px;
+  min-width: 443px;
+  margin-right: 10px;
 }
 
 .slider__text-container {
@@ -78,6 +98,7 @@ export default {};
   line-height: 36px;
   margin-bottom: 32px;
   margin-top: 0;
+  max-width: 413px;
 }
 
 .slider__text {
@@ -89,6 +110,7 @@ export default {};
   max-width: 340px;
   margin-top: 0;
   margin-bottom: 0;
+  max-width: 343px;
 }
 
 .slider__btn-container {
@@ -104,10 +126,11 @@ export default {};
   height: 40px;
   box-shadow: none;
   border: none;
-  background-image: url("data:image/svg+xml,%3Csvg width='10' height='18' viewBox='0 0 10 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 17L9 9L1 1' stroke='black'/%3E%3C/svg%3E%0A");
+  background-image: url('../assets/images/forward.svg');
   background-position: center;
   background-color: #fbfbfb;
   background-repeat: no-repeat;
+  cursor: pointer;
 }
 
 .slider__btn-back {
@@ -116,15 +139,16 @@ export default {};
   background-color: #fbfbfb;
   box-shadow: none;
   border: none;
-  background-image: url("data:image/svg+xml,%3Csvg width='10' height='18' viewBox='0 0 10 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9 1L1 9L9 17' stroke='%23BFBFBF'/%3E%3C/svg%3E%0A");
+  background-image: url('../assets/images/back.svg');
   background-position: center;
   background-color: #fbfbfb;
   background-repeat: no-repeat;
+  cursor: pointer;
 }
 
 .slider__video-overlay {
   width: 100%;
-  padding-bottom: calc(150 * 100% / 289);
+  padding-bottom: calc(450 * 100% / 867);
   position: relative;
   background-color: #fbfbfb;
   display: flex;
@@ -134,21 +158,29 @@ export default {};
 }
 
 .slider__btn-play {
-  background-image: url("data:image/svg+xml,%3Csvg width='90' height='90' viewBox='0 0 90 90' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath opacity='0.8' fill-rule='evenodd' clip-rule='evenodd' d='M45 90C69.8528 90 90 69.8528 90 45C90 20.1472 69.8528 0 45 0C20.1472 0 0 20.1472 0 45C0 69.8528 20.1472 90 45 90ZM36.0659 63.8536L63.3131 46.6923C64.5586 45.9078 64.5586 44.0922 63.3131 43.3077L36.0659 26.1464C34.734 25.3076 33 26.2647 33 27.8387V62.1613C33 63.7353 34.734 64.6924 36.0659 63.8536Z' fill='%23CECECE'/%3E%3C/svg%3E%0A");
+  background-image: url('../assets/images/play.svg');
   background-position: center;
   background-repeat: no-repeat;
+  background-color: transparent;
   width: 90px;
   height: 90px;
   border: none;
-  background-color: transparent;
   position: absolute;
   top: calc(50% - 45px);
   left: calc(50% - 45px);
   padding: 0;
+  cursor: pointer;
+  border-radius: 50%;
+  background-size: contain;
 }
+
+.slider__btn-play:hover {
+  background-image: url('../assets/images/playButtonHover.svg');
+}
+
 .slider__video-column {
-  width: 60%;
-  margin-right: 60px;
+  width: 100%;
+  position: relative;
 }
 
 .slider__video {
@@ -167,9 +199,9 @@ export default {};
   font-size: 12px;
   line-height: 16px;
   color: #666666;
-  width: calc(60% + 60px);
-  align-self: flex-end;
-  margin-bottom: 74px;
+  position: absolute;
+  top: 100%;
+  left: 0;
 }
 
 .slider__link {
@@ -184,12 +216,13 @@ export default {};
   .slider__title {
     font-size: 28px;
     line-height: 32px;
+    max-width: 367px;
   }
 
   .slider__btn-play {
     width: 76px;
     height: 76px;
-    background-image: url("data:image/svg+xml,%3Csvg width='76' height='76' viewBox='0 0 76 76' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath opacity='0.8' fill-rule='evenodd' clip-rule='evenodd' d='M38 76C58.9868 76 76 58.9868 76 38C76 17.0132 58.9868 0 38 0C17.0132 0 0 17.0132 0 38C0 58.9868 17.0132 76 38 76ZM53.0477 39.6926C54.2932 38.9082 54.2932 37.0925 53.0477 36.308L30.9338 22.3799C29.6019 21.541 27.8679 22.4982 27.8679 24.0722V51.9284C27.8679 53.5024 29.6019 54.4596 30.9338 53.6208L53.0477 39.6926Z' fill='%23CECECE'/%3E%3C/svg%3E%0A");
+    background-image: url('../assets/images/playMedium.svg');
     top: calc(50% - (76px / 2));
     left: calc(50% - (76px / 2));
   }
@@ -197,6 +230,7 @@ export default {};
   .slider__text {
     font-size: 16px;
     line-height: 20px;
+    max-width: 305px;
   }
 
   .slider__container {
@@ -205,15 +239,11 @@ export default {};
 
   .slider__video-caption {
     margin-bottom: 64px;
-    width: calc(60% + 50px);
   }
 
   .slider__text-column {
-    margin-left: 50px;
-  }
-
-  .slider__video-column {
-    margin-right: 50px;
+    min-width: 367px;
+    margin-right: 40px;
   }
 }
 
@@ -221,30 +251,41 @@ export default {};
   .slider__title {
     font-size: 24px;
     line-height: 28px;
+    max-width: 288px;
   }
 
   .slider__text {
     font-size: 13px;
     line-height: 16px;
+    max-width: 260px;
   }
 }
 
-@media screen and (max-width: 788px) {
+.slider__text-column {
+  min-width: 288px;
+  margin-right: 30px;
+}
+
+@media screen and (max-width: 768px) {
   .slider {
+    align-items: center;
+  }
+
+  .slider__wrap {
     align-items: center;
   }
 
   .slider__container {
     flex-direction: column;
     align-items: center;
-    width: 90%;
     margin-top: 80px;
+    width: 100%;
   }
 
   .slider__text-column {
-    width: 55%;
+    min-width: none;
     margin-bottom: 60px;
-    margin-left: 0;
+    margin-right: 0;
   }
 
   .slider__title {
@@ -252,16 +293,17 @@ export default {};
     line-height: 28px;
     text-align: center;
     margin-bottom: 26px;
+    max-width: 380px;
   }
 
   .slider__text {
     font-size: 13px;
     line-height: 16px;
-    max-width: 100%;
+    max-width: 380px;
   }
 
   .slider__video-caption {
-    width: 90%;
+    left: 54px;
   }
 
   .slider__btn-container {
@@ -277,8 +319,9 @@ export default {};
   }
 
   .slider__video-overlay {
-    width: 75%;
-    padding-bottom: calc(150 * 75% / 289);
+    margin-left: 54px;
+    margin-right: 54px;
+    padding-bottom: calc(300 * 100% / 580);
   }
 
   .slider__btn-video-container {
@@ -312,7 +355,7 @@ export default {};
     }
 
     .slider {
-      width: 90%;
+      width: 100%;
       margin: auto;
     }
 
@@ -336,12 +379,13 @@ export default {};
     .slider__video-overlay {
       width: 100%;
       padding-bottom: calc(150 * 100% / 289);
+      margin: 0;
     }
 
     .slider__btn-play {
-      background-image: url("data:image/svg+xml,%3Csvg width='38' height='39' viewBox='0 0 38 39' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath opacity='0.8' fill-rule='evenodd' clip-rule='evenodd' d='M19 38.6987C29.4934 38.6987 38 30.1921 38 19.6987C38 9.20532 29.4934 0.69873 19 0.69873C8.50659 0.69873 0 9.20532 0 19.6987C0 30.1921 8.50659 38.6987 19 38.6987ZM25.1808 21.3912C26.4263 20.6067 26.4263 18.791 25.1808 18.0066L17.0002 12.8542C15.6684 12.0153 13.9344 12.9725 13.9344 14.5465V24.8513C13.9344 26.4253 15.6684 27.3824 17.0002 26.5436L25.1808 21.3912Z' fill='%23CECECE'/%3E%3C/svg%3E%0A");
-      height: 38px;
+      background-image: url('../assets/images/playSmall.svg');
       width: 38px;
+      height: 38px;
       top: calc(50% - (38px / 2));
       left: calc(50% - (38px / 2));
     }

@@ -2,48 +2,41 @@
   <div class="container">
     <Intro />
     <Slider />
-    <Slogan />
     <Stories />
     <Instagram />
-    <TellStory @btnClick="popUpTongle"></TellStory>
+    <TellStory />
     <Statistics />
     <About />
-    <PopUp v-if="popUpOpened" @btnClick="popUpTongle"></PopUp>
   </div>
 </template>
 
 <script>
 import Intro from '@/components/Intro.vue';
 import Slider from '@/components/Slider.vue';
-import Slogan from '@/components/Slogan.vue';
 import Stories from '@/components/Stories.vue';
 import Instagram from '@/components/Instagram.vue';
 import TellStory from '@/components/TellStory.vue';
 import Statistics from '@/components/Statistics.vue';
 import About from '@/components/About.vue';
-import PopUp from '@/components/ui/PopUp';
 export default {
   components: {
     Intro,
     Slider,
-    Slogan,
     Stories,
     Instagram,
     TellStory,
     Statistics,
     About,
-    PopUp,
   },
   data() {
-    return {
-      popUpOpened: false,
-    };
+    return {};
   },
-  methods: {
-    popUpTongle() {
-      this.popUpOpened = !this.popUpOpened;
-    },
-  },
+  methods: {},
+  /*computed:{
+    popUpOpened() {
+      return this.$store.getters['popup/getPopUpOpened'];
+    }
+  }*/
 };
 </script>
 
@@ -52,9 +45,6 @@ export default {
   width: 100%;
   min-width: 320px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   font-family: 'Inter', monospace;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;

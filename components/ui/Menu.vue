@@ -7,8 +7,8 @@
       <li class="menu__li">
         <nuxt-link class="menu__link" to="/stories">Истории</nuxt-link>
       </li>
-      <li class="menu__li">
-        <nuxt-link class="menu__link" to="#">Рассказать историю</nuxt-link>
+      <li class="menu__li" @click="open">
+        <nuxt-link class="menu__link" to="">Рассказать историю</nuxt-link>
       </li>
     </ul>
     <nxt-button
@@ -23,7 +23,7 @@
         <li class="menu__li">
           <nuxt-link class="menu__link" to="/stories">Истории</nuxt-link>
         </li>
-        <li class="menu__li">
+        <li class="menu__li" @click="open">
           <nuxt-link class="menu__link" to="#">Рассказать историю</nuxt-link>
         </li>
       </ul>
@@ -41,6 +41,12 @@ export default {
     return {
       mobileMenu: false,
     };
+  },
+  methods: {
+    open() {
+      console.log('open_menu');
+      return this.$store.commit('popup/open');
+    },
   },
   mounted: function() {
     window.addEventListener('resize', () => {

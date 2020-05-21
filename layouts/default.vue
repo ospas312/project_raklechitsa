@@ -1,18 +1,30 @@
 <template>
   <div>
     <Header />
+    <PopUp v-if="popUpOpened"><QuestionForm /></PopUp>
     <nuxt />
-    <Footer></Footer>
+    <Footer />
   </div>
 </template>
 
 <script>
 import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
+import PopUp from '@/components/ui/PopUp';
+import QuestionForm from '@/components/ui/QuestionForm';
 export default {
   components: {
     Header,
     Footer,
+    PopUp,
+    QuestionForm,
+  },
+  created() {},
+  computed: {
+    popUpOpened() {
+      const { popup } = this.$store.state;
+      return popup.opened;
+    },
   },
 };
 </script>

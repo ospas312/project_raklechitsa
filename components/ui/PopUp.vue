@@ -1,8 +1,8 @@
 <template>
   <div class="popup">
     <div class="popup__content">
-      <slot><p>Привет это PopUp</p></slot>
-      <div class="close" @click="$emit('btnClick')"></div>
+      <slot></slot>
+      <div class="close" @click="close"></div>
     </div>
   </div>
 </template>
@@ -10,13 +10,11 @@
 <script>
 import Button from '@/components/ui/Button';
 export default {
-  components: {
-    Button,
-  },
-  data() {
-    return {
-      close: 'Close',
-    };
+  components: {},
+  methods: {
+    close(e) {
+      this.$store.commit('popup/close');
+    },
   },
 };
 </script>
@@ -32,11 +30,11 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  display: flex;
+  z-index: 10;
 }
 .popup__content {
   width: 920px;
-  min-height: 600px;
+  height: 600px;
   background-color: #fff;
   border-radius: 0px;
   position: relative;
@@ -69,5 +67,34 @@ export default {
 }
 .close:after {
   transform: rotate(-45deg);
+}
+@media screen and (max-width: 1280px) {
+  .popup__content {
+    width: 800px;
+    height: 520px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .popup__content {
+    width: 800px;
+    height: 520px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .popup__content {
+    width: 580px;
+    height: 520px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .popup__content {
+    width: 290px;
+    height: 520px;
+    padding: 15px;
+  }
+  .close {
+    right: 15px;
+    top: 15px;
+  }
 }
 </style>
