@@ -1,5 +1,7 @@
 <template>
   <nav class="stories-nav">
+    <a class="stories-nav__first">Первая</a>
+    <a class="stories-nav__back">^</a>
     <ul class="stories-nav__ul">
       <li v-for="index in pagesAmount" :key="index" class="stories-nav__li">
         <nxt-button
@@ -50,6 +52,47 @@ export default {
   margin: 0 auto;
   max-width: 506px;
   padding: 140px 0 100px 0;
+  display: grid;
+}
+
+.stories-nav__first {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  align-items: center;
+  color: #181818;
+  margin-right: 30px;
+}
+.stories-nav__first_inactive {
+  color: #a2a2a2;
+}
+
+.stories-nav__back {
+  border: 2px solid #000000;
+  box-sizing: border-box;
+  transform: rotate(-90deg);
+  margin-right: 30px;
+}
+
+.stories-nav__forward {
+  border: 2px solid #000000;
+  box-sizing: border-box;
+  transform: rotate(90deg);
+}
+
+.stories-nav__last {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  align-items: center;
+  color: #181818;
+}
+.stories-nav__last_inactive {
+  color: #a2a2a2;
 }
 .stories-nav__ul {
   list-style: none;
