@@ -1,32 +1,31 @@
 <template>
   <section class="about">
-    <container :containerClass="containerClass">
+    <container>
       <div class="about__container">
         <h2 class="about__title">
-          #РАКЛЕЧИТСЯ
+          {{ getTitle }}
         </h2>
         <p class="about__subtitle">
           О проекте
         </p>
         <div class="about__text-container">
           <p class="about__description-creators">
-            Этот проект был создан благотворительным фондом Константина
-            Хабенского.
+            {{ getSubtitle }}
           </p>
           <div class="about__description-container">
             <ul class="about__creators-list">
               <li
                 v-for="aboutCreators in getText"
-                :key="aboutCreators.id"
-                @click="toggleTextState($event)"
                 :id="aboutCreators.id"
+                :key="aboutCreators.id"
                 class="about__list-item"
+                @click="toggleTextState($event)"
               >
                 {{ aboutCreators.title }}
               </li>
             </ul>
             <div class="about__description-column">
-              <p class="about__description" v-html="defaultText"></p>
+              <p class="about__description" v-html="defaultText" />
             </div>
           </div>
         </div>
@@ -36,6 +35,7 @@
 </template>
 <script>
 import Container from '@/components/ui/Container';
+
 export default {
   components: {
     container: Container,
@@ -49,6 +49,12 @@ export default {
   computed: {
     getText() {
       return this.$store.getters['about/getAboutExtraTexts'];
+    },
+    getTitle() {
+      return this.$store.getters['about/getTextTitle'];
+    },
+    getSubtitle() {
+      return this.$store.getters['about/getTextSubtitle'];
     },
   },
   methods: {
@@ -153,10 +159,6 @@ export default {
   line-height: 22px;
   color: #dedede;
   margin-top: 0;
-}
-
-.about__description:last-of-type {
-  margin-bottom: 0;
 }
 
 .about__description-creators {

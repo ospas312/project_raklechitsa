@@ -1,5 +1,4 @@
 export const state = () => ({
-  target: 0,
   title: 'О проекте',
   text:
     'Этот проект был создан благотворительным фондом Константина Хабенского.',
@@ -19,24 +18,17 @@ export const state = () => ({
   ],
 });
 
-export const mutations = {
-  toggleTextState(state) {},
-  toggleTarget(state) {},
-};
+export const mutations = {};
 
 export const getters = {
   getAboutExtraTexts(state) {
     return state.extraTexts;
   },
 
-  getTargetValue(state) {
-    return state.target;
+  getTextTitle(state) {
+    return state.title;
   },
-
-  getText(state) {
-    return state.extraTexts[0].text;
-  },
-  getTextState(state) {
-    return state.enabled;
+  getTextSubtitle(state) {
+    return state.text;
   },
 };

@@ -1,6 +1,6 @@
 <template>
   <section class="slider">
-    <container :containerClass="containerClass">
+    <container>
       <div class="slider__wrap">
         <div class="slider__container">
           <div class="slider__text-column">
@@ -164,7 +164,6 @@ export default {
   width: 90px;
   height: 90px;
   border: none;
-  background-color: transparent;
   position: absolute;
   top: calc(50% - 45px);
   left: calc(50% - 45px);
