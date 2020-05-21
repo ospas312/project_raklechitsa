@@ -170,7 +170,14 @@ export default {
   left: calc(50% - 45px);
   padding: 0;
   cursor: pointer;
+  border-radius: 50%;
+  background-size: contain;
 }
+
+.slider__btn-play:hover {
+  background-image: url('../assets/images/playButtonHover.svg');
+}
+
 .slider__video-column {
   width: 100%;
   position: relative;
