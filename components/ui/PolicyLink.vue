@@ -2,7 +2,7 @@
   <p class="policy-link">
     Нажимая на кнопку «отправить», вы даете согласие на&nbsp;<nuxt-link
       to="/policy"
-      class="policy-link"
+      class="police-link"
     >
       <span class="policy-link" @click="close"
         >обработку персональных данных</span
