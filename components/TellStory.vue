@@ -74,7 +74,7 @@ export default {
       if (this.currentTab.id == 1) {
         return this.$store.commit('popup/open');
       }
-      return this.$store.commit('popup/openContact');
+      return this.$store.commit('popup/openContacts');
     },
   },
 };
