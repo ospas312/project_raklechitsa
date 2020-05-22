@@ -30,6 +30,7 @@
         :totalStories="stories.length"
         :limitPerPage="limitPerPageData"
         @onPageChange="changeStartIndex"
+        @onGoForward="incStartIndex"
       >
       </stories-nav>
     </div>
@@ -88,6 +89,10 @@ export default {
     changeStartIndex(index) {
       console.log('on page:', index);
       this.startIndex = (index - 1) * this.limitPerPageData;
+    },
+    incStartIndex(active) {
+      console.log('Active page now', active);
+      this.startIndex = (active - 1) * this.limitPerPageData;
     },
     storyClickHandler(id) {
       this.$router.push(`/stories/${id}`);

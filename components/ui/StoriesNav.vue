@@ -1,7 +1,17 @@
 <template>
   <nav class="stories-nav">
-    <a class="stories-nav__first">Первая</a>
-    <a class="stories-nav__back">^</a>
+    <nxt-button
+      @btnClick="goFirst()"
+      buttonType="'button'"
+      :buttonClass="'stories-nav__first'"
+      >Первая</nxt-button
+    >
+    <nxt-button
+      @btnClick="goBack(active)"
+      buttonType="'button'"
+      :buttonClass="'stories-nav__back'"
+      >^</nxt-button
+    >
     <ul class="stories-nav__ul">
       <li v-for="index in pagesAmount" :key="index" class="stories-nav__li">
         <nxt-button
@@ -15,6 +25,18 @@
         >
       </li>
     </ul>
+    <nxt-button
+      @btnClick="goForward(active)"
+      buttonType="'button'"
+      :buttonClass="'stories-nav__forward'"
+      >^</nxt-button
+    >
+    <nxt-button
+      @btnClick="goLast()"
+      buttonType="'button'"
+      :buttonClass="'stories-nav__last'"
+      >Последняя</nxt-button
+    >
   </nav>
 </template>
 
@@ -43,16 +65,28 @@ export default {
       this.active = index;
       this.$emit('onPageChange', index);
     },
+    goForward(active) {
+      this.active += 1; //активаная страница +1
+      console.log('goForward to page', this.active);
+      this.$emit('onGoForward', this.active); // эмитим событие в род компонент
+      if (this.active >= this.pagesAmount) {
+        console.log('Код деактивирующий кнопку');
+      }
+    },
+    goBack(active) {
+      console.log('goBack', active);
+    },
   },
 };
 </script>
 
 <style scoped>
 .stories-nav {
-  margin: 0 auto;
-  max-width: 506px;
-  padding: 140px 0 100px 0;
-  display: grid;
+  margin: 140px auto 100px;
+  max-width: 800px;
+  max-height: 58px;
+  display: flex;
+  align-items: center;
 }
 
 .stories-nav__first {
@@ -69,19 +103,29 @@ export default {
   color: #a2a2a2;
 }
 
+/* refactor with single class */
 .stories-nav__back {
-  border: 2px solid #000000;
   box-sizing: border-box;
   transform: rotate(-90deg);
   margin-right: 30px;
+  border: none;
+  outline: none;
+  background-color: transparent;
 }
-
+.stories-nav__back:hover {
+  cursor: pointer;
+}
 .stories-nav__forward {
-  border: 2px solid #000000;
   box-sizing: border-box;
   transform: rotate(90deg);
+  margin: 0 30px;
+  border: none;
+  outline: none;
+  background-color: transparent;
 }
-
+.stories-nav__forward:hover {
+  cursor: pointer;
+}
 .stories-nav__last {
   font-family: Inter;
   font-style: normal;
@@ -90,6 +134,13 @@ export default {
   line-height: 22px;
   align-items: center;
   color: #181818;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.stories-nav__last:hover {
+  cursor: pointer;
 }
 .stories-nav__last_inactive {
   color: #a2a2a2;
@@ -98,7 +149,11 @@ export default {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(auto-fit, 58px);
+  grid-template-rows: repeat(auto-fit, 58px);
   column-gap: 10px;
+  padding: 0;
+  margin: 0;
+  max-width: 330px; /* 58px*5+40px  */
 }
 .stories-nav__li {
 }
