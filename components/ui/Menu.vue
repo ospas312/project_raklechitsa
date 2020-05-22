@@ -24,7 +24,7 @@
           <nuxt-link class="menu__link" to="/stories">Истории</nuxt-link>
         </li>
         <li class="menu__li" @click="open">
-          <nuxt-link class="menu__button">Рассказать историю</nuxt-link>
+          <nxt-button class="menu__button">Рассказать историю</nxt-button>
         </li>
       </ul>
     </nxt-button>
