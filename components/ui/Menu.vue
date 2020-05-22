@@ -14,6 +14,7 @@
     <nxt-button
       :buttonType="'button'"
       :buttonClass="'menu__mobile-btn'"
+      @btnClick="openMenu"
       v-if="mobileMenu == true"
     >
       <ul class="menu__ul">
@@ -44,8 +45,10 @@ export default {
   },
   methods: {
     open() {
-      console.log('open_menu');
       return this.$store.commit('popup/open');
+    },
+    openMenu() {
+      return this.$store.commit('menu/openMenu');
     },
   },
   mounted: function() {
@@ -69,6 +72,10 @@ export default {
 .menu {
 }
 
+.header__menu {
+  display: flex;
+  align-self: center;
+}
 .menu__ul {
   list-style: none;
   display: grid;
@@ -111,6 +118,9 @@ export default {
 }
 @media screen and (max-width: 768px) {
   .menu__link {
+    display: none;
+  }
+  .menu__button {
     display: none;
   }
 }

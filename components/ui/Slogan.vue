@@ -16,7 +16,7 @@ export default {
 </script>
 <style scoped>
 .slogan {
-  width: 100%;
+  /*width: 100%;*/
   margin: 0;
   padding: 20px;
   background-color: #613a93;

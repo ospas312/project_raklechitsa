@@ -316,7 +316,7 @@ export default {
     margin: 0px 0 50px 0;
   }
 }
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 321px) {
   .tell-story {
     font-size: 13px;
   }
