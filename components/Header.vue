@@ -1,5 +1,20 @@
 <template>
   <header class="header">
+    <div v-if="menuOpened">
+      <nav class="menu">
+        <ul class="menu__ul">
+          <li class="menu__li">
+            <nuxt-link class="menu__link" to="/">Главная</nuxt-link>
+          </li>
+          <li class="menu__li">
+            <nuxt-link class="menu__link" to="/stories">Истории</nuxt-link>
+          </li>
+          <li class="menu__li" @click="open">
+            <nxt-button class="menu__button">Рассказать историю</nxt-button>
+          </li>
+        </ul>
+      </nav>
+    </div>
     <container class="header__container">
       <h2 class="header__title">
         Проект Благотворительного Фонда Константина Хабенского
@@ -17,6 +32,12 @@ export default {
     'header-menu': Menu,
     container: Container,
   },
+  computed: {
+    menuOpened() {
+      const { menu } = this.$store.state;
+      return menu.openMenu;
+    },
+  },
 };
 </script>
 
@@ -32,6 +53,9 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+}
+.header__mobile_menu {
+  width: 100%;
 }
 @media screen and (max-width: 1280px) {
   .header {
@@ -56,5 +80,17 @@ export default {
 }
 
 .header__menu {
+}
+@media screen and (max-width: 320px) {
+  .header {
+    padding: 0;
+  }
+  .header__container {
+    padding: 18px 15px;
+  }
+  .header__title {
+    font-size: 12px;
+    line-height: 14px;
+  }
 }
 </style>
