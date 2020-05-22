@@ -8,7 +8,7 @@
         <nuxt-link class="menu__link" to="/stories">Истории</nuxt-link>
       </li>
       <li class="menu__li" @click="open">
-        <nuxt-link class="menu__link" to="">Рассказать историю</nuxt-link>
+        <nxt-button class="menu__button">Рассказать историю</nxt-button>
       </li>
     </ul>
     <nxt-button
@@ -24,7 +24,7 @@
           <nuxt-link class="menu__link" to="/stories">Истории</nuxt-link>
         </li>
         <li class="menu__li" @click="open">
-          <nuxt-link class="menu__link" to="#">Рассказать историю</nuxt-link>
+          <nuxt-link class="menu__button">Рассказать историю</nuxt-link>
         </li>
       </ul>
     </nxt-button>
@@ -119,6 +119,20 @@ export default {
   text-decoration-line: underline;
 }
 
+.menu__button {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  text-decoration: none;
+  color: #000000;
+  background-color: transparent;
+  border: none;
+}
+.menu__button:hover {
+  cursor: pointer;
+}
 .menu__mobile-btn {
   width: 32px;
   height: 27px;
