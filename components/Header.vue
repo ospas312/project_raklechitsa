@@ -17,7 +17,9 @@
     </div>
     <container class="header__container">
       <h2 class="header__title">
-        Проект Благотворительного Фонда Константина Хабенского
+        <a href="/" class="header__logo-link"
+          >Проект Благотворительного Фонда Константина Хабенского
+        </a>
       </h2>
       <header-menu class="header__menu"></header-menu>
     </container>
@@ -71,6 +73,10 @@ export default {
 .header__title {
   max-width: 340px;
   min-height: 40px;
+}
+
+.header__logo-link {
+  text-decoration: none;
   font-family: Inter;
   font-style: normal;
   font-weight: 600;
@@ -78,7 +84,6 @@ export default {
   line-height: 20px;
   color: black;
 }
-
 .header__menu {
 }
 @media screen and (max-width: 320px) {

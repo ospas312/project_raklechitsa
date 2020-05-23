@@ -4,7 +4,7 @@
       <h2 class="stories__title">Истории неизлечимых привычек</h2>
       <div class="stories__container">
         <story
-          v-for="story in stories.slice(0, storiesOnMainPage)"
+          v-for="story in stories.slice(0, storiesOnPage)"
           :key="story.id"
           :storyImageSrc="story.storyImageSrcData"
           :storyImageAlt="story.storyImageAltData"
@@ -50,8 +50,35 @@ export default {
   data() {
     return {
       buttonMoreData: 'Больше статей',
-      storiesOnMainPage: 8,
+      storiesOnPage: 8,
+      storiesOnPageDesktop: 8,
+      storiesOnPageTabled: 9,
+      storiesOnPageMobile: 6,
     };
+  },
+  mounted: function() {
+    /*вешаем слушатель на ресайз окна пусть реагирует, нам не жалко */
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        this.storiesOnPage = this.storiesOnPageDesktop;
+      }
+      if (window.innerWidth <= 768 && window.innerWidth > 320) {
+        this.storiesOnPage = this.storiesOnPageTabled;
+      }
+      if (window.innerWidth <= 320) {
+        this.storiesOnPage = this.storiesOnPageMobile;
+      }
+    });
+    /* При загузке станицы выставляем значение */
+    if (window.innerWidth > 768) {
+      this.storiesOnPage = this.storiesOnPageDesktop;
+    }
+    if (window.innerWidth <= 768 && window.innerWidth > 320) {
+      this.storiesOnPage = this.storiesOnPageTabled;
+    }
+    if (window.innerWidth <= 320) {
+      this.storiesOnPage = this.storiesOnPageMobile;
+    }
   },
 };
 </script>
@@ -163,6 +190,7 @@ export default {
   background-color: #fbfbfb;
   border: 0;
   outline: none;
+  padding: 0;
 }
 @media screen and (max-width: 1280px) {
   .stories__button-more {
