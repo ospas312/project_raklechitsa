@@ -1,29 +1,48 @@
 <template>
   <section class="footer">
-    <Container :containerClass="containerClass">
+    <Container :containerClass="'footer__container'">
       <div class="footer__content">
         <h5 class="footer__title">
           Спасибо всем, кто помог состояться этому проекту
         </h5>
-        <div class="footer__menu">
+        <!--<div class="footer__menu">
           <nuxt-link class="footer__menu-link" to="/">Главная</nuxt-link>
           <nuxt-link class="footer__menu-link" to="/stories">Истории</nuxt-link>
-        </div>
+        </div>-->
+        <MenuLite class="footer__menu" />
         <div class="footer__social">
-          <p class="footer__social-info">Мы в Инстаграме и Youtube</p>
+          <p class="footer__social-info">
+            Мы в
+            <a
+              class="footer__social-info"
+              target="_blank"
+              href="https://www.instagram.com/raklechitsa/"
+              >Инстаграме</a
+            >
+            и
+            <a
+              class="footer__social-info"
+              target="_blank"
+              href="https://www.youtube.com/results?search_query=%23%D1%8D%D1%82%D0%BE%D0%BD%D0%B5%D0%BB%D0%B5%D1%87%D0%B8%D1%82%D1%81%D1%8F"
+              >Youtube</a
+            >
+          </p>
           <Button
-            :buttonType="buttonType"
-            :buttonClass="buttonClass"
-            :buttonText="button"
+            :buttonType="'button'"
+            :buttonClass="'footer__button'"
+            :buttonText="'Поделитесь' + '\u2197'"
             @btnClick="open"
           ></Button>
         </div>
       </div>
       <div class="footer__info">
         <p class="footer__info-name">Рак Лечится {{ timestamp }}</p>
-        <a href="https://praktikum.yandex.ru/" class="footer__info-create"
-          >Сделано студентами Яндекс Практикум</a
-        >
+        <p class="footer__info-create">
+          Сделано студентами
+          <a href="https://praktikum.yandex.ru/" class="footer__info-create"
+            >Яндекс Практикум</a
+          >
+        </p>
       </div>
     </Container>
   </section>
@@ -32,17 +51,15 @@
 <script>
 import Button from '@/components/ui/Button';
 import Container from '@/components/ui/Container';
+import MenuLite from '@/components/ui/MenuLite';
 export default {
   components: {
     Button,
     Container,
+    MenuLite,
   },
   data() {
     return {
-      buttonClass: 'footer__button',
-      buttonType: 'button',
-      button: 'Поделитесь' + '\u2197',
-      containerClass: 'footer__container',
       timestamp: new Date().getFullYear(),
     };
   },
@@ -98,6 +115,11 @@ export default {
   font-style: normal;
   font-weight: normal;
   line-height: 24px;
+  color: #000;
+  text-decoration: none;
+}
+.footer__social-info a {
+  border-bottom: 1px solid #000;
 }
 .footer__button {
   font-family: Inter;
@@ -168,7 +190,7 @@ export default {
     line-height: 16px;
   }
   .footer__menu {
-    margin-right: 120px;
+    margin-right: 171px;
   }
   .footer__info-create {
     line-height: 16px;
@@ -200,7 +222,7 @@ export default {
     line-height: 18px;
   }
   .footer__menu {
-    margin-right: 114px;
+    margin-right: 121px;
   }
   .footer__info-create {
     line-height: 18px;
@@ -235,7 +257,7 @@ export default {
     line-height: 18px;
   }
   .footer__menu {
-    margin-right: 0px;
+    margin-right: 31px;
     display: block;
     width: 70px;
   }

@@ -134,6 +134,7 @@ export default {
 }
 .tell-story__content-left {
   width: 640px;
+  height: 322px;
 }
 .tell-story__content-left_row {
   display: flex;
@@ -144,6 +145,7 @@ export default {
   width: 640px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 .tell-story__variants {
   display: flex;
@@ -193,6 +195,7 @@ export default {
   }
   .tell-story__content-left {
     width: 570px;
+    height: 308px;
   }
   .tell-story__content-right {
     width: 570px;
@@ -227,6 +230,7 @@ export default {
   }
   .tell-story__content-left {
     width: 447px;
+    height: 286px;
   }
   .tell-story__content-right {
     width: 447px;
@@ -270,9 +274,13 @@ export default {
   }
   .tell-story__content-left {
     width: 380px;
+    height: 219px;
+    display: flex;
+    flex-direction: column;
   }
   .tell-story__content-right {
     width: 380px;
+    height: 219px;
   }
   .tell-story__title {
     width: 380px;
@@ -282,19 +290,17 @@ export default {
     margin-bottom: 26px;
   }
   .tell-story__content-left_row {
-    margin: 20px 0 0 0;
     display: flex;
     flex-direction: column;
+    margin: 0;
   }
   .tell-story__subtitle {
     width: 380px;
     font-size: 13px;
     line-height: 16px;
-    margin-bottom: 80px;
   }
   .tell-story__variants {
     display: block;
-    margin-bottom: 30px;
   }
   .tell-story__variant {
     font-size: 15px;
@@ -313,7 +319,7 @@ export default {
   }
   .tell-story__info {
     line-height: 19px;
-    margin: 0px 0 50px 0;
+    margin: 30px 0 0px 0;
   }
 }
 @media screen and (max-width: 321px) {
@@ -327,9 +333,11 @@ export default {
   }
   .tell-story__content-left {
     width: 290px;
+    height: 181px;
   }
   .tell-story__content-right {
     width: 290px;
+    height: 181px;
   }
   .tell-story__title {
     width: 290px;
@@ -339,7 +347,6 @@ export default {
     margin-bottom: 16px;
   }
   .tell-story__content-left_row {
-    margin: 16px 0 0 0;
     display: flex;
     flex-direction: column;
   }
@@ -370,7 +377,7 @@ export default {
   }
   .tell-story__info {
     line-height: 16px;
-    margin: 0px 0 30px 0;
+    margin: 20px 0 0px 0;
   }
 }
 </style>
