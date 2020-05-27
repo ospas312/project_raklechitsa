@@ -133,7 +133,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
 }
-
+/*<<<<<<< section_tellstory
 .stories__search-container {
   margin: 60px 0 70px;
   display: grid;
