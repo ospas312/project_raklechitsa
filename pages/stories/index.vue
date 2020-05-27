@@ -1,39 +1,37 @@
 <template>
   <container>
     <div class="stories-index-container">
-      <h2 class="stories__title">
-        Истории неизлечимых привычек
-      </h2>
+      <h2 class="stories__title">Истории неизлечимых привычек</h2>
       <div class="stories__search-container">
-        <input v-model="search" class="stories__search-input" type="text" />
+        <input class="stories__search-input" type="text" v-model="search" />
         <nxt-button
           class="stories__search-button"
           type="button"
           @click="filteredList"
+          >Поиск</nxt-button
         >
-          Поиск
-        </nxt-button>
       </div>
       <div class="stories__container">
         <story
           v-for="story in storiesToRender"
           :key="story.id"
-          :story-image-src="story.storyImageSrcData"
-          :story-image-alt="story.storyImageAltData"
-          :story-title="story.storyTitleData"
-          :story-quote="story.storyQuoteData"
-          :story-class="'story'"
-          :story-image-class="'story__image'"
-          :story-title-class="'story__title'"
-          :story-quote-class="'story__quote'"
+          :storyImageSrc="story.storyImageSrcData"
+          :storyImageAlt="story.storyImageAltData"
+          :storyTitle="story.storyTitleData"
+          :storyQuote="story.storyQuoteData"
+          :storyClass="'story'"
+          :storyImageClass="'story__image'"
+          :storyTitleClass="'story__title'"
+          :storyQuoteClass="'story__quote'"
           @storyClick="storyClickHandler(story.id)"
         />
       </div>
       <stories-nav
-        :total-stories="stories.length"
-        :limit-per-page="storiesOnPage"
+        :totalStories="stories.length"
+        :limitPerPage="storiesOnPage"
         @onPageChange="changeStartIndex"
-      />
+      >
+      </stories-nav>
     </div>
   </container>
 </template>
@@ -43,7 +41,6 @@ import Story from '@/components/ui/Story.vue';
 import Button from '@/components/ui/Button.vue';
 import StoriesNav from '@/components/ui/StoriesNav.vue';
 import Container from '@/components/ui/Container';
-
 export default {
   components: {
     story: Story,
@@ -62,12 +59,12 @@ export default {
     };
   },
   computed: {
-    stories() {
+    stories: function() {
       return this.$store.getters['stories/getStories'];
     },
     /* Потом сделаем как у Палтуха когда  json будут развернуты на сервере */
     currentStory() {
-      return this.stories.filter(item => item.id === this.$route.params.id);
+      return this.stories.filter(item => item['id'] === this.$route.params.id);
     },
     totalStories() {
       return this.stories.length;
@@ -82,14 +79,25 @@ export default {
           index <= this.startIndex + this.storiesOnPage - 1
       );
     },
-    filteredList() {
-      return this.stories.filter(story =>
-        story.storyTitleData.toLowerCase().includes(this.search.toLowerCase())
-      );
+    filteredList: function() {
+      return this.stories.filter(story => {
+        return story.storyTitleData
+          .toLowerCase()
+          .includes(this.search.toLowerCase());
+      });
     },
   },
-  mounted() {
-    /* вешаем слушатель на ресайз окна пусть реагирует, нам не жалко */
+  methods: {
+    changeStartIndex(index) {
+      console.log('on page:', index);
+      this.startIndex = (index - 1) * this.storiesOnPage;
+    },
+    storyClickHandler(id) {
+      this.$router.push(`/stories/${id}`);
+    },
+  },
+  mounted: function() {
+    /*вешаем слушатель на ресайз окна пусть реагирует, нам не жалко */
     window.addEventListener('resize', () => {
       if (window.innerWidth > 768) {
         this.storiesOnPage = this.storiesOnPageDesktop;
@@ -112,15 +120,6 @@ export default {
       this.storiesOnPage = this.storiesOnPageMobile;
     }
   },
-  methods: {
-    changeStartIndex(index) {
-      console.log('on page:', index);
-      this.startIndex = (index - 1) * this.storiesOnPage;
-    },
-    storyClickHandler(id) {
-      this.$router.push(`/stories/${id}`);
-    },
-  },
 };
 </script>
 
@@ -134,7 +133,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
 }
-
 .stories__search-container {
   margin: 60px 0 70px;
   display: grid;
@@ -148,7 +146,6 @@ export default {
     grid-template-rows: 48px;
   }
 }
-
 @media screen and (max-width: 1024px) {
   .stories__search-container {
     margin: 40px 0 46px;
@@ -156,13 +153,11 @@ export default {
     grid-template-rows: 46px;
   }
 }
-
 @media screen and (max-width: 768px) {
   .stories__search-container {
     margin: 50px 0 60px;
   }
 }
-
 @media screen and (max-width: 600px) {
   .stories__search-container {
     grid-template-columns: 1fr 48px;
@@ -179,7 +174,6 @@ export default {
   font-size: 18px;
   line-height: 20px;
 }
-
 .stories__search-button {
   width: 100%;
   background-color: #613a93;
@@ -190,7 +184,6 @@ export default {
   text-align: center;
   border: none;
 }
-
 @media screen and (max-width: 600px) {
   .stories__search-button {
     width: 100%;
@@ -212,14 +205,12 @@ export default {
   row-gap: 70px;
   margin-top: 60px;
 }
-
 @media screen and (max-width: 1280px) {
   .stories__container {
     column-gap: 40px;
     row-gap: 60px;
   }
 }
-
 @media screen and (max-width: 1024px) {
   .stories__container {
     column-gap: 30px;
@@ -233,7 +224,6 @@ export default {
     row-gap: 40px;
   }
 }
-
 @media screen and (max-width: 600px) {
   .stories__container {
     grid-template-columns: 1fr 1fr;
@@ -241,7 +231,6 @@ export default {
     row-gap: 40px;
   }
 }
-
 @media screen and (max-width: 320px) {
   .stories__container {
     grid-template-columns: 1fr;
@@ -249,7 +238,6 @@ export default {
     row-gap: 30px;
   }
 }
-
 @media screen and (max-width: 600px) {
   .stories__search-button {
     width: 48px;
@@ -260,7 +248,6 @@ export default {
     background-position: center;
   }
 }
-
 .stories__title {
   margin: 0 0 70px 0;
   max-width: 413px;
@@ -278,7 +265,6 @@ export default {
     line-height: 32px;
   }
 }
-
 @media screen and (max-width: 1024px) {
   .stories__title {
     margin: 0 0 46px 0;
@@ -292,7 +278,6 @@ export default {
     text-align: center;
   }
 }
-
 @media screen and (max-width: 320px) {
   .stories__title {
     margin: 0 auto 40px;
