@@ -12,8 +12,7 @@
       buttonType="'button'"
       :buttonClass="'stories-nav__back'"
       :disabled="this.active === 1"
-      >^</nxt-button
-    >
+    ></nxt-button>
     <ul class="stories-nav__ul">
       <li v-for="index in pagesAmount" :key="index" class="stories-nav__li">
         <nxt-button
@@ -32,10 +31,9 @@
       buttonType="'button'"
       :buttonClass="'stories-nav__forward'"
       :disabled="this.active === pagesAmount"
-      >^</nxt-button
-    >
+    ></nxt-button>
     <nxt-button
-      @btnClick="goLast()"
+      @btnClick="goLast(active)"
       buttonType="'button'"
       :buttonClass="'stories-nav__last'"
       :disabled="this.active === pagesAmount"
@@ -70,17 +68,22 @@ export default {
       this.$emit('onPageChange', index);
     },
     goForward(active) {
-      this.active += 1; //активаная страница +1
+      this.active += 1; //active page +1
       console.log('goForward to page', this.active);
-      this.$emit('onGoForward', this.active); // emit event to parrent component
-      if (this.active >= this.pagesAmount) {
-        console.log('Код деактивирующий кнопку');
-      }
+      this.$emit('onPageChange', this.active); // emit event to parrent component
     },
     goBack(active) {
       this.active -= 1; //активаная страница +1
       console.log('goBack to page', this.active);
-      this.$emit('onGoBack', this.active);
+      this.$emit('onPageChange', this.active);
+    },
+    goFirst(active) {
+      this.active = 1;
+      this.$emit('onPageChange', this.active);
+    },
+    goLast(active) {
+      this.active = this.pagesAmount;
+      this.$emit('onPageChange', this.active);
     },
   },
 };
@@ -108,31 +111,39 @@ export default {
   outline: none;
   background-color: transparent;
 }
+.stories-nav__first:hover {
+  cursor: pointer;
+}
 .stories-nav__first_inactive {
   color: #a2a2a2;
 }
 
-/* need a refactor with single class for  */
 .stories-nav__back {
   box-sizing: border-box;
-  transform: rotate(-90deg);
   margin-right: 30px;
   border: none;
   outline: none;
+  width: 13px;
+  height: 22px;
+  background-image: url('/story-nav_button-backward.svg');
+  background-repeat: no-repeat;
   background-color: transparent;
+  background-position: center;
 }
 .stories-nav__back:hover {
   cursor: pointer;
 }
 .stories-nav__forward {
   box-sizing: border-box;
-  transform: rotate(90deg);
   margin: 0 30px;
   border: none;
   outline: none;
+  width: 13px;
+  height: 22px;
+  background-image: url('/story-nav_button-forward.svg');
+  background-repeat: no-repeat;
   background-color: transparent;
-  font-size: 20px;
-  line-height: 22px;
+  background-position: center;
 }
 .stories-nav__forward:hover {
   cursor: pointer;
