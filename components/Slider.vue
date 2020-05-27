@@ -6,12 +6,10 @@
           <div class="slider__text-column">
             <div class="slider__text-container">
               <h2 class="slider__title">
-                Истории людей, победивших рак, но не свои привычки
+                {{ getTitle }}
               </h2>
               <p class="slider__text">
-                Есть вещи, которые не лечатся. Вещи ставшие частью нашего «я»,
-                фобии, страхи. Но это точно не рак. Рак лечится. Лучшее
-                доказательство — люди с их историями.
+                {{ getText }}
               </p>
             </div>
             <div class="slider__btn-container">
@@ -26,15 +24,7 @@
               <button class="slider__btn-back swiper-button_prev" />
               <button class="slider__btn-forward swiper-button_next" />
             </div>
-            <p class="slider__video-caption">
-              Все видео вы можете найте на нашем
-              <a
-                class="slider__link"
-                href="https://www.youtube.com/channel/UCcxMSzN1R4JfW1vLu3swCaQ"
-                target="_blank"
-                >YouTube канале.</a
-              >
-            </p>
+            <p class="slider__video-caption" v-html="getCaption"></p>
           </div>
         </div>
       </div>
@@ -61,11 +51,30 @@ export default {
     videos() {
       return this.$store.getters['video/getVideos'];
     },
+    getBlock() {
+      return this.$store.state.blocks.blocks.find(el => el.block === 'videos');
+    },
+    getTitle() {
+      return this.getBlock.title;
+    },
+    getText() {
+      return this.getBlock.text.replace(/<\/?p[^>]*>/g, '');
+    },
+    getCaption() {
+      return this.getBlock.note.replace(
+        'YouTube канале.',
+        `<a href="https://www.youtube.com/channel/UCcxMSzN1R4JfW1vLu3swCaQ" target="_blank">YouTube канале.</a>`
+      );
+    },
   },
 };
 </script>
 
 <style scoped>
+.slider__video-caption >>> a {
+  color: #666666;
+}
+
 .slider {
   display: flex;
   flex-direction: column;
@@ -131,6 +140,7 @@ export default {
   background-color: #fbfbfb;
   background-repeat: no-repeat;
   cursor: pointer;
+  outline: none;
 }
 .slider__btn-back {
   width: 40px;
@@ -143,6 +153,7 @@ export default {
   background-color: #fbfbfb;
   background-repeat: no-repeat;
   cursor: pointer;
+  outline: none;
 }
 
 .slider__btn-play {
@@ -188,13 +199,7 @@ export default {
   top: 100%;
   margin-bottom: 0;
 }
-.slider__link {
-  font-style: normal;
-  font-weight: normal;
-  font-size: 12px;
-  line-height: 16px;
-  color: #666666;
-}
+
 @media screen and (max-width: 1280px) {
   .slider__title {
     font-size: 28px;
