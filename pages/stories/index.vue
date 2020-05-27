@@ -28,7 +28,7 @@
       </div>
       <stories-nav
         :totalStories="stories.length"
-        :limitPerPage="limitPerPageData"
+        :limitPerPage="storiesOnPage"
         @onPageChange="changeStartIndex"
       >
       </stories-nav>
@@ -51,8 +51,11 @@ export default {
   data() {
     return {
       search: '',
-      limitPerPageData: 8,
+      storiesOnPage: 8,
       startIndex: 0,
+      storiesOnPageDesktop: 8,
+      storiesOnPageTabled: 9,
+      storiesOnPageMobile: 6,
     };
   },
   computed: {
@@ -67,13 +70,13 @@ export default {
       return this.stories.length;
     },
     pagesAmount() {
-      return Math.ceil(this.totalStories / this.limitPerPage);
+      return Math.ceil(this.totalStories / this.storiesOnPage);
     },
     storiesToRender() {
       return this.stories.filter(
         (item, index) =>
           index >= this.startIndex &&
-          index <= this.startIndex + this.limitPerPageData - 1
+          index <= this.startIndex + this.storiesOnPage - 1
       );
     },
     filteredList: function() {
@@ -87,17 +90,42 @@ export default {
   methods: {
     changeStartIndex(index) {
       console.log('on page:', index);
-      this.startIndex = (index - 1) * this.limitPerPageData;
+      this.startIndex = (index - 1) * this.storiesOnPage;
     },
     storyClickHandler(id) {
       this.$router.push(`/stories/${id}`);
     },
+  },
+  mounted: function() {
+    /*вешаем слушатель на ресайз окна пусть реагирует, нам не жалко */
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        this.storiesOnPage = this.storiesOnPageDesktop;
+      }
+      if (window.innerWidth <= 768 && window.innerWidth > 320) {
+        this.storiesOnPage = this.storiesOnPageTabled;
+      }
+      if (window.innerWidth <= 320) {
+        this.storiesOnPage = this.storiesOnPageMobile;
+      }
+    });
+    /* При загузке станицы выставляем значение */
+    if (window.innerWidth > 768) {
+      this.storiesOnPage = this.storiesOnPageDesktop;
+    }
+    if (window.innerWidth <= 768 && window.innerWidth > 320) {
+      this.storiesOnPage = this.storiesOnPageTabled;
+    }
+    if (window.innerWidth <= 320) {
+      this.storiesOnPage = this.storiesOnPageMobile;
+    }
   },
 };
 </script>
 
 <style scoped>
 .stories-index-container {
+  margin: 100px 0 0;
   font-family: 'Inter', monospace;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -105,7 +133,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
 }
-
+/*<<<<<<< section_tellstory
 .stories__search-container {
   margin: 60px 0 70px;
   display: grid;
@@ -184,42 +212,6 @@ export default {
   margin-top: 60px;
 }
 
-/*<<<<<<< section_tellstory
-.stories__search-container {
-  margin: 60px 0 70px;
-  display: flex;
-}
-
-.stories__search-input {
-  width: 1074px;
-  box-sizing: border-box;
-  border: 1px solid #e8e8e8;
-  min-height: 52px;
-  padding: 0 15px;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 20px;
-}
-
-.stories__search-button {
-  width: 226px;
-  min-height: 52px;
-  background-color: #613a93;
-  color: white;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 19px;
-  text-align: center;
-  margin-left: 20px;
-}
-
-.stories__search-button:hover {
-  opacity: 0.9;
-  transition: opacity 0.3s ease;
-}
-
-*/
 @media screen and (max-width: 1280px) {
   .stories__container {
     column-gap: 40px;
