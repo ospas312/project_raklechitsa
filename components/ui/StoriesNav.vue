@@ -4,12 +4,14 @@
       @btnClick="goFirst()"
       buttonType="'button'"
       :buttonClass="'stories-nav__first'"
+      :disabled="this.active === 1"
       >Первая</nxt-button
     >
     <nxt-button
       @btnClick="goBack(active)"
       buttonType="'button'"
       :buttonClass="'stories-nav__back'"
+      :disabled="this.active === 1"
       >^</nxt-button
     >
     <ul class="stories-nav__ul">
@@ -29,12 +31,14 @@
       @btnClick="goForward(active)"
       buttonType="'button'"
       :buttonClass="'stories-nav__forward'"
+      :disabled="this.active === pagesAmount"
       >^</nxt-button
     >
     <nxt-button
       @btnClick="goLast()"
       buttonType="'button'"
       :buttonClass="'stories-nav__last'"
+      :disabled="this.active === pagesAmount"
       >Последняя</nxt-button
     >
   </nav>
@@ -68,13 +72,15 @@ export default {
     goForward(active) {
       this.active += 1; //активаная страница +1
       console.log('goForward to page', this.active);
-      this.$emit('onGoForward', this.active); // эмитим событие в род компонент
+      this.$emit('onGoForward', this.active); // emit event to parrent component
       if (this.active >= this.pagesAmount) {
         console.log('Код деактивирующий кнопку');
       }
     },
     goBack(active) {
-      console.log('goBack', active);
+      this.active -= 1; //активаная страница +1
+      console.log('goBack to page', this.active);
+      this.$emit('onGoBack', this.active);
     },
   },
 };
@@ -98,12 +104,15 @@ export default {
   align-items: center;
   color: #181818;
   margin-right: 30px;
+  border: none;
+  outline: none;
+  background-color: transparent;
 }
 .stories-nav__first_inactive {
   color: #a2a2a2;
 }
 
-/* refactor with single class */
+/* need a refactor with single class for  */
 .stories-nav__back {
   box-sizing: border-box;
   transform: rotate(-90deg);
@@ -122,6 +131,8 @@ export default {
   border: none;
   outline: none;
   background-color: transparent;
+  font-size: 20px;
+  line-height: 22px;
 }
 .stories-nav__forward:hover {
   cursor: pointer;

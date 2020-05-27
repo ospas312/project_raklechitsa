@@ -31,6 +31,7 @@
         :limitPerPage="limitPerPageData"
         @onPageChange="changeStartIndex"
         @onGoForward="incStartIndex"
+        @onGoBack="decStartIndex"
       >
       </stories-nav>
     </div>
@@ -91,6 +92,10 @@ export default {
       this.startIndex = (index - 1) * this.limitPerPageData;
     },
     incStartIndex(active) {
+      console.log('Active page now', active);
+      this.startIndex = (active - 1) * this.limitPerPageData;
+    },
+    decStartIndex(active) {
       console.log('Active page now', active);
       this.startIndex = (active - 1) * this.limitPerPageData;
     },
