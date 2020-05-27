@@ -1,7 +1,6 @@
 <template>
   <input
     :class="[
-      '',
       inputClass,
       {
         'input_bottom-bordered': bottomBordered,

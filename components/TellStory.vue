@@ -1,17 +1,16 @@
 <template>
   <div class="tell-story">
-    <Container :containerClass="containerClass">
+    <Container :containerClass="'tell-story__container'">
       <div class="tell-story__content-left">
-        <p class="tell-story__title">Расскажите свою историю</p>
+        <p class="tell-story__title">{{ getBlock.title }}</p>
         <div class="tell-story__content-left tell-story__content-left_row">
           <p class="tell-story__subtitle">
-            Мы публикуем новые истории на сайте раз в неделю. Есть 2 варианта
-            поделиться своей историей неизлечимых привычек, навязчивых идей и
-            болезненных привязанностей.
+            {{ getBlock.text.replace(/<\/?p[^>]*>/g, '') }}
           </p>
           <div class="tell-story__variants">
             <button
-              v-for="tab in tabs"
+              v-for="tab in getBlock.extraTexts"
+              currentTab="tab"
               v-bind:key="tab.id"
               v-bind:class="[
                 'tell-story__variant',
@@ -19,16 +18,18 @@
               ]"
               v-on:click="currentTab = tab"
             >
-              {{ tab.id }}-й вариант
+              {{ tab.title }}
             </button>
           </div>
         </div>
       </div>
       <div class="tell-story__content-right">
-        <p class="tell-story__info">{{ currentTab.text }}</p>
+        <p class="tell-story__info">
+          {{ currentTab.text.replace(/<\/?p[^>]*>/g, '') }}
+        </p>
         <Button
-          :buttonType="buttonType"
-          :buttonClass="buttonClass"
+          :buttonType="'button'"
+          :buttonClass="'tell-story__button'"
           @btnClick="open"
           >{{ currentTab.id == 1 ? 'Заполнить форму' : 'Отправить' }}</Button
         >
@@ -38,20 +39,6 @@
 </template>
 
 <script>
-let tabs = [
-  {
-    id: 1,
-    text:
-      'Заполнить подробную форму прямо на сайте и мы опубликуем вашу историю после проверки. Пожалуйста, заполняйте все пункты корректно, если вы испытаете какие-то сложности, воспользуйтесь 2' +
-      '\u2011' +
-      'м вариантом.',
-  },
-  {
-    id: 2,
-    text:
-      'Оставить контакт (почту или номер телефона) и мы свяжемся с вами, зададим вопросы, уточним детали вашей истории.',
-  },
-];
 import Button from '@/components/ui/Button';
 import Container from '@/components/ui/Container';
 export default {
@@ -61,13 +48,15 @@ export default {
   },
   data() {
     return {
-      tabs: tabs,
-      currentTab: tabs[0],
-      button: 'Заполнить форму',
-      buttonClass: 'tell-story__button',
-      buttonType: 'button',
-      containerClass: 'tell-story__container',
+      currentTab: this.$store.state.blocks.blocks.find(
+        el => el.block === 'story'
+      ).extraTexts[0],
     };
+  },
+  computed: {
+    getBlock() {
+      return this.$store.state.blocks.blocks.find(el => el.block === 'story');
+    },
   },
   methods: {
     open() {
@@ -187,6 +176,9 @@ export default {
   font-style: normal;
   font-weight: normal;
   line-height: 22px;
+}
+.tell-story__info:only-child {
+  margin: 0;
 }
 @media screen and (max-width: 1280px) {
   .tell-story__container {

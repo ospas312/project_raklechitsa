@@ -3,7 +3,7 @@
     <Container :containerClass="'footer__container'">
       <div class="footer__content">
         <h5 class="footer__title">
-          Спасибо всем, кто помог состояться этому проекту
+          {{ getBlock.title }}
         </h5>
         <!--<div class="footer__menu">
           <nuxt-link class="footer__menu-link" to="/">Главная</nuxt-link>
@@ -36,7 +36,9 @@
         </div>
       </div>
       <div class="footer__info">
-        <p class="footer__info-name">Рак Лечится {{ timestamp }}</p>
+        <p class="footer__info-name">
+          {{ getBlock.text.replace(/<\/?p[^>]*>/g, '') }} {{ timestamp }}
+        </p>
         <p class="footer__info-create">
           Сделано студентами
           <a href="https://praktikum.yandex.ru/" class="footer__info-create"
@@ -62,6 +64,11 @@ export default {
     return {
       timestamp: new Date().getFullYear(),
     };
+  },
+  computed: {
+    getBlock() {
+      return this.$store.state.blocks.blocks.find(el => el.block === 'footer');
+    },
   },
   methods: {
     open() {
