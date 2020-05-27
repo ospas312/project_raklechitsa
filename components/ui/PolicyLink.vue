@@ -33,7 +33,7 @@ export default {
   margin: 0;
   width: 50%;
 }
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 768px) {
   .policy-link {
     width: 100%;
     font-size: 11px;

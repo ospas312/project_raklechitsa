@@ -48,7 +48,7 @@ export default {
   },
   methods: {
     open() {
-      return this.$store.commit('popup/open');
+      return this.$store.commit('popup/openSocial');
     },
   },
 };

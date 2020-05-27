@@ -44,6 +44,13 @@ export default {
   object-fit: contain;
   margin-bottom: 20px;
 }
+
+@media screen and (max-width: 1024px) {
+  .story__image {
+    margin-bottom: 14px;
+  }
+}
+
 .story__image:hover {
   cursor: pointer;
 }
@@ -57,6 +64,14 @@ export default {
   color: #000000;
   margin: 0 0 14px 0;
 }
+
+@media screen and (max-width: 1024px) {
+  .story__title {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+
 .story__quote {
   max-width: 250px;
   font-family: Inter;
@@ -66,15 +81,5 @@ export default {
   line-height: 18px;
   color: #666666;
   margin: 0;
-}
-
-/* попробуем закрыть вопрос модификаторами к кажому элементу для страницы с детальной информацией истории */
-
-.story__image-detail {
-  width: 580px;
-  height: auto;
-  object-fit: contain;
-}
-.story__title-detail {
 }
 </style>

@@ -68,7 +68,7 @@ export default {
 </script>
 <style scoped>
 ::v-deep br {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   content: '';
   display: block;
 }
@@ -178,6 +178,7 @@ export default {
   display: flex;
   flex-direction: column;
   max-width: 570px;
+  min-height: 247px;
 }
 
 .about__description-title-container {

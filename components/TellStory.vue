@@ -29,9 +29,9 @@
         <Button
           :buttonType="buttonType"
           :buttonClass="buttonClass"
-          :buttonText="button"
           @btnClick="open"
-        ></Button>
+          >{{ currentTab.id == 1 ? 'Заполнить форму' : 'Отправить' }}</Button
+        >
       </div>
     </Container>
   </div>
@@ -71,7 +71,10 @@ export default {
   },
   methods: {
     open() {
-      return this.$store.commit('popup/open');
+      if (this.currentTab.id == 1) {
+        return this.$store.commit('popup/open');
+      }
+      return this.$store.commit('popup/openContacts');
     },
     openContacts() {
       return this.$store.commit('popup/openContacts');
@@ -313,7 +316,7 @@ export default {
     margin: 0px 0 50px 0;
   }
 }
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 321px) {
   .tell-story {
     font-size: 13px;
   }

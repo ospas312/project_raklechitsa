@@ -2,35 +2,50 @@
   <div class="iframe">
     <iframe
       class="iframe__video"
-      :src="url"
-      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; mute"
+      :src="src"
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen
-    ></iframe>
+    />
   </div>
 </template>
 
 <script>
 export default {
-  props: ['url'],
+  props: {
+    src: String,
+  },
 };
 </script>
 
 <style scoped>
 .iframe {
+  display: block;
   width: 100%;
-  padding-bottom: calc((9 * 100%) / 16);
   position: relative;
+  padding-bottom: calc(450 * 100% / 867);
+  max-width: 867px;
 }
 
 .iframe__video {
-  display: block;
+  border: 0;
   width: 100%;
   height: 100%;
-  border: 0;
   position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .iframe {
+    max-width: 580px;
+    margin: 0 auto;
+    padding-bottom: calc(300 * 100% / 580);
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .iframe {
+    max-width: 290px;
+    margin: 0;
+    padding-bottom: calc(290 * 100% / 150);
+  }
 }
 </style>
