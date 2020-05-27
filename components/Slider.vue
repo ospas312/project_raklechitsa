@@ -6,37 +6,25 @@
           <div class="slider__text-column">
             <div class="slider__text-container">
               <h2 class="slider__title">
-                Истории людей, победивших рак, но не свои привычки
+                {{ getTitle }}
               </h2>
               <p class="slider__text">
-                Есть вещи, которые не лечатся. Вещи ставшие частью нашего «я»,
-                фобии, страхи. Но это точно не рак. Рак лечится. Лучшее
-                доказательство — люди с их историями.
+                {{ getText }}
               </p>
             </div>
             <div class="slider__btn-container">
-              <button class="slider__btn-back" />
-              <button class="slider__btn-forward" />
+              <button class="slider__btn-back swiper-button_prev" />
+              <button class="slider__btn-forward swiper-button_next" />
             </div>
           </div>
           <div class="slider__video-column">
-            <div class="slider__video-overlay">
-              <iframe src="" class="slider__video" />
-              <button class="slider__btn-play" />
-            </div>
+            <swiper :videos="videos" />
+            <button class="slider__btn-play" />
             <div class="slider__btn-video-container">
-              <button class="slider__btn-back" />
-              <button class="slider__btn-forward" />
+              <button class="slider__btn-back swiper-button_prev" />
+              <button class="slider__btn-forward swiper-button_next" />
             </div>
-            <p class="slider__video-caption">
-              Все видео вы можете найте на нашем
-              <a
-                class="slider__link"
-                href="https://www.youtube.com/channel/UCcxMSzN1R4JfW1vLu3swCaQ"
-                target="_blank"
-                >YouTube канале.</a
-              >
-            </p>
+            <p class="slider__video-caption" v-html="getCaption"></p>
           </div>
         </div>
       </div>
@@ -49,17 +37,44 @@
 </template>
 
 <script>
-import Slogan from '@/components/ui/Slogan.vue';
+import Slogan from '@/components/ui/Slogan';
 import Container from '@/components/ui/Container';
+import Swiper from '@/components/ui/Swiper';
+
 export default {
   components: {
+    swiper: Swiper,
     slogan: Slogan,
     container: Container,
+  },
+  computed: {
+    videos() {
+      return this.$store.getters['video/getVideos'];
+    },
+    getBlock() {
+      return this.$store.state.blocks.blocks.find(el => el.block === 'videos');
+    },
+    getTitle() {
+      return this.getBlock.title;
+    },
+    getText() {
+      return this.getBlock.text.replace(/<\/?p[^>]*>/g, '');
+    },
+    getCaption() {
+      return this.getBlock.note.replace(
+        'YouTube канале.',
+        `<a href="https://www.youtube.com/channel/UCcxMSzN1R4JfW1vLu3swCaQ" target="_blank">YouTube канале.</a>`
+      );
+    },
   },
 };
 </script>
 
 <style scoped>
+.slider__video-caption >>> a {
+  color: #666666;
+}
+
 .slider {
   display: flex;
   flex-direction: column;
@@ -77,7 +92,6 @@ export default {
   margin-top: 100px;
   box-sizing: border-box;
 }
-
 .slider__text-column {
   display: flex;
   flex-direction: column;
@@ -85,12 +99,10 @@ export default {
   min-width: 443px;
   margin-right: 10px;
 }
-
 .slider__text-container {
   display: flex;
   flex-direction: column;
 }
-
 .slider__title {
   font-style: normal;
   font-weight: 600;
@@ -100,7 +112,6 @@ export default {
   margin-top: 0;
   max-width: 413px;
 }
-
 .slider__text {
   font-style: normal;
   font-weight: normal;
@@ -112,15 +123,13 @@ export default {
   margin-bottom: 0;
   max-width: 343px;
 }
-
 .slider__btn-container {
   display: flex;
+  margin-bottom: 26px;
 }
-
 .slider__btn-video-container {
   display: none;
 }
-
 .slider__btn-forward {
   width: 40px;
   height: 40px;
@@ -131,8 +140,8 @@ export default {
   background-color: #fbfbfb;
   background-repeat: no-repeat;
   cursor: pointer;
+  outline: none;
 }
-
 .slider__btn-back {
   width: 40px;
   height: 40px;
@@ -144,17 +153,7 @@ export default {
   background-color: #fbfbfb;
   background-repeat: no-repeat;
   cursor: pointer;
-}
-
-.slider__video-overlay {
-  width: 100%;
-  padding-bottom: calc(450 * 100% / 867);
-  position: relative;
-  background-color: #fbfbfb;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
+  outline: none;
 }
 
 .slider__btn-play {
@@ -173,16 +172,15 @@ export default {
   border-radius: 50%;
   background-size: contain;
 }
-
 .slider__btn-play:hover {
   background-image: url('../assets/images/playButtonHover.svg');
 }
-
 .slider__video-column {
   width: 100%;
   position: relative;
+  max-width: 867px;
+  overflow: hidden;
 }
-
 .slider__video {
   border: 0;
   position: absolute;
@@ -191,7 +189,6 @@ export default {
   width: 100%;
   height: 100%;
 }
-
 .slider__video-caption {
   margin-top: 10px;
   font-style: normal;
@@ -199,17 +196,8 @@ export default {
   font-size: 12px;
   line-height: 16px;
   color: #666666;
-  position: absolute;
   top: 100%;
-  left: 0;
-}
-
-.slider__link {
-  font-style: normal;
-  font-weight: normal;
-  font-size: 12px;
-  line-height: 16px;
-  color: #666666;
+  margin-bottom: 0;
 }
 
 @media screen and (max-width: 1280px) {
@@ -218,7 +206,6 @@ export default {
     line-height: 32px;
     max-width: 367px;
   }
-
   .slider__btn-play {
     width: 76px;
     height: 76px;
@@ -226,19 +213,13 @@ export default {
     top: calc(50% - (76px / 2));
     left: calc(50% - (76px / 2));
   }
-
   .slider__text {
     font-size: 16px;
     line-height: 20px;
     max-width: 305px;
   }
-
   .slider__container {
     margin-top: 90px;
-  }
-
-  .slider__video-caption {
-    margin-bottom: 64px;
   }
 
   .slider__text-column {
@@ -246,48 +227,41 @@ export default {
     margin-right: 40px;
   }
 }
-
 @media screen and (max-width: 1024px) {
   .slider__title {
     font-size: 24px;
     line-height: 28px;
     max-width: 288px;
   }
-
   .slider__text {
     font-size: 13px;
     line-height: 16px;
     max-width: 260px;
   }
 }
-
 .slider__text-column {
   min-width: 288px;
   margin-right: 30px;
 }
-
 @media screen and (max-width: 768px) {
   .slider {
     align-items: center;
   }
-
   .slider__wrap {
     align-items: center;
+    margin-bottom: 80px;
   }
-
   .slider__container {
     flex-direction: column;
     align-items: center;
     margin-top: 80px;
     width: 100%;
   }
-
   .slider__text-column {
     min-width: none;
     margin-bottom: 60px;
     margin-right: 0;
   }
-
   .slider__title {
     font-size: 24px;
     line-height: 28px;
@@ -295,33 +269,22 @@ export default {
     margin-bottom: 26px;
     max-width: 380px;
   }
-
   .slider__text {
     font-size: 13px;
     line-height: 16px;
     max-width: 380px;
   }
-
   .slider__video-caption {
-    left: 54px;
+    margin-left: 54px;
   }
-
   .slider__btn-container {
     display: none;
   }
-
   .slider__video-column {
     width: 100%;
     margin: 0;
-    display: flex;
-    justify-content: center;
     position: relative;
-  }
-
-  .slider__video-overlay {
-    margin-left: 54px;
-    margin-right: 54px;
-    padding-bottom: calc(300 * 100% / 580);
+    overflow: visible;
   }
 
   .slider__btn-video-container {
@@ -332,20 +295,22 @@ export default {
     top: calc(50% - 20px);
     left: auto;
     right: auto;
+    z-index: 1;
   }
-
   .slider__video-caption {
-    width: calc(90% * 0.75);
-    align-self: center;
+    position: absolute;
+    left: 54;
+    top: 100%;
   }
-
   @media screen and (max-width: 600px) {
+    .slider__wrap {
+      margin-bottom: 50px;
+    }
     .slider__title {
       font-size: 18px;
       line-height: 21px;
       text-align: left;
     }
-
     .slider__text {
       font-size: 13px;
       line-height: 16px;
@@ -353,33 +318,21 @@ export default {
     .slider__video-caption {
       display: none;
     }
-
     .slider {
       width: 100%;
       margin: auto;
     }
-
     .slider__container {
       width: 100%;
     }
-
     .slider__text-column {
       width: 100%;
     }
-
     .slider__video-column {
       width: 100%;
-      margin-bottom: 50px;
     }
-
     .slider__video-caption {
       width: 100%;
-    }
-
-    .slider__video-overlay {
-      width: 100%;
-      padding-bottom: calc(150 * 100% / 289);
-      margin: 0;
     }
 
     .slider__btn-play {

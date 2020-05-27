@@ -6,18 +6,18 @@
           {{ getTitle }}
         </h2>
         <p class="about__subtitle">
-          О проекте
+          {{ getTitle }}
         </p>
         <div class="about__text-container">
           <p class="about__description-creators">
-            {{ getSubtitle }}
+            {{ getAbout }}
           </p>
           <div class="about__description-container">
             <ul class="about__creators-list">
               <li
-                v-for="aboutCreators in getText"
-                :id="aboutCreators.id"
-                :key="aboutCreators.id"
+                v-for="(aboutCreators, index) in getCreators"
+                :id="index"
+                :key="index"
                 class="about__list-item"
                 @click="toggleTextState($event)"
               >
@@ -43,32 +43,42 @@ export default {
 
   data() {
     return {
-      defaultText: this.$store.state.about.extraTexts[0].text,
+      defaultText: '',
     };
   },
   computed: {
-    getText() {
-      return this.$store.getters['about/getAboutExtraTexts'];
+    getBlock() {
+      return this.$store.state.blocks.blocks.find(el => el.block === 'about');
     },
     getTitle() {
-      return this.$store.getters['about/getTextTitle'];
+      return this.getBlock.title;
     },
-    getSubtitle() {
-      return this.$store.getters['about/getTextSubtitle'];
+    getAbout() {
+      return this.getBlock.text.replace(/<\/?p[^>]*>/g, '');
+    },
+    getCreators() {
+      return this.getBlock.extraTexts;
     },
   },
   methods: {
     toggleTextState(event) {
-      this.defaultText = this.$store.state.about.extraTexts[
-        event.target.id - 1
-      ].text;
+      this.defaultText = this.getBlock.extraTexts[event.target.id].text.replace(
+        /<\/?p[^>]*>/g,
+        ''
+      );
     },
+  },
+  mounted: function() {
+    this.defaultText = this.getBlock.extraTexts[0].text.replace(
+      /<\/?p[^>]*>/g,
+      ''
+    );
   },
 };
 </script>
 <style scoped>
-::v-deep br {
-  margin-bottom: 20px;
+.about__description >>> br {
+  margin-bottom: 10px;
   content: '';
   display: block;
 }
@@ -161,6 +171,7 @@ export default {
   line-height: 22px;
   color: #dedede;
   margin-top: 0;
+  margin-bottom: 0;
 }
 
 .about__description-creators {
@@ -177,7 +188,8 @@ export default {
 .about__description-column {
   display: flex;
   flex-direction: column;
-  max-width: 570px;
+  max-width: 640px;
+  min-height: 242px;
 }
 
 .about__description-title-container {
@@ -230,7 +242,7 @@ export default {
     line-height: 19px;
   }
 
-  .about__description-text {
+  .about__description {
     font-size: 15px;
     line-height: 19px;
     max-width: 447px;
@@ -246,7 +258,7 @@ export default {
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 956px) {
   .about {
     padding: 0;
   }
@@ -290,9 +302,13 @@ export default {
     line-height: 19px;
   }
 
-  .about__description-text {
+  .about__description {
     font-size: 15px;
     line-height: 19px;
+  }
+
+  .about__description-column {
+    min-height: 295px;
   }
 
   .about__description-creators {
@@ -300,6 +316,7 @@ export default {
     font-size: 13px;
     line-height: 16px;
     width: 100%;
+    max-width: 100%;
   }
 
   .about__list-item {

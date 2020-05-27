@@ -133,7 +133,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
 }
-
 .stories__search-container {
   margin: 60px 0 70px;
   display: grid;
@@ -147,7 +146,6 @@ export default {
     grid-template-rows: 48px;
   }
 }
-
 @media screen and (max-width: 1024px) {
   .stories__search-container {
     margin: 40px 0 46px;
@@ -155,13 +153,11 @@ export default {
     grid-template-rows: 46px;
   }
 }
-
 @media screen and (max-width: 768px) {
   .stories__search-container {
     margin: 50px 0 60px;
   }
 }
-
 @media screen and (max-width: 600px) {
   .stories__search-container {
     grid-template-columns: 1fr 48px;
@@ -178,7 +174,6 @@ export default {
   font-size: 18px;
   line-height: 20px;
 }
-
 .stories__search-button {
   width: 100%;
   background-color: #613a93;
@@ -189,7 +184,6 @@ export default {
   text-align: center;
   border: none;
 }
-
 @media screen and (max-width: 600px) {
   .stories__search-button {
     width: 100%;
@@ -211,14 +205,12 @@ export default {
   row-gap: 70px;
   margin-top: 60px;
 }
-
 @media screen and (max-width: 1280px) {
   .stories__container {
     column-gap: 40px;
     row-gap: 60px;
   }
 }
-
 @media screen and (max-width: 1024px) {
   .stories__container {
     column-gap: 30px;
@@ -232,7 +224,6 @@ export default {
     row-gap: 40px;
   }
 }
-
 @media screen and (max-width: 600px) {
   .stories__container {
     grid-template-columns: 1fr 1fr;
@@ -240,7 +231,6 @@ export default {
     row-gap: 40px;
   }
 }
-
 @media screen and (max-width: 320px) {
   .stories__container {
     grid-template-columns: 1fr;
@@ -248,7 +238,6 @@ export default {
     row-gap: 30px;
   }
 }
-
 @media screen and (max-width: 600px) {
   .stories__search-button {
     width: 48px;
@@ -259,7 +248,6 @@ export default {
     background-position: center;
   }
 }
-
 .stories__title {
   margin: 0 0 70px 0;
   max-width: 413px;
@@ -277,7 +265,6 @@ export default {
     line-height: 32px;
   }
 }
-
 @media screen and (max-width: 1024px) {
   .stories__title {
     margin: 0 0 46px 0;
@@ -291,7 +278,6 @@ export default {
     text-align: center;
   }
 }
-
 @media screen and (max-width: 320px) {
   .stories__title {
     margin: 0 auto 40px;
