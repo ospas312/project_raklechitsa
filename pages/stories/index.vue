@@ -1,37 +1,39 @@
 <template>
   <container>
     <div class="stories-index-container">
-      <h2 class="stories__title">Истории неизлечимых привычек</h2>
+      <h2 class="stories__title">
+        Истории неизлечимых привычек
+      </h2>
       <div class="stories__search-container">
-        <input class="stories__search-input" type="text" v-model="search" />
+        <input v-model="search" class="stories__search-input" type="text" />
         <nxt-button
           class="stories__search-button"
           type="button"
           @click="filteredList"
-          >Поиск</nxt-button
         >
+          Поиск
+        </nxt-button>
       </div>
       <div class="stories__container">
         <story
           v-for="story in storiesToRender"
           :key="story.id"
-          :storyImageSrc="story.storyImageSrcData"
-          :storyImageAlt="story.storyImageAltData"
-          :storyTitle="story.storyTitleData"
-          :storyQuote="story.storyQuoteData"
-          :storyClass="'story'"
-          :storyImageClass="'story__image'"
-          :storyTitleClass="'story__title'"
-          :storyQuoteClass="'story__quote'"
+          :story-image-src="story.storyImageSrcData"
+          :story-image-alt="story.storyImageAltData"
+          :story-title="story.storyTitleData"
+          :story-quote="story.storyQuoteData"
+          :story-class="'story'"
+          :story-image-class="'story__image'"
+          :story-title-class="'story__title'"
+          :story-quote-class="'story__quote'"
           @storyClick="storyClickHandler(story.id)"
         />
       </div>
       <stories-nav
-        :totalStories="stories.length"
-        :limitPerPage="storiesOnPage"
+        :total-stories="stories.length"
+        :limit-per-page="storiesOnPage"
         @onPageChange="changeStartIndex"
-      >
-      </stories-nav>
+      />
     </div>
   </container>
 </template>
@@ -41,6 +43,7 @@ import Story from '@/components/ui/Story.vue';
 import Button from '@/components/ui/Button.vue';
 import StoriesNav from '@/components/ui/StoriesNav.vue';
 import Container from '@/components/ui/Container';
+
 export default {
   components: {
     story: Story,
@@ -59,12 +62,12 @@ export default {
     };
   },
   computed: {
-    stories: function() {
+    stories() {
       return this.$store.getters['stories/getStories'];
     },
     /* Потом сделаем как у Палтуха когда  json будут развернуты на сервере */
     currentStory() {
-      return this.stories.filter(item => item['id'] === this.$route.params.id);
+      return this.stories.filter(item => item.id === this.$route.params.id);
     },
     totalStories() {
       return this.stories.length;
@@ -79,25 +82,14 @@ export default {
           index <= this.startIndex + this.storiesOnPage - 1
       );
     },
-    filteredList: function() {
-      return this.stories.filter(story => {
-        return story.storyTitleData
-          .toLowerCase()
-          .includes(this.search.toLowerCase());
-      });
+    filteredList() {
+      return this.stories.filter(story =>
+        story.storyTitleData.toLowerCase().includes(this.search.toLowerCase())
+      );
     },
   },
-  methods: {
-    changeStartIndex(index) {
-      console.log('on page:', index);
-      this.startIndex = (index - 1) * this.storiesOnPage;
-    },
-    storyClickHandler(id) {
-      this.$router.push(`/stories/${id}`);
-    },
-  },
-  mounted: function() {
-    /*вешаем слушатель на ресайз окна пусть реагирует, нам не жалко */
+  mounted() {
+    /* вешаем слушатель на ресайз окна пусть реагирует, нам не жалко */
     window.addEventListener('resize', () => {
       if (window.innerWidth > 768) {
         this.storiesOnPage = this.storiesOnPageDesktop;
@@ -120,6 +112,15 @@ export default {
       this.storiesOnPage = this.storiesOnPageMobile;
     }
   },
+  methods: {
+    changeStartIndex(index) {
+      console.log('on page:', index);
+      this.startIndex = (index - 1) * this.storiesOnPage;
+    },
+    storyClickHandler(id) {
+      this.$router.push(`/stories/${id}`);
+    },
+  },
 };
 </script>
 
@@ -133,7 +134,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
 }
-/*<<<<<<< section_tellstory
+
 .stories__search-container {
   margin: 60px 0 70px;
   display: grid;

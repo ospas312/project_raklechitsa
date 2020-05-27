@@ -6,6 +6,9 @@ export default {
   router: {
     middleware: 'basicData',
   },
+  env: {
+    BASE_URL: 'https://strapi.kruzhok.io',
+  },
   head: {
     htmlAttrs: {
       lang: 'ru',
