@@ -4,23 +4,19 @@
       <div class="full-story__container">
         <img
           class="full-story__image"
-          :src="currentStory[0].storyImageSrcData"
-          :alt="currentStory[0].storyImageAltData"
+          :src="`${baseUrl}${currentStory.ImageUrl[0].url}`"
+          :alt="currentStory.author"
         />
-
         <p class="full-story__author">
-          {{ `${currentStory[0].storyTitleData}:` }}
-          <span class="full-story__quote">{{
-            currentStory[0].storyQuoteData
-          }}</span>
+          {{ `${currentStory.author}:` }}
+          <span class="full-story__quote">{{ currentStory.title }}</span>
         </p>
         <div class="full-story__inner-container">
           <a href="#" class="full-story__share">Поделитесь &UpperRightArrow;</a>
-          <p class="full-story__date">{{ currentStory[0].storyDateData }}</p>
+          <p class="full-story__date">{{ dateFormat(currentStory.date) }}</p>
         </div>
       </div>
-      <p class="full-story__text">{{ currentStory[0].storytextData }}</p>
-
+      <p class="full-story__text" v-html="currentStory.text"></p>
       <div class="full-story__flying-borders">
         <a href="#" class="full-story__share-social"
           >Поделитесь этой статьей в своих социальных сетях &UpperRightArrow;</a
@@ -30,14 +26,14 @@
         <story
           v-for="story in stories.slice(0, storiesOnPage)"
           :key="story.id"
-          :storyImageSrc="story.storyImageSrcData"
-          :storyImageAlt="story.storyImageAltData"
-          :storyTitle="story.storyTitleData"
-          :storyQuote="story.storyQuoteData"
+          :storyImageSrc="`${baseUrl}${story.ImageUrl[0].url}`"
+          :storyImageAlt="story.author"
+          :storyAuthor="story.author"
+          :storyTitle="story.title"
           :storyClass="'story'"
           :storyImageClass="'story__image'"
+          :storyAuthorClass="'story__author'"
           :storyTitleClass="'story__title'"
-          :storyQuoteClass="'story__quote'"
           @storyClick="storyClickHandler(story.id)"
         />
       </div>
@@ -68,19 +64,49 @@ export default {
       storiesOnPageDesktop: 4,
       storiesOnPageTabled: 3,
       storiesOnPageMobile: 2,
+      baseUrl: process.env.BASE_URL,
     };
   },
+  async fetch({ store, route }) {
+    await store.dispatch('stories/fetchStoryWithId', { id: route.params.id });
+  },
+  beforeMount() {
+    this.$store.dispatch('stories/fetchStories');
+  },
+
   computed: {
     stories() {
       return this.$store.getters['stories/getStories'];
     },
-    /* Потом сделаем как у А. Палтуха когда  json будут развернуты на сервере */
     currentStory() {
-      return this.stories.filter(item => item['id'] === this.$route.params.id);
+      return this.$store.getters['stories/getCurrentStory'];
+    },
+  },
+  methods: {
+    dateFormat(dateString) {
+      const date = new Date(dateString);
+      const monthNames = [
+        'января',
+        'февраля',
+        'марта',
+        'апреля',
+        'мая',
+        'июня',
+        'июля',
+        'августа',
+        'сентября',
+        'октября',
+        'ноября',
+        'декабря',
+      ];
+      const day = date.getDate();
+      const monthIndex = date.getMonth();
+      const monthName = monthNames[monthIndex];
+      const year = date.getFullYear();
+      return `${day} ${monthName} ${year}`;
     },
   },
   mounted: function() {
-    /*вешаем слушатель на ресайз окна пусть реагирует, нам не жалко */
     window.addEventListener('resize', () => {
       if (window.innerWidth > 768) {
         this.storiesOnPage = this.storiesOnPageDesktop;
@@ -248,7 +274,17 @@ export default {
   padding: 130px 270px 70px;
   margin: 0;
 }
+.full-story__text >>> p {
+  font-size: 22px;
+  line-height: 30px;
+}
 
+.full-story__text >>> blockquote {
+  font-size: 22px;
+  line-height: 30px;
+  margin: 0;
+  font-weight: 600;
+}
 @media screen and (max-width: 1280px) {
   .full-story__text {
     padding: 120px 230px 60px;

@@ -6,14 +6,14 @@
         <story
           v-for="story in stories.slice(0, storiesOnPage)"
           :key="story.id"
-          :storyImageSrc="story.storyImageSrcData"
-          :storyImageAlt="story.storyImageAltData"
-          :storyTitle="story.storyTitleData"
-          :storyQuote="story.storyQuoteData"
+          :storyImageSrc="`${baseUrl}${story.ImageUrl[0].url}`"
+          :storyImageAlt="story.author"
+          :storyAuthor="story.author"
+          :storyTitle="story.title"
           :storyClass="'story'"
           :storyImageClass="'story__image'"
+          :storyAuthorClass="'story__author'"
           :storyTitleClass="'story__title'"
-          :storyQuoteClass="'story__quote'"
           @storyClick="storyClickHandler(story.id)"
         />
       </div>
@@ -42,6 +42,9 @@ export default {
       this.$router.push(`/stories/${id}`);
     },
   },
+  beforeMount() {
+    this.$store.dispatch('stories/fetchStories');
+  },
   computed: {
     stories() {
       return this.$store.getters['stories/getStories'];
@@ -54,10 +57,10 @@ export default {
       storiesOnPageDesktop: 8,
       storiesOnPageTabled: 9,
       storiesOnPageMobile: 6,
+      baseUrl: process.env.BASE_URL,
     };
   },
   mounted: function() {
-    /*вешаем слушатель на ресайз окна пусть реагирует, нам не жалко */
     window.addEventListener('resize', () => {
       if (window.innerWidth > 768) {
         this.storiesOnPage = this.storiesOnPageDesktop;
@@ -69,7 +72,6 @@ export default {
         this.storiesOnPage = this.storiesOnPageMobile;
       }
     });
-    /* При загузке станицы выставляем значение */
     if (window.innerWidth > 768) {
       this.storiesOnPage = this.storiesOnPageDesktop;
     }

@@ -6,8 +6,8 @@
       :alt="storyImageAlt"
       @click="$emit('storyClick')"
     />
+    <p :class="storyAuthorClass">{{ storyAuthor }}</p>
     <p :class="storyTitleClass">{{ storyTitle }}</p>
-    <p :class="storyQuoteClass">{{ storyQuote }}</p>
     <p v-if="storyText != undefined" :class="storyTextClass">{{ storyText }}</p>
   </div>
 </template>
@@ -19,12 +19,12 @@ export default {
     'storyImageClass',
     'storyImageSrc',
     'storyImageAlt',
+    'storyAuthor',
     'storyTitle',
-    'storyQuote',
     'storyTextClass',
     'storyText',
-    'storyQuoteClass',
     'storyTitleClass',
+    'storyAuthorClass',
   ],
 };
 </script>
@@ -54,7 +54,7 @@ export default {
 .story__image:hover {
   cursor: pointer;
 }
-.story__title {
+.story__author {
   max-width: 300px;
   font-family: Inter;
   font-style: normal;
@@ -66,13 +66,13 @@ export default {
 }
 
 @media screen and (max-width: 1024px) {
-  .story__title {
+  .story__author {
     font-size: 18px;
     line-height: 22px;
   }
 }
 
-.story__quote {
+.story__title {
   max-width: 250px;
   font-family: Inter;
   font-style: normal;

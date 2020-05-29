@@ -173,6 +173,7 @@ export default {
   grid-template-columns: repeat(auto-fit, 58px);
   grid-template-rows: repeat(auto-fit, 58px);
   column-gap: 10px;
+  row-gap: 10px;
   padding: 0;
   margin: 0;
   max-width: 330px; /* 58px*5+40px  */
