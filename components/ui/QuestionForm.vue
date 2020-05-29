@@ -1,5 +1,5 @@
 <template>
-  <div :class="['question-form', questionFormClass]">
+  <div class="question-form">
     <div>
       <h3 class="question-form__title">{{ currentQuestion.title }}</h3>
       <p class="question-form__question">
@@ -16,30 +16,34 @@
     <InputTest
       placeholder="Напишите тут"
       :bottomBordered="true"
-      :class="[
-        'question-form__input',
-        { 'question-form_none': isLastForm == true },
-      ]"
+      :class="'question-form__input'"
       v-model="answer"
     ></InputTest>
     <div class="question-form__buttons">
       <Button
         :disabled="this.$store.state.quiz.currentQuestion === 0"
-        :buttonClass="[
-          buttonClass,
-          { 'question-form_none': isLastForm == true },
-        ]"
-        :buttonType="buttonType"
+        :buttonClass="'question-form__button'"
+        :buttonType="'button'"
         @btnClick="prevQuestion"
       >
         {{ 'Назад' }}
       </Button>
       <Button
-        :buttonClass="buttonClass"
-        :buttonType="buttonType"
+        v-if="!isLastForm"
+        :disabled="answer === ''"
+        :buttonClass="'question-form__button'"
+        :buttonType="'button'"
         @btnClick="nextQuestion"
       >
-        {{ isLastForm ? 'Закрыть' : isLastQuestion ? 'Далее' : 'Отправить' }}
+        {{ isLastQuestion ? 'Далее' : 'Отправить' }}
+      </Button>
+      <Button
+        v-if="isLastForm"
+        :buttonClass="'question-form__button'"
+        :buttonType="'button'"
+        @btnClick="nextQuestionClose"
+      >
+        {{ 'Закрыть' }}
       </Button>
       <PolicyLink :class="[{ 'question-form_none': isLastQuestion == true }]" />
     </div>
@@ -58,12 +62,10 @@ export default {
   },
   data() {
     return {
-      buttonClass: 'question-form__button',
-      buttonType: 'button',
       answer: '',
     };
   },
-  props: {
+  /*props: {
     title: {
       type: String,
       required: true,
@@ -74,13 +76,13 @@ export default {
       required: true,
       default: '',
     },
-  },
+  },*/
   computed: {
     isLastQuestion() {
       const { quiz } = this.$store.state;
       const { currentQuestion, questions } = quiz;
       const questionsLength = questions.length;
-      if (questionsLength != currentQuestion + 2) {
+      if (questionsLength != currentQuestion) {
         return true;
       }
       return false;
@@ -88,8 +90,11 @@ export default {
     isLastForm() {
       const { quiz } = this.$store.state;
       const { currentQuestion, questions } = quiz;
-      const questionsLength = questions.length;
-      if (questionsLength != currentQuestion + 1) {
+      const questionsLength = Object.keys(questions).length;
+      console.log(quiz);
+      console.log(currentQuestion);
+      console.log(questionsLength);
+      if (currentQuestion != questionsLength) {
         return false;
       }
       return true;
@@ -115,6 +120,12 @@ export default {
     async prevQuestion() {
       await this.$store.dispatch('quiz/prev_question');
       this.answer = this.initialAnswer || '';
+    },
+    async nextQuestionClose() {
+      console.log('send');
+      this.isGratitudeShow = true;
+      this.$store.commit('popup/toggleIconClose');
+      await this.$store.dispatch('quiz/send_question');
     },
   },
 };
@@ -148,6 +159,8 @@ export default {
   line-height: 24px;
   color: #000;
   margin: 0;
+  min-height: 72px;
+  padding-bottom: 76px;
 }
 .question-form__question-detail {
   color: #666;
@@ -168,6 +181,7 @@ export default {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  padding-top: 200px;
 }
 .question-form__button {
   width: 226px;
@@ -207,6 +221,10 @@ export default {
   .question-form__question {
     font-size: 16px;
     line-height: 22px;
+    padding-bottom: 19px;
+  }
+  .question-form__buttons {
+    padding-top: 170px;
   }
 }
 @media screen and (max-width: 1024px) {
@@ -227,6 +245,10 @@ export default {
   .question-form__question {
     font-size: 15px;
     line-height: 22px;
+    padding-bottom: 35px;
+  }
+  .question-form__buttons {
+    padding-top: 174px;
   }
 }
 @media screen and (max-width: 768px) {
@@ -247,6 +269,10 @@ export default {
   .question-form__question {
     font-size: 15px;
     line-height: 19px;
+    padding-bottom: 15px;
+  }
+  .question-form__buttons {
+    padding-top: 174px;
   }
 }
 @media screen and (max-width: 320px) {
@@ -271,10 +297,15 @@ export default {
   .question-form__title {
     font-size: 18px;
     line-height: 21px;
+    margin-bottom: 30px;
   }
   .question-form__question {
     font-size: 13px;
     line-height: 16px;
+    padding-bottom: 0;
+  }
+  .question-form__buttons {
+    padding-top: 250px;
   }
 }
 </style>

@@ -48,10 +48,10 @@
       /></label>
     </fieldset>
     <div class="contacts__submit-container">
-      <button class="contacts__submit-button" :type="buttonType">
+      <button class="contacts__submit-button" :buttonType="'button'">
         Отправить
       </button>
-      <policyLink :class="contacts__policy - link" />
+      <policyLink :class="'contacts__policy - link'" />
     </div>
   </form>
 </template>
@@ -73,7 +73,7 @@ export default {
 <style scoped>
 .contacts {
   height: 100%;
-  overflow: scroll;
+  /*overflow: scroll;*/
 }
 .contacts__title {
   font-weight: 600;

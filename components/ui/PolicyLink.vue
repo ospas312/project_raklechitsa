@@ -1,6 +1,7 @@
 <template>
   <p class="policy-link">
     Нажимая на кнопку «отправить», вы даете согласие на&nbsp;<nuxt-link
+      target="_blank"
       to="/policy"
       class="policy-link__link"
     >
