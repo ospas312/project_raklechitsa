@@ -1,6 +1,6 @@
 <template>
   <nav class="menu">
-    <ul v-if="!mobileMenu == true" class="menu__ul">
+    <ul v-if="mobileMenu == false" class="menu__ul">
       <li class="menu__li">
         <nuxt-link class="menu__link" to="/">Главная</nuxt-link>
       </li>
@@ -14,21 +14,9 @@
     <nxt-button
       :buttonType="'button'"
       :buttonClass="'menu__mobile-btn'"
-      @btnClick="openMenu"
+      @btnClick="toggleMenu"
       v-if="mobileMenu == true"
-    >
-      <ul class="menu__ul">
-        <li class="menu__li">
-          <nuxt-link class="menu__link" to="/">Главная</nuxt-link>
-        </li>
-        <li class="menu__li">
-          <nuxt-link class="menu__link" to="/stories">Истории</nuxt-link>
-        </li>
-        <li class="menu__li" @click="open">
-          <nxt-button class="menu__button">Рассказать историю</nxt-button>
-        </li>
-      </ul>
-    </nxt-button>
+    />
   </nav>
 </template>
 
@@ -47,23 +35,10 @@ export default {
     open() {
       return this.$store.commit('popup/open');
     },
-    openMenu() {
-      return this.$store.commit('menu/openMenu');
+    toggleMenu() {
+      console.log('menu togled');
+      return this.$store.commit('menu/toggleMenu');
     },
-  },
-  mounted: function() {
-    window.addEventListener('resize', () => {
-      if (window.innerWidth <= 768) {
-        this.mobileMenu = true;
-      } else {
-        this.mobileMenu = false;
-      }
-    });
-    if (window.innerWidth <= 768) {
-      this.mobileMenu = true;
-    } else {
-      this.mobileMenu = false;
-    }
   },
 };
 </script>
@@ -72,6 +47,11 @@ export default {
 .menu {
 }
 
+.mobile__menu {
+  display: flex;
+  align-self: center;
+  border-bottom: 1px solid #efefef;
+}
 .header__menu {
   display: flex;
   align-self: center;
@@ -93,8 +73,6 @@ export default {
 @media screen and (max-width: 768px) {
   .menu__ul {
     row-gap: 9px;
-    grid-template-columns: unset;
-    grid-template-rows: auto auto auto;
     margin: 0;
     padding: 0;
   }
@@ -102,9 +80,6 @@ export default {
 
 @media screen and (max-width: 768px) {
   .menu__li {
-    width: 32px;
-    height: 0px;
-    border-bottom: 3px solid #000000;
   }
 }
 .menu__link {
@@ -116,12 +91,10 @@ export default {
   text-decoration: none;
   color: #000000;
 }
+
 @media screen and (max-width: 768px) {
   .menu__link {
-    display: none;
-  }
-  .menu__button {
-    display: none;
+    font-size: 16px;
   }
 }
 
@@ -140,6 +113,10 @@ export default {
   background-color: transparent;
   border: none;
 }
+@media screen and (max-width: 768px) {
+  .menu__button {
+  }
+}
 .menu__button:hover {
   cursor: pointer;
 }
@@ -147,7 +124,12 @@ export default {
   width: 32px;
   height: 27px;
   border: none;
-  background-color: unset;
+  background-color: transparent;
+  background-image: url('/header__mobile-button.png');
+  outline: none;
   padding: 0;
+}
+.menu__mobile-btn {
+  cursor: pointer;
 }
 </style>

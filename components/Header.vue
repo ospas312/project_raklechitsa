@@ -1,43 +1,39 @@
 <template>
   <header class="header">
-    <div v-if="menuOpened">
-      <nav class="menu">
-        <ul class="menu__ul">
-          <li class="menu__li">
-            <nuxt-link class="menu__link" to="/">Главная</nuxt-link>
-          </li>
-          <li class="menu__li">
-            <nuxt-link class="menu__link" to="/stories">Истории</nuxt-link>
-          </li>
-          <li class="menu__li" @click="open">
-            <nxt-button class="menu__button">Рассказать историю</nxt-button>
-          </li>
-        </ul>
-      </nav>
-    </div>
     <container class="header__container">
-      <h2 class="header__title">
-        <a href="/" class="header__logo-link"
-          >Проект Благотворительного Фонда Константина Хабенского
-        </a>
-      </h2>
-      <header-menu class="header__menu"></header-menu>
+      <header-menu class="mobile__menu" v-if="menuOpened"></header-menu>
+      <div class="header__mobile-menu-container">
+        <h2 class="header__title">
+          <a href="/" class="header__logo-link"
+            >Проект Благотворительного Фонда Константина Хабенского
+          </a>
+        </h2>
+        <header-menu class="header__menu"></header-menu>
+        <mobile-icon />
+      </div>
     </container>
   </header>
 </template>
 
 <script>
 import Menu from '@/components/ui/Menu.vue';
+import MobileIcon from '@/components/ui/MobileIcon.vue';
 import Container from '@/components/ui/Container.vue';
 export default {
   components: {
     'header-menu': Menu,
     container: Container,
+    'mobile-icon': MobileIcon,
   },
   computed: {
     menuOpened() {
       const { menu } = this.$store.state;
-      return menu.openMenu;
+      return menu.menuOpened;
+    },
+  },
+  methods: {
+    toggleMenu() {
+      this.$store.commit('menu/toggleMenu');
     },
   },
 };
@@ -55,19 +51,22 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+  border-bottom: 1px solid #efefef;
 }
-.header__mobile_menu {
+.header__mobile-menu-container {
   width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
-@media screen and (max-width: 1280px) {
-  .header {
-    padding: 0 50px;
-  }
-}
-
 .header__container {
   display: flex;
   justify-content: space-between;
+}
+@media screen and (max-width: 768px) {
+  .header__container {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
 }
 
 .header__title {
@@ -85,6 +84,12 @@ export default {
   color: black;
 }
 .header__menu {
+  display: unset;
+}
+@media screen and (max-width: 768px) {
+  .header__menu {
+    display: none;
+  }
 }
 @media screen and (max-width: 320px) {
   .header {

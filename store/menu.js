@@ -1,10 +1,14 @@
 export const state = () => ({
-  openMenu: false,
+  menuOpened: false,
 });
 
 export const mutations = {
-  openMenu(state) {
-    state.openMenu = !state.openMenu;
-    console.log(state.openMenu);
+  toggleMenu(state) {
+    state.menuOpened = !state.menuOpened;
+  },
+};
+export const getters = {
+  getMobileMenuState(state) {
+    return state.menuOpened;
   },
 };
