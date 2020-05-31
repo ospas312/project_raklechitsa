@@ -1,10 +1,10 @@
 <template>
-  <nav>
-    <ul class="menu">
-      <li class="menu__list">
+  <nav class="menu">
+    <ul class="menu__list">
+      <li class="menu__list-item">
         <nuxt-link class="menu__link" to="/">Главная</nuxt-link>
       </li>
-      <li class="menu__list">
+      <li class="menu__list-item">
         <nuxt-link class="menu__link" to="/stories">Истории</nuxt-link>
       </li>
     </ul>
@@ -16,7 +16,7 @@ export default {};
 </script>
 
 <style scoped>
-.menu {
+.menu__list {
   padding: 0;
   margin: 0;
   list-style: none;
@@ -32,7 +32,7 @@ export default {};
   font-size: 18px;
   line-height: 24px;
 }
-.menu__list:first-child {
+.menu__list-item:first-child {
   padding-right: 40px;
 }
 @media screen and (max-width: 1280px) {
@@ -40,17 +40,17 @@ export default {};
     font-size: 16px;
     line-height: 24px;
   }
-  .menu__list:first-child {
+  .menu__list-item:first-child {
     padding-right: 40px;
   }
 }
 @media screen and (max-width: 1024px) {
-  .menu__list:first-child {
+  .menu__list-item:first-child {
     padding-right: 30px;
   }
 }
 @media screen and (max-width: 768px) {
-  .menu__list {
+  .menu__list-item {
     padding-bottom: 14px;
   }
   .menu {
@@ -62,7 +62,7 @@ export default {};
     font-size: 13px;
     line-height: 15px;
   }
-  .menu__list {
+  .menu__list-item {
     padding-bottom: 18px;
   }
 }

@@ -1,19 +1,27 @@
 <template>
   <div class="question-form">
     <div>
-      <h3 class="question-form__title">{{ currentQuestion.title }}</h3>
+      <h3
+        :class="[
+          'question-form__title',
+          { 'question-form__title_last-question': isLastForm == true },
+        ]"
+      >
+        {{
+          !isLastForm ? currentQuestion.title : 'Спасибо что приняли участие!'
+        }}
+      </h3>
       <p class="question-form__question">
         <span class="question-form__question">{{
-          currentQuestion.question
+          !isLastForm ? currentQuestion.question : ''
         }}</span>
-        <span
-          v-if="currentQuestion.subQuestion"
-          class="question-form__question-detail"
-          >{{ currentQuestion.subQuestion }}</span
-        >
+        <span v-if="!isLastForm" class="question-form__question-detail">{{
+          currentQuestion.subQuestion || ''
+        }}</span>
       </p>
     </div>
     <InputTest
+      v-if="!isLastForm"
       placeholder="Напишите тут"
       :bottomBordered="true"
       :class="'question-form__input'"
@@ -21,9 +29,10 @@
     ></InputTest>
     <div class="question-form__buttons">
       <Button
+        v-if="!isLastForm"
         :disabled="this.$store.state.quiz.currentQuestion === 0"
-        :buttonClass="'question-form__button'"
-        :buttonType="'button'"
+        buttonClass="question-form__button question-form__button_down"
+        buttonType="button"
         @btnClick="prevQuestion"
       >
         {{ 'Назад' }}
@@ -31,15 +40,15 @@
       <Button
         v-if="!isLastForm"
         :disabled="answer === ''"
-        :buttonClass="'question-form__button'"
-        :buttonType="'button'"
+        buttonClass="question-form__button"
+        buttonType="button"
         @btnClick="nextQuestion"
       >
         {{ isLastQuestion ? 'Далее' : 'Отправить' }}
       </Button>
       <Button
         v-if="isLastForm"
-        :buttonClass="'question-form__button'"
+        buttonClass="question-form__button question-form__button_last-question"
         :buttonType="'button'"
         @btnClick="nextQuestionClose"
       >
@@ -78,36 +87,33 @@ export default {
     },
   },*/
   computed: {
+    currentQuestion() {
+      const { quiz } = this.$store.state;
+      const { currentQuestion, questions } = quiz;
+      return questions[currentQuestion] || '';
+    },
+    initialAnswer() {
+      const { quiz } = this.$store.state;
+      const { currentQuestion, answers } = quiz;
+      return answers[this.currentQuestion.key] || '';
+    },
     isLastQuestion() {
       const { quiz } = this.$store.state;
       const { currentQuestion, questions } = quiz;
-      const questionsLength = questions.length;
-      if (questionsLength != currentQuestion) {
-        return true;
+      const questionsLength = Object.keys(questions).length;
+      if (questionsLength === currentQuestion) {
+        return false;
       }
-      return false;
+      return true;
     },
     isLastForm() {
       const { quiz } = this.$store.state;
       const { currentQuestion, questions } = quiz;
       const questionsLength = Object.keys(questions).length;
-      console.log(quiz);
-      console.log(currentQuestion);
-      console.log(questionsLength);
-      if (currentQuestion != questionsLength) {
-        return false;
+      if (currentQuestion > questionsLength) {
+        return true;
       }
-      return true;
-    },
-    currentQuestion() {
-      const { quiz } = this.$store.state;
-      const { currentQuestion, questions } = quiz;
-      return questions[currentQuestion];
-    },
-    initialAnswer() {
-      const { quiz } = this.$store.state;
-      const { currentQuestion, answers } = quiz;
-      return answers[currentQuestion];
+      return false;
     },
   },
   methods: {
@@ -122,9 +128,7 @@ export default {
       this.answer = this.initialAnswer || '';
     },
     async nextQuestionClose() {
-      console.log('send');
-      this.isGratitudeShow = true;
-      this.$store.commit('popup/toggleIconClose');
+      this.$store.commit('popup/close');
       await this.$store.dispatch('quiz/send_question');
     },
   },
@@ -132,6 +136,12 @@ export default {
 </script>
 
 <style scoped>
+.question-form__button_last-question {
+  margin: 0 auto;
+}
+.question-form__title_last-question {
+  text-align: center;
+}
 .question-form {
   height: 100%;
   display: flex;
@@ -196,12 +206,12 @@ export default {
   line-height: 19px;
   text-align: center;
   color: #fff;
-  margin-right: 30px;
 }
-.question-form__button:first-child {
+.question-form__button_down {
   background: none;
   color: #c0c0c0;
   width: auto;
+  margin-right: 30px;
 }
 @media screen and (max-width: 1280px) {
   .question-form__button {
@@ -225,6 +235,11 @@ export default {
   }
   .question-form__buttons {
     padding-top: 170px;
+  }
+  .question-form__button_down {
+    background: none;
+    color: #c0c0c0;
+    width: auto;
   }
 }
 @media screen and (max-width: 1024px) {
@@ -250,6 +265,11 @@ export default {
   .question-form__buttons {
     padding-top: 174px;
   }
+  .question-form__button_down {
+    background: none;
+    color: #c0c0c0;
+    width: auto;
+  }
 }
 @media screen and (max-width: 768px) {
   .question-form__button {
@@ -270,9 +290,16 @@ export default {
     font-size: 15px;
     line-height: 19px;
     padding-bottom: 15px;
+    min-height: 95px;
   }
+
   .question-form__buttons {
     padding-top: 174px;
+  }
+  .question-form__button_down {
+    background: none;
+    color: #c0c0c0;
+    width: auto;
   }
 }
 @media screen and (max-width: 320px) {
@@ -281,11 +308,13 @@ export default {
     height: 40px;
     font-size: 13px;
     line-height: 16px;
-    margin-right: 0;
     padding: 0;
   }
-  .question-form__button:first-child {
+  .question-form__button_down {
     margin-right: 15px;
+    background: none;
+    color: #c0c0c0;
+    width: auto;
   }
   .question-form__buttons {
     flex-wrap: wrap;

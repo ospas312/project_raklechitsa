@@ -19,7 +19,7 @@
       </div>
       <nxt-button
         @btnClick="$router.push('/stories')"
-        :buttonType="button"
+        buttonType="button"
         :buttonClass="'stories__button-more'"
         :buttonText="buttonMoreData"
       />
@@ -88,6 +88,10 @@ export default {
 <style scoped>
 .stories {
   padding: 100px 0;
+}
+.stories__button-more {
+  font-size: 16px;
+  line-height: 20px;
 }
 @media screen and (max-width: 1280px) {
   .stories {

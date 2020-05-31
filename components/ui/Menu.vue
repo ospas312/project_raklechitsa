@@ -8,11 +8,13 @@
         <nuxt-link class="menu__link" to="/stories">Истории</nuxt-link>
       </li>
       <li class="menu__li" @click="open">
-        <nxt-button class="menu__button">Рассказать историю</nxt-button>
+        <nxt-button buttonType="button" buttonClass="menu__button"
+          >Рассказать историю</nxt-button
+        >
       </li>
     </ul>
     <nxt-button
-      :buttonType="'button'"
+      :buttonType="button"
       :buttonClass="'menu__mobile-btn'"
       @btnClick="toggleMenu"
       v-if="mobileMenu == true"
@@ -51,6 +53,8 @@ export default {
   display: flex;
   align-self: center;
   border-bottom: 1px solid #efefef;
+  min-height: 60px;
+  align-items: center;
 }
 .header__menu {
   display: flex;
@@ -131,5 +135,24 @@ export default {
 }
 .menu__mobile-btn {
   cursor: pointer;
+}
+@media screen and (max-width: 768px) {
+  .menu__ul {
+    display: flex;
+    flex-direction: column;
+  }
+  .menu__li {
+    padding-bottom: 10px;
+    line-height: 16px;
+  }
+  .menu__link {
+    font-size: 13px;
+  }
+  .menu__button {
+    font-size: 13px;
+    padding: 0;
+    line-height: 16px;
+    padding-bottom: 8px;
+  }
 }
 </style>

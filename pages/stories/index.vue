@@ -5,9 +5,9 @@
       <div class="stories__search-container">
         <input class="stories__search-input" type="text" v-model="search" />
         <nxt-button
-          class="stories__search-button"
-          type="button"
-          @click="filteredList"
+          buttonClass="stories__search-button"
+          buttonType="button"
+          :btnClick="filteredList"
           >Поиск</nxt-button
         >
       </div>

@@ -16,6 +16,7 @@
           class="contacts__input"
           :bottom-border="true"
           placeholder="Напишите тут"
+          v-model="name"
         />
       </label>
       <div class="contacts__container">
@@ -26,6 +27,7 @@
             class="contacts__input"
             :bottom-border="true"
             placeholder="pochta@example.com"
+            v-model="email"
           />
         </label>
         <label class="contacts__label contacts__label_phone"
@@ -35,6 +37,7 @@
             class="contacts__input"
             :bottom-border="true"
             placeholder="+7 000 000 00 00"
+            v-model="phone"
           />
         </label>
       </div>
@@ -45,13 +48,19 @@
           class="contacts__input"
           :bottom-border="true"
           placeholder="Телефон / почта и удобное время"
+          v-model="main"
       /></label>
     </fieldset>
     <div class="contacts__submit-container">
-      <button class="contacts__submit-button" :buttonType="'button'">
+      <Button
+        :disabled="name === '' || email === '' || phone === '' || main === ''"
+        buttonClass="contacts__submit-button"
+        buttonType="button"
+        @btnClick="sendClose"
+      >
         Отправить
-      </button>
-      <policyLink :class="'contacts__policy - link'" />
+      </Button>
+      <policyLink class="contacts__policy-link" />
     </div>
   </form>
 </template>
@@ -63,9 +72,28 @@ import PolicyLink from '@/components/ui/PolicyLink';
 
 export default {
   components: {
-    button: Button,
+    Button,
     inputTest: InputTest,
     policyLink: PolicyLink,
+  },
+  data() {
+    return {
+      name: '',
+      email: '',
+      phone: '',
+      main: '',
+    };
+  },
+  methods: {
+    async sendClose() {
+      await this.$store.dispatch('contacts/send_question', {
+        name: this.name,
+        email: this.email,
+        phone: this.phone,
+        main: this.main,
+      });
+      this.$store.commit('popup/close');
+    },
   },
 };
 </script>

@@ -28,8 +28,8 @@
           {{ currentTab.text.replace(/<\/?p[^>]*>/g, '') }}
         </p>
         <Button
-          :buttonType="'button'"
-          :buttonClass="'tell-story__button'"
+          buttonType="button"
+          buttonClass="tell-story__button"
           @btnClick="open"
           >{{ currentTab.id == 1 ? 'Заполнить форму' : 'Отправить' }}</Button
         >
