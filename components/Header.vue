@@ -3,11 +3,11 @@
     <container class="header__container">
       <header-menu class="mobile__menu" v-if="menuOpened"></header-menu>
       <div class="header__mobile-menu-container">
-        <h2 class="header__title">
-          <a href="/" class="header__logo-link"
-            >Проект Благотворительного Фонда Константина Хабенского
-          </a>
-        </h2>
+        <nuxt-link from to="/" class="header__logo-link">
+          <h2 class="header__title">
+            Проект Благотворительного Фонда Константина Хабенского
+          </h2>
+        </nuxt-link>
         <header-menu class="header__menu"></header-menu>
         <mobile-icon />
       </div>
@@ -69,12 +69,16 @@ export default {
   }
 }
 
-.header__title {
+.header__logo-link {
   max-width: 340px;
   min-height: 40px;
+  text-decoration: none;
+  margin: 0;
+  padding-top: 18px;
+  padding-bottom: 18px;
 }
 
-.header__logo-link {
+.header__title {
   text-decoration: none;
   font-family: Inter;
   font-style: normal;
@@ -82,6 +86,7 @@ export default {
   font-size: 16px;
   line-height: 20px;
   color: black;
+  margin: 0;
 }
 .header__menu {
   display: unset;

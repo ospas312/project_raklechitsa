@@ -5,10 +5,6 @@
         <h5 class="footer__title">
           {{ getBlock.title }}
         </h5>
-        <!--<div class="footer__menu">
-          <nuxt-link class="footer__menu-link" to="/">Главная</nuxt-link>
-          <nuxt-link class="footer__menu-link" to="/stories">Истории</nuxt-link>
-        </div>-->
         <MenuLite class="footer__menu" />
         <div class="footer__social">
           <p class="footer__social-info">
@@ -28,9 +24,9 @@
             >
           </p>
           <Button
-            :buttonType="'button'"
-            :buttonClass="'footer__button'"
-            :buttonText="'Поделитесь' + '\u2197'"
+            buttonType="button"
+            buttonClass="footer__button"
+            :buttonText="'Поделитесь\u2197'"
             @btnClick="open"
           ></Button>
         </div>
@@ -41,7 +37,10 @@
         </p>
         <p class="footer__info-create">
           Сделано студентами
-          <a href="https://praktikum.yandex.ru/" class="footer__info-create"
+          <a
+            href="https://praktikum.yandex.ru/"
+            class="footer__info-create"
+            target="_blank"
             >Яндекс Практикум</a
           >
         </p>

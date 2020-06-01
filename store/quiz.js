@@ -109,7 +109,6 @@ export const actions = {
       currentQuestion: currentQuestion + 1,
     });
   },
-
   async prev_question({ commit, state }) {
     const { currentQuestion } = state;
     if (currentQuestion === 1) {

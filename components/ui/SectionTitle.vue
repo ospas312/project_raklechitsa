@@ -1,12 +1,14 @@
 <template>
-  <h2 class="section-title">
+  <h2 :class="['section-title', placeTitle]">
     <slot></slot>
   </h2>
 </template>
 
 <script>
 export default {
-  props: ['placeTitle'],
+  props: {
+    placeTitle: { type: String, required: false },
+  },
 };
 </script>
 
