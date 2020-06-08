@@ -60,6 +60,13 @@ export default {
       return this.getBlock.extraTexts;
     },
   },
+  mounted() {
+    this.defaultText = this.getBlock.extraTexts[0].text.replace(
+      /<\/?p[^>]*>/g,
+      ''
+    );
+  },
+
   methods: {
     toggleTextState(event) {
       this.defaultText = this.getBlock.extraTexts[event.target.id].text.replace(
@@ -67,12 +74,6 @@ export default {
         ''
       );
     },
-  },
-  mounted: function() {
-    this.defaultText = this.getBlock.extraTexts[0].text.replace(
-      /<\/?p[^>]*>/g,
-      ''
-    );
   },
 };
 </script>
