@@ -13,24 +13,48 @@
               </p>
             </div>
             <div class="slider__btn-container">
-              <button class="slider__btn-back swiper-button_prev" />
-              <button class="slider__btn-forward swiper-button_next" />
+              <button
+                id="nav-button"
+                class="slider__btn-back slider__btn-back_disabled"
+              />
+              <button id="nav-button" class="slider__btn-forward" />
             </div>
           </div>
           <div class="slider__video-column">
-            <swiper :videos="videos" />
-            <button class="slider__btn-play" />
+            <swiper :videos="videos" :hide-video="hideVideo">
+              <div
+                class="slider__btn-video-container slider__btn-video-container_inside"
+              >
+                <button
+                  id="nav-button"
+                  class="slider__btn-back slider__btn-back_disabled"
+                />
+                <button id="nav-button" class="slider__btn-forward" />
+              </div>
+            </swiper>
             <div class="slider__btn-video-container">
-              <button class="slider__btn-back swiper-button_prev" />
-              <button class="slider__btn-forward swiper-button_next" />
+              <button
+                id="nav-button"
+                class="slider__btn-back slider__btn-back_disabled"
+              />
+              <button id="nav-button" class="slider__btn-forward" />
             </div>
-            <p class="slider__video-caption" v-html="getCaption"></p>
+            <a
+              class="slider__video-caption"
+              href="https://www.youtube.com/channel/UCcxMSzN1R4JfW1vLu3swCaQ"
+              target="_blank"
+              >{{ getCaption }}</a
+            >
           </div>
         </div>
       </div>
       <slogan class="slider__slogan">
-        <template #slogan-text>И В ОТЛИЧИЕ ОТ РАКА,&nbsp;</template>
-        <template #slogan-hashtag>#ЭТОНЕЛЕЧИТСЯ</template>
+        <template #slogan-text>
+          И В ОТЛИЧИЕ ОТ РАКА,&nbsp;
+        </template>
+        <template #slogan-hashtag>
+          #ЭТОНЕЛЕЧИТСЯ
+        </template>
       </slogan>
     </container>
   </section>
@@ -47,6 +71,11 @@ export default {
     slogan: Slogan,
     container: Container,
   },
+  data() {
+    return {
+      hideVideo: true,
+    };
+  },
   computed: {
     videos() {
       return this.$store.getters['video/getVideos'];
@@ -61,20 +90,18 @@ export default {
       return this.getBlock.text.replace(/<\/?p[^>]*>/g, '');
     },
     getCaption() {
-      return this.getBlock.note.replace(
-        'YouTube канале.',
-        `<a href="https://www.youtube.com/channel/UCcxMSzN1R4JfW1vLu3swCaQ" target="_blank">YouTube канале.</a>`
-      );
+      return this.getBlock.note;
+    },
+  },
+  methods: {
+    hideOverlay() {
+      this.hideVideo = false;
     },
   },
 };
 </script>
 
 <style scoped>
-.slider__video-caption >>> a {
-  color: #666666;
-}
-
 .slider {
   display: flex;
   flex-direction: column;
@@ -112,6 +139,11 @@ export default {
   margin-top: 0;
   max-width: 413px;
 }
+.slider-button__disabled {
+  pointer-events: none;
+  background-image: url(../assets/images/back.svg);
+}
+
 .slider__text {
   font-style: normal;
   font-weight: normal;
@@ -137,44 +169,37 @@ export default {
   border: none;
   background-image: url('../assets/images/forward.svg');
   background-position: center;
-  background-color: #fbfbfb;
+  background-color: #613a93;
   background-repeat: no-repeat;
   cursor: pointer;
   outline: none;
+  position: relative;
 }
+
 .slider__btn-back {
   width: 40px;
   height: 40px;
-  background-color: #fbfbfb;
+  background-color: #613a93;
   box-shadow: none;
   border: none;
-  background-image: url('../assets/images/back.svg');
+  background-image: url('../assets/images/forward.svg');
   background-position: center;
-  background-color: #fbfbfb;
   background-repeat: no-repeat;
   cursor: pointer;
   outline: none;
+  transform: rotate(180deg);
 }
 
-.slider__btn-play {
-  background-image: url('../assets/images/play.svg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: transparent;
-  width: 90px;
-  height: 90px;
-  border: none;
-  position: absolute;
-  top: calc(50% - 45px);
-  left: calc(50% - 45px);
-  padding: 0;
-  cursor: pointer;
-  border-radius: 50%;
-  background-size: contain;
+.slider__btn-forward_disabled {
+  background-image: url('/back.svg');
+  transform: rotate(180deg);
 }
-.slider__btn-play:hover {
-  background-image: url('../assets/images/playButtonHover.svg');
+
+.slider__btn-back_disabled {
+  background-image: url('/back.svg');
+  transform: rotate(0deg);
 }
+
 .slider__video-column {
   width: 100%;
   position: relative;
@@ -205,13 +230,6 @@ export default {
     font-size: 28px;
     line-height: 32px;
     max-width: 367px;
-  }
-  .slider__btn-play {
-    width: 76px;
-    height: 76px;
-    background-image: url('../assets/images/playMedium.svg');
-    top: calc(50% - (76px / 2));
-    left: calc(50% - (76px / 2));
   }
   .slider__text {
     font-size: 16px;
@@ -295,7 +313,10 @@ export default {
     top: calc(50% - 20px);
     left: auto;
     right: auto;
-    z-index: 1;
+    z-index: 0;
+  }
+  .slider__btn-video-container_inside {
+    display: none;
   }
   .slider__video-caption {
     position: absolute;
@@ -306,6 +327,32 @@ export default {
     .slider__wrap {
       margin-bottom: 50px;
     }
+
+    .slider__btn-video-container {
+      display: flex;
+      position: absolute;
+      width: 100%;
+      justify-content: space-between;
+      top: calc(50% - 20px);
+      left: auto;
+      right: auto;
+      z-index: 0;
+      display: none;
+    }
+
+    .slider__btn-video-container_inside {
+      display: flex;
+      z-index: 1;
+    }
+
+    .slider__btn-forward {
+      background-color: transparent;
+    }
+
+    .slider__btn-back {
+      background-color: transparent;
+    }
+
     .slider__title {
       font-size: 18px;
       line-height: 21px;
@@ -333,14 +380,6 @@ export default {
     }
     .slider__video-caption {
       width: 100%;
-    }
-
-    .slider__btn-play {
-      background-image: url('../assets/images/playSmall.svg');
-      width: 38px;
-      height: 38px;
-      top: calc(50% - (38px / 2));
-      left: calc(50% - (38px / 2));
     }
   }
 }
