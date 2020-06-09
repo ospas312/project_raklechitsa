@@ -2,10 +2,8 @@
   <section class="instagram">
     <container class="instagram__container">
       <slogan block>
-        <template #slogan-text
-          >РАССКАЗЫВАЙТЕ ВАШИ ИСТОРИИ В ИНСТАГРАМ&nbsp;</template
-        >
-        <template #slogan-hashtag>#ЭТОНЕЛЕЧИТСЯ</template>
+        <template #slogan-text>{{ secondSlogan.title }}&nbsp;</template>
+        <template #slogan-hashtag>{{ secondSlogan.hashtag }}</template>
       </slogan>
       <div class="instagram__content">
         <div class="instagram__text">
@@ -14,23 +12,24 @@
               class="instagram__link"
               href="https://www.instagram.com/raklechitsa/"
               target="_blank"
-              >Инстаграм</a
+              >{{ instagramData.title }}</a
             >
           </h2>
-          <p class="instagram__description">
-            Два раза в неделю мы просматриваем все посты по хештегу
-            #этонелечится. Все истории, где нет нецензурных выражений и
-            запрещенного контента попадают сюда. Следите за правильным
-            написанием хештега, чтобы мы не пропустили вашу историю.
-          </p>
-        </div>
-        <div class="instagram__stories">
-          <instagram-story
-            v-for="instagramStory in instagramStories.slice(0, 8)"
-            :key="instagramStory.id"
-            :picUrl="instagramStory.instagramPicUrl"
-            :instagramPicAlt="instagramStory.instagramStoryImageAltData"
-          />
+          <div v-html="instagramData.text" class="instagram__wrapper"></div>
+          <ul class="instagram__stories">
+            <li
+              class="instagram__story"
+              v-for="photo in instagram"
+              :key="photo.id"
+            >
+              <a class="instagram__story-link" :href="photo.url" target="_blank"
+                ><img
+                  class="instagram__image"
+                  :src="photo.img"
+                  alt="Фотогорафия из инстаграм"
+              /></a>
+            </li>
+          </ul>
         </div>
       </div>
     </container>
@@ -38,60 +37,29 @@
 </template>
 
 <script>
-import InstagramStory from '@/components/ui/InstagramStory.vue';
 import Container from '@/components/ui/Container.vue';
 import Slogan from '@/components/ui/Slogan.vue';
+
 export default {
   components: {
     container: Container,
-    'instagram-story': InstagramStory,
     slogan: Slogan,
   },
-  data() {
-    return {
-      instagramStories: [
-        {
-          id: '1',
-          instagramPicUrl: './images/inst1.jpg',
-          instagramStoryImageAltData: 'Альт текст',
-        },
-        {
-          id: '2',
-          instagramPicUrl: './images/inst2.jpg',
-          instagramStoryImageAltData: 'Альт текст',
-        },
-        {
-          id: '3',
-          instagramPicUrl: './images/inst3.jpg',
-          instagramStoryImageAltData: 'Альт текст',
-        },
-        {
-          id: '4',
-          instagramPicUrl: './images/inst4.jpg',
-          instagramStoryImageAltData: 'Альт текст',
-        },
-        {
-          id: '5',
-          instagramPicUrl: './images/inst5.jpg',
-          instagramStoryImageAltData: 'Альт текст',
-        },
-        {
-          id: '6',
-          instagramPicUrl: './images/inst6.jpg',
-          instagramStoryImageAltData: 'Альт текст',
-        },
-        {
-          id: '7',
-          instagramPicUrl: './images/inst7.jpg',
-          instagramStoryImageAltData: 'Альт текст',
-        },
-        {
-          id: '8',
-          instagramPicUrl: './images/inst8.jpg',
-          instagramStoryImageAltData: 'Альт текст',
-        },
-      ],
-    };
+  computed: {
+    instagramData() {
+      return this.$store.getters['blocks/getInstagramBlock'];
+    },
+    instagram() {
+      return this.$store.getters['instagram/getPhotos'];
+    },
+    secondSlogan() {
+      return this.$store.getters['blocks/getSecondSloganBlock'];
+    },
+  },
+  mounted() {
+    document
+      .querySelector('.instagram__wrapper')
+      .classList.add('instagram__description');
   },
 };
 </script>
@@ -104,6 +72,18 @@ export default {
 .instagram__content {
   margin-top: 100px;
   display: flex;
+}
+
+.instagram__story {
+  cursor: pointer;
+}
+
+.instagram__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 .instagram__text {
