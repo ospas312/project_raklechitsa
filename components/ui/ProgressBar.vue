@@ -7,8 +7,14 @@
 <script>
 export default {
   props: {
-    value: Number,
-    maxValue: Number,
+    value: {
+      type: Number,
+      default: 0,
+    },
+    maxValue: {
+      type: Number,
+      default: 0,
+    },
   },
   computed: {
     style() {
@@ -20,20 +26,33 @@ export default {
 
 <style scoped>
 .progress-bar {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 2.778vw;
+  max-width: 260px;
+  height: 40px;
+  width: 100%;
   background: #f4f4f4;
+  margin: auto;
+  margin-bottom: 20px;
 }
 .progress-bar__fill {
-  grid-row: 1 / -1;
   height: 100%;
   background: #613a93;
 }
 
-@media screen and (min-width: 320px) and (max-width: 1024px) {
+@media screen and (max-width: 1280px) {
   .progress-bar {
-    grid-template-rows: 28px;
+    max-width: 229px;
+    height: 36px;
+  }
+}
+@media screen and (max-width: 1166px) {
+  .progress-bar {
+    max-width: 188px;
+    height: 28px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .progress-bar {
+    margin-bottom: 10px;
   }
 }
 </style>
