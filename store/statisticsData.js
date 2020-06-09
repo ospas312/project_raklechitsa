@@ -1,3 +1,4 @@
+import axios from 'axios';
 export const state = () => ({
   statistics_api: [],
   cards: [
@@ -33,16 +34,15 @@ export const mutations = {
     return (state[name] = value);
   },
 };
+
 export const actions = {
-  async fetchStatistic(state) {
-    return this.$axios
-      .$get(`${process.env.API_URL}/statistics`)
-      .then(response => {
-        state.commit('setState', {
-          name: 'statistics_api',
-          value: response,
-        });
+  fetchStatistic(state) {
+    return axios.get(`${process.env.BASE_URL}/statistics`).then(response => {
+      return state.commit('setState', {
+        name: 'statistics_api',
+        value: response.data,
       });
+    });
   },
 };
 

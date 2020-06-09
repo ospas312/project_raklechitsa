@@ -39,7 +39,7 @@ export default {
   },
   computed: {
     cardsWithProgressBar() {
-      return this.$store.getters['statisticsData/getStatistics'];
+      return this.$store.getters['statisticsData/getStatistics'].slice(0, 2);
     },
     cardsWithFakeData() {
       return this.$store.getters['statisticsData/getFakeData'];
@@ -87,7 +87,7 @@ export default {
 
 @media screen and (max-width: 1280px) {
   .cards {
-    padding: 0 50px;
+    padding: 90px 50px 0;
     margin: 0 auto 90px;
   }
   .cards__title {
@@ -103,6 +103,7 @@ export default {
 }
 @media screen and (max-width: 1024px) {
   .cards {
+    padding-top: 80px;
     margin: 0 auto 80px;
   }
   .cards__title {
@@ -118,7 +119,8 @@ export default {
 }
 @media screen and (max-width: 810px) {
   .cards {
-    padding: 0 40px;
+    padding-left: 40px;
+    padding-right: 40px;
   }
   .cards__container {
     grid-template-rows: repeat(1, 216px);
@@ -130,7 +132,7 @@ export default {
 }
 @media screen and (max-width: 320px) {
   .cards {
-    padding: 0 15px;
+    padding: 50px 15px;
   }
 }
 </style>
