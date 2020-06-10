@@ -139,10 +139,11 @@ export default {
 @media screen and (max-width: 768px) {
   .menu__ul {
     display: flex;
-    flex-direction: column;
+    /*flex-direction: column;*/
   }
   .menu__li {
-    padding-bottom: 10px;
+    margin-right: 30px;
+    /*padding-bottom: 10px;*/
     line-height: 16px;
   }
   .menu__link {
@@ -151,6 +152,18 @@ export default {
   .menu__button {
     font-size: 13px;
     padding: 0;
+    /*line-height: 16px;*/
+    /*padding-bottom: 8px;*/
+  }
+}
+@media screen and (max-width: 768px) {
+  .menu__ul {
+    flex-direction: column;
+  }
+  .menu__li {
+    padding-bottom: 10px;
+  }
+  .menu__button {
     line-height: 16px;
     padding-bottom: 8px;
   }

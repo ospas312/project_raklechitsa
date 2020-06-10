@@ -93,9 +93,10 @@ export default {
 .stories-nav {
   margin: 140px auto 100px;
   max-width: 800px;
-  max-height: 58px;
+  /*max-height: 58px;*/
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .stories-nav__first {
@@ -216,5 +217,36 @@ export default {
 }
 .stories-nav__button:hover {
   cursor: pointer;
+}
+@media screen and (max-width: 320px) {
+  .stories-nav {
+    flex-wrap: wrap;
+    margin: 50px 23px;
+    /*min-height: 200px;*/
+  }
+  .stories-nav__button {
+    position: relative;
+  }
+  .stories-nav__ul {
+    grid-template-columns: repeat(auto-fit, 50px);
+    grid-template-rows: repeat(auto-fit, 50px);
+  }
+  .stories-nav__ul {
+    max-width: 190px;
+    margin-bottom: 34px;
+  }
+  .stories-nav__first {
+    order: 3;
+  }
+  .stories-nav__last {
+    order: 4;
+  }
+  .stories-nav__forward {
+    margin-right: 0;
+    margin-left: 23px;
+  }
+  .stories-nav__back {
+    margin-right: 23px;
+  }
 }
 </style>
