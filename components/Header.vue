@@ -40,6 +40,11 @@ export default {
 </script>
 
 <style scoped>
+@media screen and (min-width: 769px) {
+  .mobile__menu {
+    display: none;
+  }
+}
 .header {
   min-height: 72px;
   margin: 0 auto;
@@ -71,7 +76,7 @@ export default {
 
 .header__logo-link {
   max-width: 340px;
-  min-height: 40px;
+  /*min-height: 40px;*/
   text-decoration: none;
   margin: 0;
   padding-top: 18px;
@@ -101,11 +106,12 @@ export default {
     padding: 0;
   }
   .header__container {
-    padding: 18px 15px;
+    /*padding: 18px 15px;*/
   }
   .header__title {
     font-size: 12px;
     line-height: 14px;
+    width: 260px;
   }
 }
 </style>
