@@ -3,11 +3,11 @@
     <div class="stories-index-container">
       <h2 class="stories__title">Истории неизлечимых привычек</h2>
       <div class="stories__search-container">
-        <input class="stories__search-input" type="text" v-model="search" />
+        <InputTest class="stories__search-input" type="text" v-model="search" />
         <nxt-button
           buttonClass="stories__search-button"
           buttonType="button"
-          :btnClick="filteredList"
+          @btnClick="filteredList"
           >Поиск</nxt-button
         >
       </div>
@@ -27,7 +27,7 @@
         />
       </div>
       <stories-nav
-        :totalStories="stories.length"
+        :totalStories="this.initiallyFilteredStories.length"
         :limitPerPage="storiesOnPage"
         @onPageChange="changeStartIndex"
       >
@@ -41,21 +41,24 @@ import Story from '@/components/ui/Story.vue';
 import Button from '@/components/ui/Button.vue';
 import StoriesNav from '@/components/ui/StoriesNav.vue';
 import Container from '@/components/ui/Container';
+import InputTest from '@/components/ui/InputTest';
 export default {
   components: {
     story: Story,
     'nxt-button': Button,
     'stories-nav': StoriesNav,
     container: Container,
+    InputTest: InputTest,
   },
   data() {
     return {
+      appliedStoriesName: '',
       search: '',
       storiesOnPage: 8,
       startIndex: 0,
-      storiesOnPageDesktop: 8,
-      storiesOnPageTabled: 9,
-      storiesOnPageMobile: 6,
+      storiesOnPageDesktop: 16,
+      storiesOnPageTabled: 12,
+      storiesOnPageMobile: 9,
       baseUrl: process.env.BASE_URL,
     };
   },
@@ -71,23 +74,34 @@ export default {
     },
     totalStories() {
       return this.stories.length;
+      //return this.initiallyFilteredStories.length;
     },
     pagesAmount() {
       return Math.ceil(this.totalStories / this.storiesOnPage);
     },
-    storiesToRender() {
+    /*storiesToRender() {
       return this.stories.filter(
         (item, index) =>
           index >= this.startIndex &&
           index <= this.startIndex + this.storiesOnPage - 1
       );
+    },*/
+    initiallyFilteredStories() {
+      const { stories } = this.$store.state;
+      if (!this.appliedStoriesName || this.appliedStoriesName === '') {
+        return stories.stories;
+      }
+      return stories.stories.filter(
+        (item, index) => item.author.indexOf(this.appliedStoriesName) > -1
+      );
     },
-    filteredList: function() {
-      // return this.stories.filter(story => {
-      //   return story.storyTitleData
-      //     .toLowerCase()
-      //     .includes(this.search.toLowerCase());
-      // });
+    storiesToRender() {
+      const { stories } = this.$store.state;
+      return this.initiallyFilteredStories.filter(
+        (item, index) =>
+          index >= this.startIndex &&
+          index <= this.startIndex + this.storiesOnPage - 1
+      );
     },
   },
   methods: {
@@ -97,6 +111,11 @@ export default {
     },
     storyClickHandler(id) {
       this.$router.push(`/stories/${id}`);
+    },
+    filteredList() {
+      console.log(this.search);
+      console.log(this.initiallyFilteredStories.length);
+      this.appliedStoriesName = this.search;
     },
   },
   mounted: function() {

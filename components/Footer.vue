@@ -278,7 +278,7 @@ export default {
     margin-bottom: 14px;
   }
 }
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 325px) {
   .footer {
     font-size: 13px;
     line-height: 15px;

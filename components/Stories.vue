@@ -1,6 +1,21 @@
 <template>
   <container>
     <section class="stories">
+      <div class="stories__container">
+        <story
+          v-for="story in stories.slice(-4)"
+          :key="story.id"
+          :storyImageSrc="`${baseUrl}${story.ImageUrl[0].url}`"
+          :storyImageAlt="story.author"
+          :storyAuthor="story.author"
+          :storyTitle="story.title"
+          :storyClass="'story'"
+          :storyImageClass="'story__image'"
+          :storyAuthorClass="'story__author'"
+          :storyTitleClass="'story__title'"
+          @storyClick="storyClickHandler(story.id)"
+        />
+      </div>
       <h2 class="stories__title">Истории неизлечимых привычек</h2>
       <div class="stories__container">
         <story
@@ -151,7 +166,7 @@ export default {
   }
 }
 .stories__title {
-  margin: 0 0 70px 0;
+  margin: 70px 0;
   max-width: 413px;
   font-family: Inter;
   font-style: normal;
@@ -162,7 +177,7 @@ export default {
 }
 @media screen and (max-width: 1280px) {
   .stories__title {
-    margin: 0 0 60px 0;
+    margin: 60px 0;
     font-size: 28px;
     line-height: 32px;
   }
@@ -170,21 +185,21 @@ export default {
 
 @media screen and (max-width: 1024px) {
   .stories__title {
-    margin: 0 0 46px 0;
+    margin: 46px 0;
     font-size: 24px;
     line-height: 28px;
   }
 }
 @media screen and (max-width: 768px) {
   .stories__title {
-    margin: 0 auto 60px;
+    margin: 60px auto;
     text-align: center;
   }
 }
 
 @media screen and (max-width: 320px) {
   .stories__title {
-    margin: 0 auto 40px;
+    margin: 40px auto;
     font-size: 18px;
     line-height: 21px;
   }
