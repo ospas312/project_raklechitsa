@@ -7,7 +7,8 @@
           <li class="share-link__icon-link">
             <a
               class="share-link__icon-facebook"
-              href="https://www.facebook.com/sharer.php?src=sp&amp;u=https%3A%2F%2Fraklechitsa.ru%2F&amp;title=%D0%A0%D0%90%D0%9A%D0%9B%D0%95%D0%A7%D0%98%D0%A2%D0%A1%D0%AF.%D0%A0%D0%A4%20%E2%80%94%20%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8%20%D0%BB%D1%8E%D0%B4%D0%B5%D0%B9%2C%20%D0%BF%D0%BE%D0%B1%D0%B5%D0%B4%D0%B8%D0%B2%D1%88%D0%B8%D1%85%20%D1%80%D0%B0%D0%BA%2C%20%D0%BD%D0%BE%20%D0%BD%D0%B5%20%D1%81%D0%B2%D0%BE%D0%B8%20%D0%BF%D1%80%D0%B8%D0%B2%D1%8B%D1%87%D0%BA%D0%B8&amp;utm_source=share2"
+              target="_blank"
+              href="facebookUrl"
               title="Facebook"
               ><Facebook
             /></a>
@@ -15,9 +16,9 @@
           <li class="share-link__icon-link">
             <a
               class="ya-share2__icon-twitter"
-              href="https://twitter.com/intent/tweet?text=%D0%A0%D0%90%D0%9A%D0%9B%D0%95%D0%A7%D0%98%D0%A2%D0%A1%D0%AF.%D0%A0%D0%A4%20%E2%80%94%20%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8%20%D0%BB%D1%8E%D0%B4%D0%B5%D0%B9%2C%20%D0%BF%D0%BE%D0%B1%D0%B5%D0%B4%D0%B8%D0%B2%D1%88%D0%B8%D1%85%20%D1%80%D0%B0%D0%BA%2C%20%D0%BD%D0%BE%20%D0%BD%D0%B5%20%D1%81%D0%B2%D0%BE%D0%B8%20%D0%BF%D1%80%D0%B8%D0%B2%D1%8B%D1%87%D0%BA%D0%B8&amp;url=https%3A%2F%2Fraklechitsa.ru%2F&amp;utm_source=share2"
-              rel="nofollow noopener"
               target="_blank"
+              href="twitter"
+              rel="nofollow noopener"
               title="Twitter"
               ><Twitter
             /></a>
@@ -25,7 +26,8 @@
           <li class="share-link__icon-link">
             <a
               class="ya-share2__icon-vk"
-              href="https://vk.com/share.php?url=https%3A%2F%2Fraklechitsa.ru%2F&amp;title=%D0%A0%D0%90%D0%9A%D0%9B%D0%95%D0%A7%D0%98%D0%A2%D0%A1%D0%AF.%D0%A0%D0%A4%20%E2%80%94%20%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8%20%D0%BB%D1%8E%D0%B4%D0%B5%D0%B9%2C%20%D0%BF%D0%BE%D0%B1%D0%B5%D0%B4%D0%B8%D0%B2%D1%88%D0%B8%D1%85%20%D1%80%D0%B0%D0%BA%2C%20%D0%BD%D0%BE%20%D0%BD%D0%B5%20%D1%81%D0%B2%D0%BE%D0%B8%20%D0%BF%D1%80%D0%B8%D0%B2%D1%8B%D1%87%D0%BA%D0%B8&amp;utm_source=share2"
+              target="_blank"
+              href="vkUrl"
               title="ВКонтакте"
               ><Vk
             /></a>
@@ -33,7 +35,8 @@
           <li class="share-link__icon-link">
             <a
               class="ya-share2__icon-ok"
-              href="https://connect.ok.ru/offer?url=https%3A%2F%2Fraklechitsa.ru%2F&amp;title=%D0%A0%D0%90%D0%9A%D0%9B%D0%95%D0%A7%D0%98%D0%A2%D0%A1%D0%AF.%D0%A0%D0%A4%20%E2%80%94%20%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8%20%D0%BB%D1%8E%D0%B4%D0%B5%D0%B9%2C%20%D0%BF%D0%BE%D0%B1%D0%B5%D0%B4%D0%B8%D0%B2%D1%88%D0%B8%D1%85%20%D1%80%D0%B0%D0%BA%2C%20%D0%BD%D0%BE%20%D0%BD%D0%B5%20%D1%81%D0%B2%D0%BE%D0%B8%20%D0%BF%D1%80%D0%B8%D0%B2%D1%8B%D1%87%D0%BA%D0%B8&amp;utm_source=share2"
+              target="_blank"
+              href="odnoklassniki"
               title="Одноклассники"
               ><Ok
             /></a>
@@ -41,7 +44,8 @@
           <li class="share-link__icon-link">
             <a
               class="share-link__icon-instagram"
-              href="https://www.instagram.com/raklechitsa/"
+              target="_blank"
+              href="instagramUrl"
               title="Instagram"
               ><Instagram
             /></a>
@@ -49,7 +53,8 @@
           <li class="share-link__icon-link">
             <a
               class="share-link__icon-youtube"
-              href="https://www.youtube.com/results?search_query=%23%D1%8D%D1%82%D0%BE%D0%BD%D0%B5%D0%BB%D0%B5%D1%87%D0%B8%D1%82%D1%81%D1%8F"
+              target="_blank"
+              href="youtubeUrl"
               title="Youtube"
               ><Youtube
             /></a>
@@ -75,6 +80,25 @@ export default {
     Vk,
     Twitter,
     Facebook,
+  },
+  data() {
+    return {
+      instagramUrl: 'https://www.instagram.com/raklechitsa/',
+      youtubeUrl:
+        'https://www.youtube.com/results?search_query=%23%D1%8D%D1%82%D0%BE%D0%BD%D0%B5%D0%BB%D0%B5%D1%87%D0%B8%D1%82%D1%81%D1%8F',
+      facebookUrl: `https://www.facebook.com/sharer.php?src=sp&u=${encodeURI(
+        window.location.href
+      )}&title=${document.querySelector('title').innerText}`,
+      vkUrl: `https://vk.com/share.php?url=${encodeURI(
+        window.location.href
+      )}&title=${document.querySelector('title').innerText}`,
+      odnoklassniki: `https://connect.ok.ru/offer?url=${encodeURI(
+        window.location.href
+      )}&amp;title=${document.querySelector('title').innerText}`,
+      twitter: `https://twitter.com/intent/tweet?text=${
+        document.querySelector('title').innerText
+      }&url=${encodeURI(window.location.href)}`,
+    };
   },
 };
 </script>

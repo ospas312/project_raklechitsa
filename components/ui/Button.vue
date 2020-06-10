@@ -14,7 +14,7 @@
 export default {
   props: {
     buttonType: { type: String, required: true },
-    buttonClass: { type: String, required: true },
+    buttonClass: { required: true },
     buttonText: { type: String, required: false },
     disabled: { type: Boolean },
   },

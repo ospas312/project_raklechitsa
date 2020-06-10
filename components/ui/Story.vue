@@ -1,11 +1,13 @@
 <template>
   <div :class="storyClass">
-    <img
-      :class="storyImageClass"
-      :src="storyImageSrc"
-      :alt="storyImageAlt"
-      @click="$emit('storyClick')"
-    />
+    <div class="storyImagesClass">
+      <img
+        :class="storyImageClass"
+        :src="storyImageSrc"
+        :alt="storyImageAlt"
+        @click="$emit('storyClick')"
+      />
+    </div>
     <p :class="storyAuthorClass">{{ storyAuthor }}</p>
     <p :class="storyTitleClass">{{ storyTitle }}</p>
     <p v-if="storyText != undefined" :class="storyTextClass">{{ storyText }}</p>
@@ -30,6 +32,12 @@ export default {
 </script>
 
 <style scoped>
+.storyImagesClass {
+  width: 100%;
+  position: relative;
+  padding-bottom: 100%;
+  margin-bottom: 20px;
+}
 .story {
   display: flex;
   flex-direction: column;
@@ -39,10 +47,16 @@ export default {
   flex-direction: row;
 }
 .story__image {
-  width: 100%;
+  /*width: 100%;
   height: auto;
   object-fit: contain;
-  margin-bottom: 20px;
+  margin-bottom: 20px;*/
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 @media screen and (max-width: 1024px) {
