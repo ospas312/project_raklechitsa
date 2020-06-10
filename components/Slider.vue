@@ -49,12 +49,8 @@
         </div>
       </div>
       <slogan class="slider__slogan">
-        <template #slogan-text>
-          И В ОТЛИЧИЕ ОТ РАКА,&nbsp;
-        </template>
-        <template #slogan-hashtag>
-          #ЭТОНЕЛЕЧИТСЯ
-        </template>
+        <template #slogan-text>{{ firstSlogan.title }}&nbsp;</template>
+        <template #slogan-hashtag>{{ firstSlogan.hashtag }}</template>
       </slogan>
     </container>
   </section>
@@ -91,6 +87,9 @@ export default {
     },
     getCaption() {
       return this.getBlock.note;
+    },
+    firstSlogan() {
+      return this.$store.getters['blocks/getFirstSloganBlock'];
     },
   },
   methods: {

@@ -25,4 +25,16 @@ export const getters = {
   getBlocks(state) {
     return state.blocks;
   },
+  getFirstSloganBlock(state) {
+    return state.blocks.find(el => el.block === 'note-1');
+  },
+  getSecondSloganBlock(state) {
+    return state.blocks.find(el => el.block === 'note-2');
+  },
+  getInstagramBlock(state) {
+    return state.blocks.find(el => el.block === 'instagram');
+  },
+  getStatisticsBlock(state) {
+    return state.blocks.find(el => el.block === 'statistics');
+  },
 };
