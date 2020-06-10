@@ -25,7 +25,7 @@
               <a class="instagram__story-link" :href="photo.url" target="_blank"
                 ><img
                   class="instagram__image"
-                  :src="photo.img"
+                  :src="photo.display_url"
                   alt="Фотогорафия из инстаграм"
               /></a>
             </li>
@@ -46,6 +46,9 @@ export default {
     slogan: Slogan,
   },
   computed: {
+    instagramData() {
+      return this.$store.getters['blocks/getInstagramBlock'];
+    },
     instagramData() {
       return this.$store.getters['blocks/getInstagramBlock'];
     },

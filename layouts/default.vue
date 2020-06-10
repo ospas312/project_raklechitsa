@@ -49,6 +49,11 @@ export default {
       const { popup } = this.$store.state;
       return popup.contactsOpened;
     },
+    async middleware({ store }) {
+      await store.dispatch('video/fetchVideos');
+      await store.dispatch('blocks/fetchBlocks');
+      await store.dispatch('statisticsData/fetchStatistic');
+    },
   },
 };
 </script>
