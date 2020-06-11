@@ -278,6 +278,18 @@ export default {
     margin-bottom: 14px;
   }
 }
+@media screen and (max-width: 425px) {
+  .footer__container {
+    padding: 15px;
+  }
+  .footer__title {
+    font-size: 20px;
+  }
+  .footer__button {
+    font-size: 14px;
+  }
+}
+
 @media screen and (max-width: 325px) {
   .footer {
     font-size: 13px;

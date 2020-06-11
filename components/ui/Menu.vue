@@ -156,7 +156,7 @@ export default {
     /*padding-bottom: 8px;*/
   }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 320px) {
   .menu__ul {
     flex-direction: column;
   }
