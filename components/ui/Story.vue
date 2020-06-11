@@ -32,6 +32,10 @@ export default {
 </script>
 
 <style scoped>
+.story__image:hover {
+  cursor: pointer;
+  transform: scale(1.04);
+}
 .storyImagesClass {
   width: 100%;
   position: relative;

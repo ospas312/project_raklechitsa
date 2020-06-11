@@ -152,6 +152,7 @@ export default {
   line-height: 24px;
   padding-bottom: 10px;
   box-sizing: border-box;
+  outline: none;
 }
 
 .contacts__submit-container {

@@ -69,12 +69,10 @@ export default {
     },
     goForward(active) {
       this.active += 1; //active page +1
-      console.log('goForward to page', this.active);
       this.$emit('onPageChange', this.active); // emit event to parrent component
     },
     goBack(active) {
       this.active -= 1; //активаная страница +1
-      console.log('goBack to page', this.active);
       this.$emit('onPageChange', this.active);
     },
     goFirst(active) {
