@@ -152,6 +152,7 @@ export default {
     'image title  '
     'image container ';
   grid-template-columns: 580px 1fr;
+
   column-gap: 60px;
 }
 
@@ -179,12 +180,15 @@ export default {
   }
 }
 .full-story__image {
-  width: 100%;
+  width: 580px;
+  height: 580px;
   grid-area: image;
+  object-fit: cover;
 }
 @media screen and (max-width: 768px) {
   .full-story__image {
     width: 420px;
+    height: 420px;
     justify-self: center;
   }
 }
@@ -201,7 +205,18 @@ export default {
   grid-area: title;
   border-top: 1px solid #efefef;
 }
+
+@media screen and (max-width: 1280px) {
+  .full-story__image {
+    width: 518px;
+    height: 518px;
+  }
+}
 @media screen and (max-width: 1024px) {
+  .full-story__image {
+    width: 407px;
+    height: 407px;
+  }
   .full-story__author {
     font-size: 30px;
     line-height: 38px;
@@ -377,6 +392,11 @@ export default {
     column-gap: 20px;
     row-gap: 30px;
   }
+  .full-story__image {
+    width: 290px;
+    height: 290px;
+    justify-self: center;
+  }
 }
 .stories__title {
   margin: 0 0 70px 0;
@@ -416,6 +436,32 @@ export default {
     margin: 0 auto 40px;
     font-size: 18px;
     line-height: 21px;
+  }
+  .full-story__quote {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+  }
+  .full-story__author {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 21px;
+  }
+  .full-story__text {
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  .full-story__text >>> p {
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  .full-story__text >>> blockquote {
+    font-size: 13px;
+    line-height: 16px;
+    margin: 0;
+    font-weight: 600;
   }
 }
 .stories__button-more {
