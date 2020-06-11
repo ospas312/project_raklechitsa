@@ -68,17 +68,13 @@ export default {
 <style scoped>
 .instagram__container {
   padding-bottom: 100px;
+  padding-bottom: 100px;
 }
 
 .instagram__content {
   margin-top: 100px;
   display: flex;
-}
-
-.instagram__story {
-  position: relative;
   width: 100%;
-  height: 100%;
 }
 
 .instagram__image {
@@ -95,7 +91,6 @@ export default {
 
 .instagram__text {
   margin-right: 24px;
-  min-width: 413px;
 }
 
 .instagram__title {
@@ -103,6 +98,7 @@ export default {
   font-weight: 600;
   font-size: 32px;
   line-height: 36px;
+  min-width: 413px;
 }
 
 .instagram__link {
@@ -126,9 +122,10 @@ export default {
 
 .instagram__stories {
   width: 100%;
+  padding: 0;
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(4, minmax(171px, 195px));
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: 30px;
 }
 
@@ -141,7 +138,7 @@ export default {
 }
 
 .instagram__story-link:hover {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
 @media screen and (max-width: 1280px) {
@@ -150,7 +147,7 @@ export default {
   }
 
   .instagram__title {
-    max-width: 367px;
+    min-width: 367px;
     font-size: 28px;
     line-height: 32px;
   }
@@ -169,14 +166,14 @@ export default {
   }
 
   .instagram__title {
-    max-width: 288px;
+    min-width: 288px;
     font-size: 24px;
     line-height: 28px;
   }
 
   .instagram__description {
     margin-top: 20px;
-    max-width: 260px;
+    min-width: 260px;
     font-size: 13px;
     line-height: 16px;
   }
@@ -193,7 +190,7 @@ export default {
   }
 
   .instagram__title {
-    max-width: 380px;
+    min-width: none;
     margin: auto;
     text-align: center;
   }
