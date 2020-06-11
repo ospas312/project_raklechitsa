@@ -16,6 +16,7 @@
             >
           </h2>
           <div v-html="instagramData.text" class="instagram__wrapper"></div>
+        </div>
           <ul class="instagram__stories">
             <li
               class="instagram__story"
@@ -30,7 +31,6 @@
               /></a>
             </li>
           </ul>
-        </div>
       </div>
     </container>
   </section>
@@ -49,11 +49,9 @@ export default {
     instagramData() {
       return this.$store.getters['blocks/getInstagramBlock'];
     },
-    instagramData() {
-      return this.$store.getters['blocks/getInstagramBlock'];
-    },
     instagram() {
-      return this.$store.getters['instagram/getPhotos'];
+      const { instagram } = this.$store.state
+      return instagram.photos.slice(0, 8);
     },
     secondSlogan() {
       return this.$store.getters['blocks/getSecondSloganBlock'];
@@ -78,15 +76,21 @@ export default {
 }
 
 .instagram__story {
-  cursor: pointer;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .instagram__image {
   width: 100%;
   height: 100%;
+  background: #ededed;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
   object-fit: cover;
   object-position: center;
-  display: block;
 }
 
 .instagram__text {
@@ -122,9 +126,22 @@ export default {
 
 .instagram__stories {
   width: 100%;
+  list-style: none;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(171px, 195px));
   grid-gap: 30px;
+}
+
+.instagram__story-link {  
+  width: 100%;
+  padding-bottom: 100%;
+  position: relative;
+  display: block;
+  transition: transform 0.1s linear;
+}
+
+.instagram__story-link:hover {
+  transform: scale(1.05);
 }
 
 @media screen and (max-width: 1280px) {

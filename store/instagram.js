@@ -3,45 +3,37 @@ export const state = () => ({
 });
 
 export const mutations = {
-  setState(state, { name, value }) {
+  addPhotos(state, { name, value }) {
     return (state[name] = value);
   },
 };
+
 export const actions = {
-  async fetchInstagramPhotos({ commit, getters }) {
-    const getPosts = data => {
-      return data.graphql.user.edge_owner_to_timeline_media.edges.map(post => {
-        const {
-          node: { display_url, accessibility_caption, shortcode },
-        } = post;
-        return {
-          display_url,
-          accessibility_caption,
-          url: `https://www.instagram.com/p/${shortcode}`,
-        };
-      });
-    };
-    const data = await this.$axios.$get(process.env.INST_API_URL);
-    if (typeof data.graphql === 'object') {
-      const formatData = getPosts(data);
-      await commit('setState', {
-        name: 'photos',
-        value: formatData,
-      });
-    } else {
-      await commit('setState', {
-        name: 'photos',
-        value: getters.getStockPhotos,
-      });
-    }
+  async GET_PHOTOS({ commit }) {
+    const data = await this.$axios.$get(
+      'https://www.instagram.com/raklechitsa/?__a=1'
+    );
+    const formatData = getPosts(data);
+    commit('addPhotos', {
+      name: 'photos',
+      value: formatData,
+    });
   },
 };
-
+const getPosts = data => {
+  return data.graphql.user.edge_owner_to_timeline_media.edges.map(post => {
+    const {
+      node: { display_url, accessibility_caption, shortcode },
+    } = post;
+    return {
+      display_url,
+      accessibility_caption,
+      url: `https://www.instagram.com/p/${shortcode}`,
+    };
+  });
+};
 export const getters = {
-  getPhotos(state) {
-    return state.photos.slice(0, 8);
-  },
-  getStockPhotos(state) {
-    return state.photos_stock;
+  getInsta(state) {
+    return state.photos;
   },
 };
