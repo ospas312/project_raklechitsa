@@ -26,9 +26,10 @@
         </div>
         <div class="instagram__stories">
           <instagram-story
-            v-for="instagramStory in instagramStories.slice(0, 8)"
+            v-for="instagramStory in instagram.slice(0, 8)"
             :key="instagramStory.id"
-            :picUrl="instagramStory.instagramPicUrl"
+            :url="instagramStory.url"
+            :picUrl="instagramStory.display_url"
             :instagramPicAlt="instagramStory.instagramStoryImageAltData"
           />
         </div>
@@ -47,7 +48,13 @@ export default {
     'instagram-story': InstagramStory,
     slogan: Slogan,
   },
-  data() {
+  computed: {
+    instagram() {
+      const { instagram } = this.$store.state;
+      return instagram.photos;
+    },
+  },
+  /*data() {
     return {
       instagramStories: [
         {
@@ -92,7 +99,7 @@ export default {
         },
       ],
     };
-  },
+  },*/
 };
 </script>
 
@@ -140,8 +147,12 @@ export default {
 .instagram__stories {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template: repeat(2, 195px) / repeat(4, 195px);
+  /*grid-template-columns: repeat(auto-fit, 195px);
+  grid-template-rows: repeat(auto-fit, 195px);*/
   grid-gap: 30px;
+  row-gap: 30px;
+  column-gap: 30px;
 }
 
 @media screen and (max-width: 1280px) {
@@ -188,7 +199,9 @@ export default {
   }
 
   .instagram__stories {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template: repeat(2, 157px) / repeat(4, 157px);
+    /*grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);*/
     grid-gap: 20px;
   }
 
@@ -214,7 +227,8 @@ export default {
 
 @media screen and (max-width: 425px) {
   .instagram__stories {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template: repeat(4, 160px) / repeat(2, 160px);
+    /*grid-template-columns: repeat(2, 1fr);*/
     grid-gap: 10px;
   }
 
@@ -227,6 +241,11 @@ export default {
 
   .instagram__description {
     margin-top: 16px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .instagram__stories {
+    grid-template: repeat(4, 140px) / repeat(2, 140px);
   }
 }
 </style>

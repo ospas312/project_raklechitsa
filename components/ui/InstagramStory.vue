@@ -1,6 +1,6 @@
 <template>
   <article class="instagram__story">
-    <a :href="picUrl" class="instagram__link"
+    <a :href="url" class="instagram__link"
       ><img :src="picUrl" :alt="instagramPicAlt" class="instagram__image"
     /></a>
   </article>
@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  props: ['picUrl', 'instagramPicAlt'],
+  props: ['url', 'picUrl', 'instagramPicAlt'],
 };
 </script>
 
