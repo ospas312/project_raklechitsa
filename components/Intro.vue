@@ -79,6 +79,11 @@ export default {
   opacity: 0.5;
   transform: translateY(20%);
 }
+@media screen and (max-width: 320px) {
+  .intro__jump {
+    width: 36px;
+  }
+}
 
 @media screen and (max-width: 1280px) {
   .intro__title {
