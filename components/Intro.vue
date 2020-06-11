@@ -82,6 +82,7 @@ export default {
 @media screen and (max-width: 320px) {
   .intro__jump {
     width: 36px;
+    margin-left: -18px; /* 50% of width for correct centering  */
   }
 }
 
