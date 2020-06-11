@@ -314,6 +314,26 @@ export default {
     margin: 30px 0 0px 0;
   }
 }
+@media screen and (max-width: 600px) {
+  .tell-story__container {
+    padding: 80px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .tell-story__content-left {
+    width: 90%;
+  }
+  .tell-story__content-right {
+    width: 90%;
+  }
+  .tell-story__title {
+    width: 100%;
+  }
+  .tell-story__subtitle {
+    width: 100%;
+  }
+}
 @media screen and (max-width: 325px) {
   .tell-story {
     font-size: 13px;
