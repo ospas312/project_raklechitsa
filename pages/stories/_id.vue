@@ -39,7 +39,7 @@
       </div>
       <nxt-button
         @btnClick="$router.push('/stories')"
-        :buttonType="button"
+        :buttonType="'button'"
         :buttonClass="'stories__button-more'"
         :buttonText="buttonMoreData"
       />
@@ -104,6 +104,9 @@ export default {
       const monthName = monthNames[monthIndex];
       const year = date.getFullYear();
       return `${day} ${monthName} ${year}`;
+    },
+    storyClickHandler(id) {
+      this.$router.push(`/stories/${id}`);
     },
   },
   mounted: function() {

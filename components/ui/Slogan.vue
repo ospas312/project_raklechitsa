@@ -16,7 +16,6 @@ export default {
 </script>
 <style scoped>
 .slogan {
-  /*width: 100%;*/
   margin: 0;
   padding: 20px;
   background-color: #613a93;
@@ -25,11 +24,11 @@ export default {
   line-height: 46px;
   text-align: center;
 }
-
+/*
 .slogan_column {
   flex-direction: column;
 }
-
+*/
 .slogan__hashtag {
   color: #fff;
   font-size: 1.25em;
@@ -66,6 +65,11 @@ export default {
 
   .slogan__hashtag {
     font-size: 20px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .slogan__hashtag {
+    display: block;
   }
 }
 </style>
