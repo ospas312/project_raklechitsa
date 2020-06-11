@@ -16,6 +16,7 @@
             >
           </h2>
           <div v-html="instagramData.text" class="instagram__wrapper"></div>
+        </div>
           <ul class="instagram__stories">
             <li
               class="instagram__story"
@@ -25,12 +26,11 @@
               <a class="instagram__story-link" :href="photo.url" target="_blank"
                 ><img
                   class="instagram__image"
-                  :src="photo.img"
+                  :src="photo.display_url"
                   alt="Фотогорафия из инстаграм"
               /></a>
             </li>
           </ul>
-        </div>
       </div>
     </container>
   </section>
@@ -50,7 +50,8 @@ export default {
       return this.$store.getters['blocks/getInstagramBlock'];
     },
     instagram() {
-      return this.$store.getters['instagram/getPhotos'];
+      const { instagram } = this.$store.state
+      return instagram.photos.slice(0, 8);
     },
     secondSlogan() {
       return this.$store.getters['blocks/getSecondSloganBlock'];
@@ -67,28 +68,29 @@ export default {
 <style scoped>
 .instagram__container {
   padding-bottom: 100px;
+  padding-bottom: 100px;
 }
 
 .instagram__content {
   margin-top: 100px;
   display: flex;
-}
-
-.instagram__story {
-  cursor: pointer;
+  width: 100%;
 }
 
 .instagram__image {
   width: 100%;
   height: 100%;
+  background: #ededed;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
   object-fit: cover;
   object-position: center;
-  display: block;
 }
 
 .instagram__text {
   margin-right: 24px;
-  min-width: 413px;
 }
 
 .instagram__title {
@@ -96,6 +98,7 @@ export default {
   font-weight: 600;
   font-size: 32px;
   line-height: 36px;
+  min-width: 413px;
 }
 
 .instagram__link {
@@ -119,9 +122,23 @@ export default {
 
 .instagram__stories {
   width: 100%;
+  padding: 0;
+  list-style: none;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 30px;
+}
+
+.instagram__story-link {  
+  width: 100%;
+  padding-bottom: 100%;
+  position: relative;
+  display: block;
+  transition: transform 0.1s linear;
+}
+
+.instagram__story-link:hover {
+  transform: scale(1.04);
 }
 
 @media screen and (max-width: 1280px) {
@@ -130,7 +147,7 @@ export default {
   }
 
   .instagram__title {
-    max-width: 367px;
+    min-width: 367px;
     font-size: 28px;
     line-height: 32px;
   }
@@ -149,14 +166,14 @@ export default {
   }
 
   .instagram__title {
-    max-width: 288px;
+    min-width: 288px;
     font-size: 24px;
     line-height: 28px;
   }
 
   .instagram__description {
     margin-top: 20px;
-    max-width: 260px;
+    min-width: 260px;
     font-size: 13px;
     line-height: 16px;
   }
@@ -173,7 +190,7 @@ export default {
   }
 
   .instagram__title {
-    max-width: 380px;
+    min-width: none;
     margin: auto;
     text-align: center;
   }
