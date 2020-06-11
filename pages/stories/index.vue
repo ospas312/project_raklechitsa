@@ -11,6 +11,18 @@
           >Поиск</nxt-button
         >
       </div>
+      <h2
+        class="stories__message stories__message-title"
+        v-if="this.initiallyFilteredStories.length === 0"
+      >
+        Ничего не найдено
+      </h2>
+      <p
+        class="stories__message stories__message-subtitle"
+        v-if="this.initiallyFilteredStories.length === 0"
+      >
+        Попробуйте еще раз
+      </p>
       <div class="stories__container">
         <story
           v-for="story in storiesToRender"
@@ -27,6 +39,7 @@
         />
       </div>
       <stories-nav
+        v-if="this.initiallyFilteredStories.length != 0"
         :totalStories="this.initiallyFilteredStories.length"
         :limitPerPage="storiesOnPage"
         @onPageChange="changeStartIndex"
@@ -92,7 +105,8 @@ export default {
         return stories.stories;
       }
       return stories.stories.filter(
-        (item, index) => item.author.indexOf(this.appliedStoriesName) > -1
+        (item, index) =>
+          item.author.toLowerCase().indexOf(this.appliedStoriesName) > -1
       );
     },
     storiesToRender() {
@@ -106,16 +120,13 @@ export default {
   },
   methods: {
     changeStartIndex(index) {
-      console.log('on page:', index);
       this.startIndex = (index - 1) * this.storiesOnPage;
     },
     storyClickHandler(id) {
       this.$router.push(`/stories/${id}`);
     },
     filteredList() {
-      console.log(this.search);
-      console.log(this.initiallyFilteredStories.length);
-      this.appliedStoriesName = this.search;
+      this.appliedStoriesName = this.search.toLowerCase();
     },
   },
   mounted: function() {
@@ -146,6 +157,18 @@ export default {
 </script>
 
 <style scoped>
+.stories__message {
+  text-align: center;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 48px;
+  line-height: 58px;
+}
+.stories__message-subtitle {
+  font-size: 16px;
+  line-height: 20px;
+}
 .stories-index-container {
   margin: 100px 0 0;
   font-family: 'Inter', monospace;
@@ -195,6 +218,7 @@ export default {
   font-weight: normal;
   font-size: 18px;
   line-height: 20px;
+  outline: none;
 }
 .stories__search-button {
   width: 100%;
@@ -205,6 +229,7 @@ export default {
   line-height: 19px;
   text-align: center;
   border: none;
+  cursor: pointer;
 }
 @media screen and (max-width: 600px) {
   .stories__search-button {

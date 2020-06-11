@@ -72,6 +72,7 @@ export default {
   width: 54px;
   height: 31px;
   border: none;
+  outline: none;
 }
 
 .intro__jump:hover {
