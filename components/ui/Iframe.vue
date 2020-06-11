@@ -45,7 +45,7 @@ export default {
   .iframe {
     max-width: 290px;
     margin: 0;
-    padding-bottom: calc(290 * 100% / 150);
+    padding-bottom: calc(150 * 100% / 290);
   }
 }
 </style>

@@ -17,20 +17,20 @@
           </h2>
           <div v-html="instagramData.text" class="instagram__wrapper"></div>
         </div>
-          <ul class="instagram__stories">
-            <li
-              class="instagram__story"
-              v-for="photo in instagram"
-              :key="photo.id"
-            >
-              <a class="instagram__story-link" :href="photo.url" target="_blank"
-                ><img
-                  class="instagram__image"
-                  :src="photo.display_url"
-                  alt="Фотогорафия из инстаграм"
-              /></a>
-            </li>
-          </ul>
+        <ul class="instagram__stories">
+          <li
+            class="instagram__story"
+            v-for="photo in instagram"
+            :key="photo.id"
+          >
+            <a class="instagram__story-link" :href="photo.url" target="_blank"
+              ><img
+                class="instagram__image"
+                :src="photo.display_url"
+                alt="Фотогорафия из инстаграм"
+            /></a>
+          </li>
+        </ul>
       </div>
     </container>
   </section>
@@ -50,7 +50,7 @@ export default {
       return this.$store.getters['blocks/getInstagramBlock'];
     },
     instagram() {
-      const { instagram } = this.$store.state
+      const { instagram } = this.$store.state;
       return instagram.photos.slice(0, 8);
     },
     secondSlogan() {
@@ -129,7 +129,7 @@ export default {
   grid-gap: 30px;
 }
 
-.instagram__story-link {  
+.instagram__story-link {
   width: 100%;
   padding-bottom: 100%;
   position: relative;
