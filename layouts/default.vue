@@ -1,13 +1,66 @@
 <template>
   <div>
+    <Header />
+    <PopUp v-if="popUpOpened">
+      <QuestionForm v-if="openFormQuestion" />
+      <ShareLink v-if="openFormSocial" />
+      <ContactsForm v-if="contactsOpened" />
+    </PopUp>
     <nuxt />
+    <Footer />
   </div>
 </template>
 
+<script>
+import Header from '@/components/Header.vue';
+import Footer from '@/components/Footer.vue';
+import PopUp from '@/components/ui/PopUp';
+import QuestionForm from '@/components/ui/QuestionForm';
+import ShareLink from '@/components/ui/ShareLink';
+import ContactsForm from '@/components/ui/ContactsForm';
+export default {
+  components: {
+    Header,
+    Footer,
+    PopUp,
+    QuestionForm,
+    ShareLink,
+    ContactsForm,
+  },
+  data() {
+    return {};
+  },
+  created() {},
+  computed: {
+    popUpOpened() {
+      const { popup } = this.$store.state;
+      return popup.opened;
+    },
+
+    openFormQuestion() {
+      const { popup } = this.$store.state;
+      return popup.openFormQuestion;
+    },
+    openFormSocial() {
+      const { popup } = this.$store.state;
+      return popup.openFormSocial;
+    },
+    contactsOpened() {
+      const { popup } = this.$store.state;
+      return popup.contactsOpened;
+    },
+    async middleware({ store }) {
+      await store.dispatch('video/fetchVideos');
+      await store.dispatch('blocks/fetchBlocks');
+      await store.dispatch('statisticsData/fetchStatistic');
+    },
+  },
+};
+</script>
+
 <style>
 html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Inter', monospace;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -17,39 +70,8 @@ html {
   box-sizing: border-box;
 }
 
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
+body {
   margin: 0;
-}
-
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-}
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+  padding: 0;
 }
 </style>

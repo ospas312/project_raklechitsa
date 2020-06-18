@@ -3,8 +3,18 @@ export default {
   /*
    ** Headers of the page
    */
+  router: {
+    middleware: 'basicData',
+  },
+  env: {
+    BASE_URL: 'https://strapi.kruzhok.io',
+  },
   head: {
+    htmlAttrs: {
+      lang: 'ru',
+    },
     title: process.env.npm_package_name || '',
+    title: 'РАКЛЕЧИТСЯ.РФ — истории людей, победивших рак, но не свои привычки',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -14,7 +24,10 @@ export default {
         content: process.env.npm_package_description || '',
       },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: '/fonts/fonts.css' },
+    ],
   },
   /*
    ** Customize the progress-bar color
@@ -27,7 +40,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [{ src: '~/plugins/swiper.js' }],
   /*
    ** Nuxt.js dev-modules
    */
